@@ -1,0 +1,24 @@
+/* listplace.css */
+
+.image-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+h1,
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+#start-listing-button {
+  display: block;
+  width: 200px;
+  margin: 30px auto;
+}

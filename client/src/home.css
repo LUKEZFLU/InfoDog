@@ -1,53 +1,54 @@
 body {
-    font-family: Arial, sans-serif;
-  }
-  
-  
-  nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 1em;
-  }
-  
-  #logo {
-    font-size: 2em;
-    font-weight: bold;
-  }
-  
-  .hero {
-    text-align: center;
-    padding: 2em;
-  }
-  
-  .hero-buttons button {
-    margin: 0.5em;
-    padding: 1em 2em;
-    font-size: 1em;
-  }
-  
-  .how-it-works {
-    padding: 2em;
-  }
-  
-  .how-it-works h2 {
-    text-align: center;
-    margin-bottom: 1em;
-  }
-  
-  .how-it-works ol {
-    list-style: none;
-    counter-reset: steps;
-  }
-  
-  .how-it-works ol li {
-    counter-increment: steps;
-    margin-bottom: 2em;
-  }
-  
-  .how-it-works ol li::before {
-    content: counter(steps);
-    font-size: 2em;
-    font-weight: bold;
-    margin-right: 0.5em;
-  }
-  
+  font-family: Arial, sans-serif;
+}
+* {
+  background-color: rgb(205, 226, 219);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+#logo {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.hero {
+  text-align: center;
+  padding: 2em;
+}
+
+.hero-buttons button {
+  margin: 0.5em;
+  padding: 1em 2em;
+  font-size: 1em;
+}
+
+.how-it-works {
+  padding: 2em;
+}
+
+.how-it-works h2 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.how-it-works ol {
+  list-style: none;
+  counter-reset: steps;
+}
+
+.how-it-works ol li {
+  counter-increment: steps;
+  margin-bottom: 2em;
+}
+
+.how-it-works ol li::before {
+  content: counter(steps);
+  font-size: 2em;
+  font-weight: bold;
+  margin-right: 0.5em;
+}
