@@ -1,0 +1,39 @@
+.AboutUs {
+    text-align: center;
+}
+
+.AboutUs-header {
+    background-color: #f5f5f5;
+    padding: 2rem;
+}
+
+.AboutUs-content {
+    margin: 2rem;
+}
+
+.AboutUs-team {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.team-member {
+    margin: 1rem;
+}
+
+.team-member img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    /* Optional: if you want rounded corners */
+}
+
+.team-member h3 {
+    margin-top: 0.5rem;
+    color: #333;
+}
+
+.team-member p {
+    color: #666;
+}

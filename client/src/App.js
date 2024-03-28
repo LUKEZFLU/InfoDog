@@ -1,31 +1,23 @@
-import React, {useEffect, useState}from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import AboutUs from "./aboutus";
+import Home from "./home";
+import Header from "./header"; 
+import Footer from "./footer";
 
-function App(){
-
-  const [backendData, setBackendData] = useState([{}])
-
-  
-  useEffect(() => {
-    fetch("/api").then(
-      response => response.json()
-    ).then(
-      data => {
-        setBackendData(data)
-      }
-    )
-  },[])
-
-  return(
-    <div>
-      {(typeof backendData.users === 'undefined')?(
-        <p>Loading...</p>
-      ):(
-        backendData.users.map((user, i) => (
-          <p key={i}>{user}</p>
-        ))
-      )} 
-    </div>
-  )
+function App() {
+  return (
+      <div className="App">
+        <div className="font-loader">
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+          <Footer />
+        </div>
+      </div>
+  );
 }
 
-export default App
+export default App;
