@@ -1,0 +1,66 @@
+/* explore.css */
+
+.search-container{
+  border: 2px solid #ffffff;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 300px);
+  grid-gap: 5px;
+  column-gap: 0.8px;
+  margin: 30px;
+}
+
+.input-container{
+  margin: 20px;
+}
+
+.grid-container{
+  display: grid;
+  grid-template-columns: repeat(2, 300px); /* creates two columns of equal width */
+  grid-gap: 5px;
+  column-gap: 0.8px;
+  margin: 30px;
+}
+
+.map-container {
+  text-align: right;
+  padding: 5px;
+  overflow: scroll;
+  margin: 2px;
+}
+
+.layout-container{
+  display: grid;
+  grid-template-columns: repeat(2, 600px);
+  grid-gap: 5px;
+  column-gap: 0.8px;
+  margin: 30px;
+}
+
+.house-container {
+  text-align: left;
+  padding: 5px;
+  overflow: scroll;
+  margin: 2px;
+}
+
+.house-container img {
+  max-width: 80%;
+  height: auto;
+  border-radius: 10px;
+}
+
+h1,
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+#search-button {
+  display: block;
+  width: 100px;
+  background-color: #333;
+  color: #ffffff;
+}
+
+

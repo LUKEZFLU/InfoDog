@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./home.css";
 import ListPlace from "./listplace";
+import Explore from "./explore";
 
 function Home() {
   let navigate = useNavigate();
@@ -23,7 +24,9 @@ function Home() {
             you've always wanted to live in
           </p>
           <div className="hero-buttons">
-            <button>Find a Place</button>
+            <button onClick={() => navigate("/explore")}>
+              Find your place
+            </button>
             <button onClick={() => navigate("/list-your-place")}>
               List your place
             </button>

@@ -9,6 +9,7 @@ import Home from "./home";
 import Header from "./header";
 import Footer from "./footer";
 import ListPlace from "./listplace";
+import Explore from "./explore";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="*" element={<Navigate to="/" />} />
           <Route path="/list-your-place" element={<ListPlace />} />
+          <Route path="/explore" element={<Explore />} />
         </Routes>
         <Footer />
       </div>
