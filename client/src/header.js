@@ -14,7 +14,8 @@ function Header() {
           </a>
         </div>
         <button onClick={() => navigate("/explore")}>Explore</button>
-        <button onClick={() => navigate("/list-your-place")}>Listing</button>
+        <button onClick={() => navigate("/list-your-place")}>List Your Place</button>
+        <button onClick={() => navigate("/about-us")}>About us</button>
         <button onClick={() => navigate("/login")}>Login</button>
       </nav>
     </header>

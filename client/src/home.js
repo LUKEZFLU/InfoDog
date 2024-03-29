@@ -10,11 +10,6 @@ function Home() {
   return (
     <div>
       <header>
-        <nav>
-          <Link to="/about-us">
-            <button id="about-us-button">About us</button>
-          </Link>
-        </nav>
         <div className="hero">
           <h1>The Easy Way To Find</h1>
           <p>
@@ -23,7 +18,7 @@ function Home() {
           </p>
           <div className="hero-buttons">
             <button onClick={() => navigate("/explore")}>
-              Find your place
+              Find a place
             </button>
             <button onClick={() => navigate("/list-your-place")}>
               List your place

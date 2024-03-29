@@ -7,6 +7,7 @@ import ziliangPhoto from './pic/ziliang.png';
 import fanPhoto from './pic/fan.png';
 
 function AboutUs() {
+
   return (
     <div className="AboutUs">
 
