@@ -1,0 +1,1 @@
+export { PlatformLinkedinShapeRoundedSquareColoredTrue } from "./PlatformLinkedinShapeRoundedSquareColoredTrue";

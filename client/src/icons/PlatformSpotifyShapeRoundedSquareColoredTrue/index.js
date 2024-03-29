@@ -1,0 +1,1 @@
+export { PlatformSpotifyShapeRoundedSquareColoredTrue } from "./PlatformSpotifyShapeRoundedSquareColoredTrue";

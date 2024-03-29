@@ -1,0 +1,1 @@
+export { PlatformDribbbleShapeOriginalColoredFalse } from "./PlatformDribbbleShapeOriginalColoredFalse";

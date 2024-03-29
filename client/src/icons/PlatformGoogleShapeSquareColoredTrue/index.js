@@ -1,0 +1,1 @@
+export { PlatformGoogleShapeSquareColoredTrue } from "./PlatformGoogleShapeSquareColoredTrue";

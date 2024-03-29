@@ -1,0 +1,1 @@
+export { PlatformTelegramShapeOriginalColoredFalse } from "./PlatformTelegramShapeOriginalColoredFalse";

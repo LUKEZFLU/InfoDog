@@ -1,0 +1,1 @@
+export { PlatformTelegramShapeSquareColoredTrue } from "./PlatformTelegramShapeSquareColoredTrue";

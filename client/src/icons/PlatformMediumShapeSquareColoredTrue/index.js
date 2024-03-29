@@ -1,0 +1,1 @@
+export { PlatformMediumShapeSquareColoredTrue } from "./PlatformMediumShapeSquareColoredTrue";

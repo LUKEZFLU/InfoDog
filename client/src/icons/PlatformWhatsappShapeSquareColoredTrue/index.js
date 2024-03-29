@@ -1,0 +1,1 @@
+export { PlatformWhatsappShapeSquareColoredTrue } from "./PlatformWhatsappShapeSquareColoredTrue";

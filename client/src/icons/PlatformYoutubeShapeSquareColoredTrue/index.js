@@ -1,0 +1,1 @@
+export { PlatformYoutubeShapeSquareColoredTrue } from "./PlatformYoutubeShapeSquareColoredTrue";
