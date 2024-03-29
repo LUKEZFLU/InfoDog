@@ -21,7 +21,12 @@ function ListPlace() {
         <img src={testImage} alt="amenities images" />
       </div>
 
-      <button id="start-listing-button">Start listing</button>
+      <button
+        id="start-listing-button"
+        onClick={() => navigate("/listing-form")}
+      >
+        Start listing
+      </button>
 
       <div className="steps-container">
         <div className="step">
