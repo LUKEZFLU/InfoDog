@@ -11,6 +11,7 @@ import Footer from "./footer";
 import ListPlace from "./listplace";
 import Explore from "./explore";
 import ListingForm from "./listing_form";
+import Login from "./Login";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/list-your-place" element={<ListPlace />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/listing-form" element={<ListingForm />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         <Footer />
       </div>
