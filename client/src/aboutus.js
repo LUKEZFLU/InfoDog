@@ -12,8 +12,9 @@ function AboutUs() {
     <div className="AboutUs">
 
       <section className="AboutUs-content">
+      <h2 className='meetOurTeam'>Meet Our Team</h2>
         <div className="AboutUs-team">
-          <h2>Meet Our Team</h2>
+          
           <div className="team-member">
             <img src={zefanPhoto} alt="Zefan Lu" />
             <h3>Zefan Lu</h3>
