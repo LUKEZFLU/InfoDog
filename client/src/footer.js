@@ -1,5 +1,8 @@
+import React from "react";
+import "./footer.css";
+
 function Footer() {
-    return <footer>&copy; 2024 INFO Capstone Group F06-InfoDog</footer>
+  return <footer>&copy; 2024SPR INFO Capstone: InfoDog</footer>;
 }
 
-export default Footer
+export default Footer;

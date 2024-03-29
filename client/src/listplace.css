@@ -1,19 +1,25 @@
 /* listplace.css */
 
 .image-container {
-  text-align: center;
+  margin-right: auto;
   padding: 20px;
 }
 
+.content-container,
+.image-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .image-container img {
-  max-width: 100%;
+  max-width: 30%;
   height: auto;
   border-radius: 8px;
 }
 
 h1,
 h2 {
-  text-align: center;
+  text-align: left;
   color: #333;
 }
 

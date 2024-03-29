@@ -11,8 +11,6 @@ function Home() {
     <div>
       <header>
         <nav>
-          <div id="logo">iLease</div>
-          <button className="login-button">Login</button>
           <Link to="/about-us">
             <button id="about-us-button">About us</button>
           </Link>

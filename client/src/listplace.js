@@ -1,15 +1,13 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./listplace.css";
-import testImage from "./pic/102373.jpg";
+import testImage from "./pic/Housing_1.jpg";
 
 function ListPlace() {
   let navigate = useNavigate();
 
   return (
     <div>
-      <button onClick={() => navigate("/")}>Home</button>
-
       <div className="content-container">
         <h2>We are here to help you sublease</h2>
         <p>
