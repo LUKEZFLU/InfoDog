@@ -1,0 +1,1 @@
+export { PlatformGoogleShapeOriginalColoredFalse } from "./PlatformGoogleShapeOriginalColoredFalse";

@@ -1,0 +1,1 @@
+export { PlatformDribbbleShapeRoundedSquareColoredTrue } from "./PlatformDribbbleShapeRoundedSquareColoredTrue";

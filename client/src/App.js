@@ -10,7 +10,6 @@ import Header from "./header";
 import Footer from "./footer";
 import ListPlace from "./listplace";
 import Explore from "./explore";
-import ListingForm from "./listing_form";
 
 function App() {
   return (
@@ -23,7 +22,6 @@ function App() {
           <Route path="*" element={<Navigate to="/" />} />
           <Route path="/list-your-place" element={<ListPlace />} />
           <Route path="/explore" element={<Explore />} />
-          <Route path="/listing-form" element={<ListingForm />} />
         </Routes>
         <Footer />
       </div>

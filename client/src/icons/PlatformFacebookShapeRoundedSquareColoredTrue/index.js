@@ -1,0 +1,1 @@
+export { PlatformFacebookShapeRoundedSquareColoredTrue } from "./PlatformFacebookShapeRoundedSquareColoredTrue";

@@ -1,0 +1,1 @@
+export { PlatformSpotifyShapeOriginalColoredTrue } from "./PlatformSpotifyShapeOriginalColoredTrue";

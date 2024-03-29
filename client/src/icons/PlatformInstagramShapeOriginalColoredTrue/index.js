@@ -1,0 +1,1 @@
+export { PlatformInstagramShapeOriginalColoredTrue } from "./PlatformInstagramShapeOriginalColoredTrue";

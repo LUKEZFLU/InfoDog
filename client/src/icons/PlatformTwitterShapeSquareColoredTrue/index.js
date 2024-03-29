@@ -1,0 +1,1 @@
+export { PlatformTwitterShapeSquareColoredTrue } from "./PlatformTwitterShapeSquareColoredTrue";

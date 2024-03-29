@@ -1,0 +1,1 @@
+export { PlatformLinkedinShapeOriginalColoredFalse } from "./PlatformLinkedinShapeOriginalColoredFalse";
