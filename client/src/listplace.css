@@ -1,30 +1,55 @@
 /* listplace.css */
 
-.image-container {
-  margin-right: auto;
-  padding: 20px;
-}
-
-.content-container,
-.image-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.image-container img {
-  max-width: 30%;
-  height: auto;
-  border-radius: 8px;
-}
-
-h1,
-h2 {
-  text-align: left;
-  color: #333;
-}
-
 #start-listing-button {
   display: block;
   width: 200px;
   margin: 30px auto;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+}
+
+.listing-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form {
+  width: 50%;
+  padding: 20px;
+  margin: auto;
+}
+
+.steps-indicator {
+  position: absolute;
+  top: 30%;
+  left: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.step {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 20px;
+  border-left: 2px solid #ccc;
+}
+
+.step:before {
+  content: attr(data-step-number);
+  position: absolute;
+  left: 0;
+  background-color: #ccc;
+  border-radius: 90%;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.active-step:before {
+  background-color: #007bff;
 }

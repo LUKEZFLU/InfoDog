@@ -12,6 +12,7 @@ import ListPlace from "./listplace";
 import Explore from "./explore";
 import ListingForm from "./listing_form";
 import Login from "./Login";
+import Profile from "./profile";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/explore" element={<Explore />} />
           <Route path="/listing-form" element={<ListingForm />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
         <Footer />
       </div>
