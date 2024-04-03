@@ -1,10 +1,3 @@
-body {
-  font-family: Arial, sans-serif;
-}
-* {
-  background-color: rgb(205, 226, 219);
-}
-
 nav {
   display: flex;
   justify-content: space-between;
@@ -14,41 +7,70 @@ nav {
 #logo {
   font-size: 2em;
   font-weight: bold;
+  position: center;
 }
 
 .hero {
+  background-image: url(./pic/windows-image-1.png);
+  background-size: cover;
+  background-position: center; 
+  background-repeat: no-repeat; 
   text-align: center;
   padding: 2em;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  text-align: center;
+}
+
+.hero p {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 200;
+  font-size: 30px;
+  line-height: 35px;
 }
 
 .hero-buttons button {
   margin: 0.5em;
   padding: 1em 2em;
-  font-size: 1em;
+  font-size: 24px;
+  border-radius: 20px;
+}
+
+.hero-buttons button:hover {
+  background-color:#555454;
+}
+
+.feature-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.text-col h2 {
+  margin-bottom: 0.5em; 
+  font-size: 1.5em;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 30px;
 }
 
 .how-it-works {
   padding: 2em;
 }
 
-.how-it-works h2 {
-  text-align: center;
-  margin-bottom: 1em;
+.bottom-container {
+  display: flex;
+  align-items: flex-start; 
 }
 
-.how-it-works ol {
-  list-style: none;
-  counter-reset: steps;
+.bottomimage img {
+  width: 100%; /* 或者您可以设置为固定的宽度，例如 width: 300px; */
+  max-width: 600px; /* 限制图片的最大宽度 */
 }
 
-.how-it-works ol li {
-  counter-increment: steps;
-  margin-bottom: 2em;
-}
-
-.how-it-works ol li::before {
-  content: counter(steps);
-  font-size: 2em;
-  font-weight: bold;
-  margin-right: 0.5em;
+.steps-container {
+  margin-left: 20px; /* 添加一些左边距，以便在图片和文字内容之间留出一些空间 */
 }
