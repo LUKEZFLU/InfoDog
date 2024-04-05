@@ -11,7 +11,9 @@ import Footer from "./footer";
 import ListPlace from "./listplace";
 import Explore from "./explore";
 import Login from "./login";
-import Signup from "./signup"
+import Signup from "./signup";
+import ListingForm from "./listing_form";
+import Profile from "./profile";
 
 function App() {
   return (
@@ -23,9 +25,11 @@ function App() {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="*" element={<Navigate to="/" />} />
           <Route path="/list-your-place" element={<ListPlace />} />
+          <Route path="/listing-form" element={<ListingForm />} />
           <Route path="/explore" element={<Explore />} />
-          <Route path='/login' element={<Login  />} />
-          <Route path='/signup' element={<Signup  />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
         <Footer />
       </div>
