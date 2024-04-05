@@ -10,9 +10,8 @@ import Header from "./header";
 import Footer from "./footer";
 import ListPlace from "./listplace";
 import Explore from "./explore";
-import ListingForm from "./listing_form";
-import Login from "./Login";
-import Profile from "./profile";
+import Login from "./login";
+import Signup from "./signup"
 
 function App() {
   return (
@@ -25,9 +24,8 @@ function App() {
           <Route path="*" element={<Navigate to="/" />} />
           <Route path="/list-your-place" element={<ListPlace />} />
           <Route path="/explore" element={<Explore />} />
-          <Route path="/listing-form" element={<ListingForm />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path='/login' element={<Login  />} />
+          <Route path='/signup' element={<Signup  />} />
         </Routes>
         <Footer />
       </div>
