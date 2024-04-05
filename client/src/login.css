@@ -1,0 +1,223 @@
+.login {
+    background-color: #eaedcd;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .login .overlap-wrapper {
+    background-color: #eaedcd;
+    height: 1024px;
+    overflow: hidden;
+    width: 1440px;
+  }
+  
+  .login .overlap-3 {
+    height: 1373px;
+    left: -582px;
+    position: relative;
+    top: -175px;
+    width: 2022px;
+  }
+  
+  .login .amen {
+    height: 1024px;
+    left: 582px;
+    object-fit: cover;
+    position: absolute;
+    top: 175px;
+    width: 1440px;
+  }
+  
+  .login .background-shape {
+    background: linear-gradient(
+      180deg,
+      rgb(255, 255, 255) 40.5%,
+      rgba(255, 255, 255, 0.78) 73.5%,
+      rgba(255, 255, 255, 0.62) 99.99%,
+      rgba(255, 255, 255, 0.71) 100%
+    );
+    border-radius: 686.5px;
+    height: 1373px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: rotate(-90deg);
+    width: 1373px;
+  }
+  
+  .login .fill-the-information {
+    height: 14px;
+    left: 688px;
+    position: absolute;
+    top: 500px;
+    width: 209px;
+  }
+  
+  .login .already-have-an {
+    height: 35px;
+    left: 757px;
+    position: absolute;
+    top: 424px;
+    width: 424px;
+  }
+  
+  .login .rectangle-3 {
+    height: 74px;
+    left: 688px;
+    position: absolute;
+    top: 680px;
+    width: 554px;
+  }
+  
+  .login .rectangle-4 {
+    height: 61px;
+    left: 893px;
+    position: absolute;
+    top: 814px;
+    width: 135px;
+  }
+  
+  .login .text {
+    color: #000000;
+    font-family: "Roboto", Helvetica;
+    font-size: 18px;
+    font-weight: 400;
+    left: 1074px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 849px;
+    white-space: nowrap;
+    width: 1px;
+  }
+  
+  .login .text-wrapper-12 {
+    color: #0000009c;
+    font-family: "Raleway", Helvetica;
+    font-size: 18px;
+    font-weight: 400;
+    left: 716px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 695px;
+    white-space: nowrap;
+  }
+  
+  .login .text-wrapper-13 {
+    color: #ffffff;
+    font-family: "Raleway", Helvetica;
+    font-size: 18px;
+    font-weight: 400;
+    left: 929px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 830px;
+    white-space: nowrap;
+  }
+  
+  .login .ready-to-be-a-user {
+    color: transparent;
+    font-family: "Raleway", Helvetica;
+    font-size: 18px;
+    font-weight: 400;
+    left: 855px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 936px;
+    white-space: nowrap;
+  }
+  
+  .login .text-wrapper-14 {
+    color: #0000009c;
+  }
+  
+  .login .text-wrapper-15 {
+    color: #4dadaa;
+    text-decoration: underline;
+  }
+  
+  .login .emai-section-instance {
+    left: 688px !important;
+    position: absolute !important;
+    top: 550px !important;
+  }
+  
+  .login .design-component-instance-node {
+    font-family: "Raleway", Helvetica !important;
+  }
+  
+  .login .text-wrapper-16 {
+    color: #717171;
+    font-family: "Raleway", Helvetica;
+    font-size: 10px;
+    font-weight: 400;
+    left: 865px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 890px;
+    white-space: nowrap;
+    width: 202px;
+  }
+  
+  .login .group-3 {
+    height: 95px;
+    left: 641px;
+    position: absolute;
+    top: 217px;
+    width: 160px;
+  }
+  
+  .login .overlap-group-3 {
+    height: 95px;
+    left: 51px;
+    position: absolute;
+    top: 0;
+    width: 105px;
+  }
+  
+  .login .vector-2 {
+    height: 60px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 63px;
+  }
+  
+  .login .text-wrapper-17 {
+    color: #000000;
+    font-family: "Dongle", Helvetica;
+    font-size: 64px;
+    font-weight: 400;
+    left: 62px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 2px;
+  }
+  
+  .login .line-2 {
+    height: 4px;
+    left: 24px;
+    position: absolute;
+    top: 40px;
+    width: 14px;
+  }
+  
+  .login .text-wrapper-18 {
+    color: #000000;
+    font-family: "Dongle", Helvetica;
+    font-size: 64px;
+    font-weight: 400;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 2px;
+  }
+  
