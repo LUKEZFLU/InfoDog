@@ -1,0 +1,90 @@
+/* detail.css */
+
+.search-container {
+  border: 2px solid #ffffff;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 300px);
+  grid-gap: 5px;
+  column-gap: 0.8px;
+  margin: 40px;
+}
+
+.input-container {
+  margin: 30px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 300px); /* creates two columns of equal width */
+  grid-gap: 5px;
+  column-gap: 0.8px;
+  margin: 30px;
+}
+
+.large-image-container {
+  width: auto;
+  /* text-align: right; */
+  padding: 5px;
+  overflow: scroll;
+  margin: 2px;
+}
+
+.layout-container {
+  display: grid;
+  grid-template-columns: repeat(2, 600px);
+  grid-gap: 5px;
+  column-gap: 70px;
+  margin: 50px;
+}
+
+.house-container {
+  text-align: left;
+  padding: 5px;
+  margin: 2px;
+}
+
+.house-container img {
+  max-width: 90%;
+  height: auto;
+  border-radius: 10px;
+}
+
+h1,
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+hr {
+  border: none; /* Remove default border */
+  border-top: 1px solid #ccc; /* Add a custom solid line */
+  margin: 20px 0; /* Add some vertical space above and below the line */
+}
+
+
+#search-button {
+  display: block;
+  width: 100px;
+  background-color: #333;
+  color: #ffffff;
+}
+
+#detail-headers {
+  text-align: left;
+}
+
+span {
+  display: inline; 
+  margin-left: 10px;
+  margin-right: 50px;
+  /* margin-bottom: 20px; */
+}
+
+#note {
+  color: grey;
+}
+
+/* #facility-title {
+  text-align: left;
+} */

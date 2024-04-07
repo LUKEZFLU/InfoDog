@@ -10,6 +10,7 @@ import Header from "./header";
 import Footer from "./footer";
 import ListPlace from "./listplace";
 import Explore from "./explore";
+import Detail from "./detail";
 import Login from "./login";
 import Signup from "./signup";
 import ListingForm from "./listing_form";
@@ -27,6 +28,7 @@ function App() {
           <Route path="/list-your-place" element={<ListPlace />} />
           <Route path="/listing-form" element={<ListingForm />} />
           <Route path="/explore" element={<Explore />} />
+          <Route path="/detail" element={<Detail />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
