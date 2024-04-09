@@ -16,14 +16,17 @@
 
 .grid-container{
   display: grid;
+  width: 105%;
+  height: 70%;
   grid-template-columns: repeat(2, 300px); /* creates two columns of equal width */
   grid-gap: 5px;
   column-gap: 0.8px;
+  overflow: scroll;
   margin: 30px;
 }
 
 .map-container {
-  width: auto;
+  width: 120%;
   text-align: right;
   padding: 5px;
   overflow: scroll;

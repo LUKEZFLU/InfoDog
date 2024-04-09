@@ -1,10 +1,12 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./explore.css";
-import Housing_1 from "./pic/Housing_1.jpg";
+import Housing_1 from "./pic/UPlace_main.jpg";
 import Housing_2 from "./pic/Housing_2.jpg";
 import Housing_3 from "./pic/Housing_5.jpg";
 import Housing_4 from "./pic/Housing_8.jpg";
+import Housing_5 from "./pic/Housing_1.jpg";
+import Housing_6 from "./pic/Housing_6.jpg";
 import map from "./pic/map.png";
 
 function Explore() {
@@ -85,7 +87,7 @@ function Explore() {
             <img
               src={Housing_2}
               alt="amenities images"
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/detail")}
             />
             <h3>Cielo</h3>
             <p>Lake City | $1800/month | studio</p>
@@ -94,7 +96,7 @@ function Explore() {
             <img
               src={Housing_3}
               alt="amenities images"
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/detail")}
             />
             <h3>Trailside</h3>
             <p>U Village | $2100/month | 1b1b</p>
@@ -103,16 +105,35 @@ function Explore() {
             <img
               src={Housing_4}
               alt="amenities images"
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/detail")}
             />
             <h3>Avaron</h3>
             <p>Queen Anne | $2270/month | studio</p>
           </div>
+          <div className="house-container">
+            <img
+              src={Housing_5}
+              alt="amenities images"
+              onClick={() => navigate("/detail")}
+            />
+            <h3>Edgepoint</h3>
+            <p>Greenwood | $1570/month | 2b1b</p>
+          </div>
+          <div className="house-container">
+            <img
+              src={Housing_6}
+              alt="amenities images"
+              onClick={() => navigate("/detail")}
+            />
+            <h3>Cedar</h3>
+            <p>Roosvelt | $1420/month | 4b4b</p>
+          </div>
+
         </div>
 
         {/* map */}
         <div className="map-container">
-          <img src={map} alt="amenities images" />
+          <img src={map} alt="map" />
         </div>
       </div>
     </div>

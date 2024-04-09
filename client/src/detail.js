@@ -1,11 +1,11 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./detail.css";
-import Housing_1 from "./pic/Housing_1.jpg";
-import Housing_2 from "./pic/Housing_2.jpg";
-import Housing_3 from "./pic/Housing_5.jpg";
-import Housing_4 from "./pic/Housing_8.jpg";
-import Housing_5 from "./pic/Housing_4.jpg";
+import bath from "./pic/UPlace_bath.jpg";
+import kitchen from "./pic/UPlace_kitchen.jpg";
+import living from "./pic/UPlace_living.jpg";
+import balcony from "./pic/UPlace_balcony.jpg";
+import mainImg from "./pic/UPlace_main.jpg";
 import pentagram from "./pic/pentagram.jpg";
 
 function Detail() {
@@ -13,70 +13,44 @@ function Detail() {
 
   return (
     <div>
-      {/* <button onClick={() => navigate("/")}>Home</button> */}
-
-      {/* <div className="search-container">
-        <div className="input-container">
-          <div>location</div>
-          <input type="text" id="locationInput" placeholder="UW" />
-        </div>
-        <div className="input-container">
-          <div>Move-in</div>
-          <input type="text" id="moveinInput" placeholder="yyyy-mm-dd" />
-        </div>
-        <div className="input-container">
-          <div>Move-out</div>
-          <input type="text" id="moveoutInput" placeholder="yyyy-mm-dd" />
-        </div>
-        <div className="input-container">
-          <p></p>
-          <button id="search-button">Search</button>
-        </div>
-      </div> */}
 
       <div className="room-layout-container">
         {/* large image */}
         <div className="large-image-container">
-          <img src={Housing_5} alt="amenities images" />
+          <img src={mainImg} alt="amenities images" />
         </div>
 
         {/* room-detail */}
-        <div className="grid-container">
+        <div className="room-grid-container">
           <div className="box-container">
             <img
-              src={Housing_1}
+              src={bath}
               alt="amenities images"
             />
           </div>
           <div className="box-container">
             <img
-              src={Housing_2}
+              src={kitchen}
               alt="amenities images"
             />
           </div>
           <div className="box-container">
             <img
-              src={Housing_3}
+              src={living}
               alt="amenities images"
             />
           </div>
           <div className="box-container">
             <img
-              src={Housing_4}
+              src={balcony}
               alt="amenities images"
             />
-            {/* <h3>Avaron</h3>
-            <p>Queen Anne | $2270/month | studio</p> */}
           </div>
         </div>
         
       </div>
 
-      
-
-
       <div className="room-layout-container">
-
         {/* text */}
         <div className="text">
             <h1 id="detail-headers">Dog-friendly 2B2B Apartment nearby UW</h1>
@@ -125,7 +99,6 @@ function Detail() {
 
         {/* sidebox */}
         <div className="sidebox-container">
-            
             <div class="booking-widget">
                 <div class="price-review">
                     <div class="price">$2100 / Month</div>
@@ -155,25 +128,18 @@ function Detail() {
                 </div> */}
                 <div class="guests">
                     <label for="guests">Guests</label>
-                    <input id="guests" name="guests"></input>
+                    <input id="guests" name="guests" placeholder="number"></input>
                 </div>
                 
                 <button type="button" class="contact-host">Contact Host</button>
                 
                 <div class="charge-info">You won’t be charged yet</div>
                 <hr></hr>
-
-                
                 <img src={pentagram} id="pentagram" alt="amenities images" />
-
             </div>
-
         </div>
 
       </div>
-    
-      
-
 
     </div>
   );
