@@ -12,7 +12,6 @@ function Explore() {
 
   return (
     <div>
-      {/* <button onClick={() => navigate("/")}>Home</button> */}
 
       <div className="search-container">
         <div className="input-container">
@@ -20,12 +19,20 @@ function Explore() {
           <input type="text" id="locationInput" placeholder="UW" />
         </div>
         <div className="input-container">
-          <div>Move-in</div>
-          <input type="text" id="moveinInput" placeholder="yyyy-mm-dd" />
+          {/* <div>Move-in</div>
+          <input type="text" id="moveinInput" placeholder="yyyy-mm-dd" /> */}
+          <div class="check-in">
+              <label for="movein">Move-in</label>
+              <input type="date" id="movein" name="movein"></input>
+          </div>
         </div>
         <div className="input-container">
-          <div>Move-out</div>
-          <input type="text" id="moveoutInput" placeholder="yyyy-mm-dd" />
+          {/* <div>Move-out</div>
+          <input type="text" id="moveoutInput" placeholder="yyyy-mm-dd" /> */}
+          <div class="check-out">
+              <label for="moveout">Move-out</label>
+              <input type="date" id="moveout" name="moveout"></input>
+          </div>
         </div>
         <div className="input-container">
           <p></p>
