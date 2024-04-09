@@ -1,10 +1,10 @@
 /* explore.css */
 
 .search-container{
-  border: 2px solid #ffffff;
+  border: 2px solid #603434;
   border-radius: 20px;
   display: grid;
-  grid-template-columns: repeat(4, 300px);
+  grid-template-columns: repeat(5, 300px);
   grid-gap: 5px;
   column-gap: 0.8px;
   margin: 40px;
@@ -66,4 +66,62 @@ h2 {
   color: #ffffff;
 }
 
+.filter-options {
+  /* Initial state should be invisible, so you might want to include this */
+  display: none;
+}
+
+/* You can toggle the display of the filter options with a class or a conditional style */
+.filter-container.visible .filter-options {
+  display: block;
+}
+
+.filter-container {
+  /* border: 2px solid #ffffff; */
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 450px);
+  grid-gap: 5px;
+  column-gap: 5px;
+  row-gap: 30px;
+  margin-left: 70px;
+  position: relative;
+}
+
+#filter-toggle {
+  /* border: 1px solid #ddd; */
+  padding: 10px;
+  width: 10%;
+  height: 25%;
+  margin-top: 10%;
+  /* cursor: pointer; */
+}
+
+.filter-options {
+  display: none; /* Hide filters by default */
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  padding: 20px;
+  width: 100%;
+  z-index: 100;
+}
+
+.filter-option {
+  margin-bottom: 10px;
+}
+
+label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+select {
+  padding: 5px;
+  margin-right: 20px;
+}
+
+#char_space {
+  margin: 10px;
+}
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./detail.css";
 import bath from "./pic/UPlace_bath.jpg";
 import kitchen from "./pic/UPlace_kitchen.jpg";
@@ -17,7 +17,7 @@ function Detail() {
       <div className="room-layout-container">
         {/* large image */}
         <div className="large-image-container">
-          <img src={mainImg} alt="amenities images" />
+          <img src={mainImg} alt="overall room images" />
         </div>
 
         {/* room-detail */}
@@ -25,25 +25,25 @@ function Detail() {
           <div className="box-container">
             <img
               src={bath}
-              alt="amenities images"
+              alt="bath images"
             />
           </div>
           <div className="box-container">
             <img
               src={kitchen}
-              alt="amenities images"
+              alt="kitchen images"
             />
           </div>
           <div className="box-container">
             <img
               src={living}
-              alt="amenities images"
+              alt="living room images"
             />
           </div>
           <div className="box-container">
             <img
               src={balcony}
-              alt="amenities images"
+              alt="balcony images"
             />
           </div>
         </div>
@@ -135,7 +135,7 @@ function Detail() {
                 
                 <div class="charge-info">You won’t be charged yet</div>
                 <hr></hr>
-                <img src={pentagram} id="pentagram" alt="amenities images" />
+                <img src={pentagram} id="pentagram" alt="pentagram analysis images" />
             </div>
         </div>
 
