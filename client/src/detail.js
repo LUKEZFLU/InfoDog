@@ -101,7 +101,7 @@ function Detail() {
         <div className="sidebox-container">
             <div class="booking-widget">
                 <div class="price-review">
-                    <div class="price">$2100 / Month</div>
+                    <div class="price">$1750 / Month</div>
                     <div class="reviews">7 reviews</div>
                 </div>
                 

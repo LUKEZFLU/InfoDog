@@ -27,6 +27,7 @@
 
 .map-container {
   width: 120%;
+  height: 75%;
   text-align: right;
   padding: 5px;
   overflow: scroll;
