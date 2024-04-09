@@ -38,6 +38,35 @@ function Explore() {
           <p></p>
           <button id="search-button">Search</button>
         </div>
+        <div className="input-container">
+          <p></p>
+          <button id="filter-toggle" onclick="toggleFilters()">Filter</button>
+        </div>
+
+        {/* drop-down fitler */}
+        <div class="filter-container">
+          {/* <button id="filter-toggle" onclick="toggleFilters()">Filters</button> */}
+          <div id="filters" class="filter-options">
+            <div class="filter-option">
+              <label for="house-type">House Type:</label>
+              <select id="house-type" name="house-type">
+                <option value="studio">Studio</option>
+                <option value="apartment">Apartment</option>
+                <option value="house">House</option>
+              </select>
+            </div>
+            <div class="filter-option">
+              <label for="pet-friendly">Pet Friendly:</label>
+              <select id="pet-friendly" name="pet-friendly">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+
+          </div>
+        </div>
+
+
       </div>
 
       <div className="layout-container">

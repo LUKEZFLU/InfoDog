@@ -6,6 +6,7 @@ import Housing_2 from "./pic/Housing_2.jpg";
 import Housing_3 from "./pic/Housing_5.jpg";
 import Housing_4 from "./pic/Housing_8.jpg";
 import Housing_5 from "./pic/Housing_4.jpg";
+import pentagram from "./pic/pentagram.jpg";
 
 function Detail() {
   let navigate = useNavigate();
@@ -160,6 +161,11 @@ function Detail() {
                 <button type="button" class="contact-host">Contact Host</button>
                 
                 <div class="charge-info">You won’t be charged yet</div>
+                <hr></hr>
+
+                
+                <img src={pentagram} id="pentagram" alt="amenities images" />
+
             </div>
 
         </div>

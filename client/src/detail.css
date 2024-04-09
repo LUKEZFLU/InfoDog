@@ -27,7 +27,7 @@ body {
   border: 2px solid #ffffff;
   border-radius: 20px;
   display: grid;
-  grid-template-columns: repeat(4, 300px);
+  grid-template-columns: repeat(5, 300px);
   grid-gap: 5px;
   column-gap: 0.8px;
   margin: 40px;
@@ -185,4 +185,10 @@ body {
 
 #note {
   color: grey;
+}
+
+#pentagram {
+  max-width: 80%;
+  height: auto;
+  margin: 10%;
 }
