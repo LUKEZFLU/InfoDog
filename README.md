@@ -13,8 +13,8 @@ Collaborators:
 This Project is copyrighted by the above collaborators.
 
 
-First start the server: 
-cd to the server directory, then: npm run dev
+First start the server (port 3001): 
+cd to the server directory, then: nodemon index.js
 
-Then start the client: 
+Then start the client (port 3000): 
 cd to the client directory, then: npm start

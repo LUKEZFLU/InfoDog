@@ -17,7 +17,7 @@ export default Popup
 
 
 // Below is a example of using this component
-// import Popup from './components/Popup';    // import this component
+// import Popup from './components/popup';    // import this component
 // import {useState} from 'react';    // must import use state
 
 
