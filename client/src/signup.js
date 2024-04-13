@@ -59,7 +59,7 @@ function Signup() {
                 <input type="text" id="first_name_input" onChange={(e) => setFirstName(e.target.value)} />
                 <div>Last Name</div>
                 <input type="text" id="last_name_input" onChange={(e) => setLastName(e.target.value)} />
-                <div>UW Email Address</div>
+                <div>Institution Email</div>
                 <input type="email" id="email_input" onChange={(e) => setEmail(e.target.value)} />
                 <div>Password</div>
                 <input type="text" id="password_input" onChange={(e) => setPassword(e.target.value)} />

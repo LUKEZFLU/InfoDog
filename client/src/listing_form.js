@@ -397,7 +397,7 @@ function ListingForm() {
                   identity to make your listing stand out with a "Verified"
                   badge
                 </p>
-                <label htmlFor="email">Enter Your Insitutional email</label>
+                <label htmlFor="email">Enter Your UW Email</label>
                 <br />
                 <input
                   type="text"
