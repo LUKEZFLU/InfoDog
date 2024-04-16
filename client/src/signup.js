@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Popup from './components/popup';
+import nonInsitutionalEmails from './data/domains.json';
 
 function Signup() {
   const navigate = useNavigate();
@@ -15,9 +16,20 @@ function Signup() {
   const [buttonPopup, setButtonPopup] = useState(false);
 
   const handleSubmit = (e) => {
+    // Prevent the default form submission
     e.preventDefault();
     if (!first_name || !last_name || !email || !password) {
       setMessage("All fields must be filled out.");
+      setButtonPopup(true);
+      return;
+    }
+
+
+    // Check if the email is from a non-institutional domain
+    const emailDomain = email.substring(email.lastIndexOf('@') + 1);
+  
+    if (nonInsitutionalEmails.includes(emailDomain)) {
+      setMessage("Please Sign Up With Your Inisitutional Email Address.");
       setButtonPopup(true);
       return;
     }
@@ -28,7 +40,7 @@ function Signup() {
         setMessage("Registration successful! You will be directed to the login page after 3 seconds");
         setButtonPopup(true);
         setTimeout(() => {
-          navigate('/login');
+          navigate('/Signup');
         }, 3000); // 3000ms
       })
       .catch(err => {
@@ -59,7 +71,7 @@ function Signup() {
                 <input type="text" id="first_name_input" onChange={(e) => setFirstName(e.target.value)} />
                 <div>Last Name</div>
                 <input type="text" id="last_name_input" onChange={(e) => setLastName(e.target.value)} />
-                <div>Institution Email</div>
+                <div>UW Email Address</div>
                 <input type="email" id="email_input" onChange={(e) => setEmail(e.target.value)} />
                 <div>Password</div>
                 <input type="text" id="password_input" onChange={(e) => setPassword(e.target.value)} />
@@ -83,3 +95,4 @@ function Signup() {
 };
 
 export default Signup;
+
