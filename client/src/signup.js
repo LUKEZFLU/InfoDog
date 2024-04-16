@@ -40,7 +40,7 @@ function Signup() {
         setMessage("Registration successful! You will be directed to the login page after 3 seconds");
         setButtonPopup(true);
         setTimeout(() => {
-          navigate('/Signup');
+          navigate('/Login');
         }, 3000); // 3000ms
       })
       .catch(err => {
