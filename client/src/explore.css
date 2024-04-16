@@ -30,7 +30,7 @@
   height: 75%;
   text-align: right;
   padding: 5px;
-  overflow: scroll;
+  overflow: hidden;
   margin: 2px;
 }
 

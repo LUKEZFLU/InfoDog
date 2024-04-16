@@ -29,7 +29,7 @@ function Explore() {
         <div className="input-container">
           <div class="check-in">
             <label for="location">Location</label>
-            <input type="text" id="locationInput" placeholder="UW" />
+            <input type="text" id="locationInput" placeholder="U District" />
           </div>
         </div>
         <div className="input-container">
