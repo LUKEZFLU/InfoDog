@@ -7,13 +7,15 @@ import Housing_3 from "./pic/Housing_5.jpg";
 import Housing_4 from "./pic/Housing_8.jpg";
 import Housing_5 from "./pic/Housing_1.jpg";
 import Housing_6 from "./pic/Housing_6.jpg";
-import map from "./pic/map.png";
+// import map from "./pic/map.png";
+import Map from './components/map.js';
 import filter_icon from "./pic/filter_icon.jpg";
 
 function Explore() {
   let navigate = useNavigate();
 
-  const [showFilters, setShowFilters] = useState(false); // State to manage filter visibility
+  // State to manage filter visibility
+  const [showFilters, setShowFilters] = useState(false);
 
   // Function to toggle the filter visibility
   const toggleFilters = () => {
@@ -183,7 +185,7 @@ function Explore() {
 
         {/* map */}
         <div className="map-container">
-          <img src={map} alt="map" />
+          <Map />
         </div>
       </div>
     </div>
