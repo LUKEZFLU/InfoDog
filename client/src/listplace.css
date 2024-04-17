@@ -1,10 +1,74 @@
 /* listplace.css */
 
+.uui-heroheader01_image {
+  object-fit: cover;
+  border-top-left-radius: 10rem;
+  width: 100%;
+  height: 40rem;
+}
+
+.uui-text-size-xlarge {
+  color: var(--untitled-ui--gray600);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Oxygen, Fira Sans, Droid Sans, sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.uui-space-small {
+  width: 100%;
+  min-height: 1.5rem;
+}
+
+.uui-heading-xlarge {
+  color: var(--untitled-ui--gray900);
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Oxygen, Fira Sans, Droid Sans, sans-serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1.0;
+}
+
+.uui-heroheader01_component {
+  grid-column-gap: 4rem;
+  grid-row-gap: 4rem;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-columns: 1fr;
+  align-items: center;
+  display: grid;
+}
+
+.uui-padding-vertical-xhuge {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.ui-container {
+  width: auto;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #start-listing-button {
   display: block;
   width: 200px;
   margin: 30px auto;
+  position: absolute;
+  width: 224px;
+  height: 60px;
+  left: 95px;
+  top: 650px;
+  border-radius: .5rem;
+  font-size: large;
+  color: black
 }
+
+#start-listing-button:hover {
+  background-color: grey; 
+}
+
 
 .form-group {
   display: flex;
@@ -23,6 +87,9 @@ form {
   padding: 20px;
   margin: auto;
 }
+
+
+/* step */
 
 .steps-indicator {
   position: absolute;

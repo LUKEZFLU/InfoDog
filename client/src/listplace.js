@@ -1,32 +1,31 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./listplace.css";
-import testImage from "./pic/Housing_1.jpg";
 
 function ListPlace() {
   let navigate = useNavigate();
 
   return (
     <div>
-      <div className="content-container">
-        <h2>We are here to help you sublease</h2>
-        <p>
-          This form will take only 5 minutes to get information about your
-          house. Please be patience about the form so that we can do our best to
-          help you find the perfect subtenant.{" "}
-        </p>
+      <div class="ui-container">
+        <div class="uui-padding-vertical-xhuge">
+          <div class="w-layout-grid uui-heroheader01_component">
+            <div class="uui-heroheader01_content">
+              <h1 class="uui-heading-xlarge">We are here to help you</h1>
+              <div class="uui-space-small"></div>
+              <div class="uui-text-size-xlarge">This form will take only 5 minutes to get information about your house. Please be patience about the form so that we can do our best to help you find the perfect subtenant.</div>
+            </div>
+            <div class="uui-heroheader01_image-wrapper"><img src="pic/startlising-image.png" alt="Header image" class="uui-heroheader01_image" /></div>
+            <div class="uui-button-row-2 is-reverse-mobile-landscape">
+              <div class="uui-button-wrapper-2 max-width-full-mobile-landscape">
+              <button id="start-listing-button" onClick={() => navigate("/listing-form")}>
+                Start listing
+              </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div className="image-container">
-        <img src={testImage} alt="amenities images" />
-      </div>
-
-      <button
-        id="start-listing-button"
-        onClick={() => navigate("/listing-form")}
-      >
-        Start listing
-      </button>
 
       <div className="steps-container">
         <div className="step">
