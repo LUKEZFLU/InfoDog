@@ -14,13 +14,23 @@
 .popup-inner {
     position: relative;
     padding: 32px;
-    width: 100%;
+    width: 50%;
     max-width: 640px;
     background-color: #FFF;
+    border-radius: 15px;
 }
 
 .popup-inner .close-btn {
     position: absolute;
     top: 16px;
-    right: 16px;
+    right: 0px; /* Adjusted for consistency */
+    background: none; /* No background */
+    border: none; /* No border */
+    padding: 0; /* No padding */
+    cursor: pointer; /* Change the cursor to indicate a clickable item */
+}
+
+.popup-inner .close-btn img {
+    width: 18%; /* 1/30th of the width of its parent, you can adjust if necessary */
+    height: auto; /* Maintain aspect ratio */
 }

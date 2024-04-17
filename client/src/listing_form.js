@@ -140,6 +140,8 @@ function ListingForm() {
 
   return (
     <div>
+      <div class="circle top-right"></div>
+      <div class="circle bottom-left"></div>
       <div className="steps-indicator">
         <div className={currentStep >= 1 ? "step active-step" : "step"}>
           Step 1: Intro your place
