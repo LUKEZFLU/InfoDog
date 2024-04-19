@@ -1,4 +1,7 @@
 /* listplace.css */
+.background {
+  background-image: url(pic/listplaceback.jpg);
+}
 
 .uui-heroheader01_image {
   object-fit: cover;
@@ -91,52 +94,24 @@ form {
 
 /* step */
 
-.steps-indicator {
-  position: absolute;
-  top: 30%;
-  left: 5px;
-  display: flex;
-  flex-direction: column;
-  padding: 0;
+.steps-container {
+  display: flex; 
+  justify-content: space-between;  /* 均匀分布 */
 }
 
-.step {
-  position: relative;
-  padding-left: 30px;
-  margin-bottom: 20px;
-  border-left: 2px solid #ccc;
+.steps {
+  flex: 3;  
+  text-align: start;  
+  margin: 0 10px; 
 }
 
-.step:before {
-  content: attr(data-step-number);
-  position: absolute;
-  left: 0;
-  background-color: #ccc;
-  border-radius: 90%;
-  padding: 5px 10px;
-  text-align: center;
+.steps h3 {
+  font-size: 32px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Oxygen, Fira Sans, Droid Sans, sans-serif;
 }
 
-.active-step:before {
-  background-color: #007bff;
-}
-
-.circle {
-  width: 500px; /* Circle size */
-  height: 500px; /* Circle size */
-  position: absolute;
-  border-radius: 50%; /* Makes the div circular */
-  z-index: -1;
-}
-
-.top-right {
-  right: -10%; /* Align to the right */
-  top: -20%; /* Align to the top */
-  background: linear-gradient(180deg, #F8EDD1 0%, rgba(255, 240, 223, 0.1) 100%);
-}
-
-.bottom-left {
-  left: -10%; /* Align to the left */
-  bottom: -30%; /* Align to the bottom */
-  background: linear-gradient(180deg, rgba(251, 248, 255, 0) 0%, #F2F5D6 100%);
+.steps p {
+  font-size: 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Oxygen, Fira Sans, Droid Sans, sans-serif;
+  line-height: 183%;
 }

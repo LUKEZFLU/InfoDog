@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import map from "./pic/map.png";
-import "./listplace.css";
+import "./listing_form.css";
 
 function ListingForm() {
   //Movein / out

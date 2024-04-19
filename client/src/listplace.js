@@ -6,7 +6,7 @@ function ListPlace() {
   let navigate = useNavigate();
 
   return (
-    <div>
+    <div className="background">
       <div class="ui-container">
         <div class="uui-padding-vertical-xhuge">
           <div class="w-layout-grid uui-heroheader01_component">
@@ -28,18 +28,18 @@ function ListPlace() {
       </div>
 
       <div className="steps-container">
-        <div className="step">
+        <div className="steps">
           <h3>Step 1.</h3>
           <p>Fill out the form and publish your leasing.</p>
         </div>
-        <div className="step">
+        <div className="steps">
           <h3>Step 2.</h3>
           <p>
             You'll wait for booking requests and can chat on iLease to
             negotiate.
           </p>
         </div>
-        <div className="step">
+        <div className="steps">
           <h3>Step 3.</h3>
           <p>Get a deal outside the platform and move in.</p>
         </div>
