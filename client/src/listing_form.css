@@ -48,3 +48,37 @@
     bottom: -30%; /* Align to the bottom */
     background: linear-gradient(180deg, rgba(251, 248, 255, 0) 0%, #F2F5D6 100%);
   }
+
+  .question_sec p {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 16px; /* Adjust this value as needed to set the line spacing between the question and input */
+  }
+  
+  .question_sec div {
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 32px; /* Adjust this value as needed to set the line spacing between question sections */
+  }
+  
+  .question_sec input, .question_sec label {
+    font-size: 16px;
+    font-weight: normal;
+  }
+  
+  /* You might need to adjust specific input types differently */
+  .question_sec input[type="text"], .question_sec input[type="date"], .question_sec input[type="number"] {
+    padding: 8px; /* For better text visibility */
+    border-radius: 20px;
+  }
+  
+  .step-container h1 p {
+    position: relative;
+    font-family: 'Raleway', sans-serif; /* Make sure 'Raleway' font is loaded in your HTML or CSS */
+    line-height: 113px; /* identical to box height */
+    color: #000000;
+  }
+
+  .step-container h1 {
+    font-size: 45px;
+  }

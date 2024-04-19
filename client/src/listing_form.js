@@ -160,9 +160,10 @@ function ListingForm() {
       <div className="listing-form-container">
         <form onSubmit={handleSubmit}>
           {/* step 1  */}
-          <div className="step-1">
+          <div className="step-container">
             {currentStep === 1 && (
               <>
+
                 <h1>1. What are you subleasing?</h1>
                 <p>
                   List your entire place or even just a room. Add it's location,
@@ -170,130 +171,138 @@ function ListingForm() {
                 </p>
                 {/* Single Choice */}
                 {/* property types*/}
-                <p>What type of property are you listing?</p>
-                <label>
-                  <input
-                    type="radio"
-                    name="propertyType"
-                    value="apartment"
-                    required
-                  />{" "}
-                  Apartment
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="propertyType"
-                    value="house"
-                    required
-                  />{" "}
-                  House
-                </label>
-                <br />
-                <p>Are you offering an entire home or just a room??</p>
-                <label>
-                  <input
-                    type="radio"
-                    name="propertyType"
-                    value="apartment"
-                    required
-                  />{" "}
-                  Entire Home
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="propertyType"
-                    value="house"
-                    required
-                  />{" "}
-                  Private Room(s)
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="propertyType"
-                    value="house"
-                    required
-                  />{" "}
-                  Shared Room(s)
-                </label>
-                <br />
+                <div className="question_sec">
+                  <p>What type of property are you listing?</p>
+                  <div>
+                    <label>
+                      <input type="radio" name="propertyType" value="apartment" required /> Apartment
+                    </label>
+                    <label>
+                      <input type="radio" name="propertyType" value="house" required /> House
+                    </label>
+                  </div>
+                </div>
+                <div className="question_sec">
+                  <p>Are you offering an entire home or just a room??</p>
+                  <div>
+                    <label>
+                      <input
+                        type="radio"
+                        name="propertyType"
+                        value="apartment"
+                        required
+                      />{" "}
+                      Entire Home
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="propertyType"
+                        value="house"
+                        required
+                      />{" "}
+                      Private Room(s)
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="propertyType"
+                        value="house"
+                        required
+                      />{" "}
+                      Shared Room(s)
+                    </label>
+                  </div>
+                </div>
                 {/* Text Entry */}
                 {/* location */}
-                <label htmlFor="location">Where's your place located?</label>
-                <br />
-                <input type="text" id="location" name="location" required />
-                <br />
-                <img src={map} alt="mapping" width="500" height="auto" />
-                <br />
+                <div className="question_sec">
+                  <p>Where's your place located?</p>
+                  <div>
+                  <input type="text" id="location" name="location" required />
+                  <br />
+                  <img src={map} alt="mapping" width="500" height="auto" />
+                  </div>
+                </div>
                 {/* drop down option */}
                 {/* rooms selections */}
-                <label htmlFor="bedrooms">
-                  How many bedrooms and bathrooms are there?
-                </label>
-                <br />
-                <input
-                  type="number"
-                  id="bedrooms"
-                  name="bedrooms"
-                  min="0"
-                  max="10"
-                  value={bedrooms}
-                  onChange={(e) => setBedrooms(e.target.value)}
-                  placeholder="0"
-                />
-                Bedrooms
-                <input
-                  type="number"
-                  id="bathrooms"
-                  name="bathrooms"
-                  min="0"
-                  max="10"
-                  value={bathrooms}
-                  onChange={(e) => setBathrooms(e.target.value)}
-                  placeholder="0"
-                />
-                Bathrooms
-                <br />
+                <div className="question_sec">
+                  <p>
+                    How many bedrooms and bathrooms are there?
+                  </p>
+                  <div>
+                    <input
+                    type="number"
+                    id="bedrooms"
+                    name="bedrooms"
+                    min="0"
+                    max="10"
+                    value={bedrooms}
+                    onChange={(e) => setBedrooms(e.target.value)}
+                    placeholder="0"
+                  />
+                  &nbsp;Bedrooms&nbsp;&nbsp;
+                  <input
+                    type="number"
+                    id="bathrooms"
+                    name="bathrooms"
+                    min="0"
+                    max="10"
+                    value={bathrooms}
+                    onChange={(e) => setBathrooms(e.target.value)}
+                    placeholder="0"
+                  />
+                  &nbsp;Bathrooms&nbsp;&nbsp;
+                  <br />
+                  </div>
+                </div>
                 {/* Date of movein/moveout */}
-                <label htmlFor="move-in-date">
-                  When is your place first available for move-in?
-                </label>
-                <br />
-                <input
-                  type="date"
-                  id="move-in-date"
-                  name="moveInDate"
-                  value={moveInDate}
-                  onChange={(e) => setMoveInDate(e.target.value)}
-                />
-                <br />
-                <label htmlFor="move-out-date">
-                  When is the latest move-out?
-                </label>
-                <br />
-                <input
-                  type="date"
-                  id="move-out-date"
-                  name="moveOutDate"
-                  value={moveOutDate}
-                  onChange={(e) => setMoveOutDate(e.target.value)}
-                />
-                {/* short term subleasing */}
-                <p>Do you accept short-term sublease?</p>
-                <label>
-                  <input type="radio" name="accept" value="yes" required /> Yes
-                </label>
-                <label>
-                  <input type="radio" name="reject" value="no" required /> No
-                </label>
+                <div className="question_sec">
+                  <p>
+                    When is your place first available for move-in?
+                  </p>
+                  <div>
+                    <input
+                      type="date"
+                      id="move-in-date"
+                      name="moveInDate"
+                      value={moveInDate}
+                      onChange={(e) => setMoveInDate(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="question_sec">
+                  <p>
+                    When is the latest move-out?
+                  </p>
+                  <div>
+                    <input
+                    type="date"
+                    id="move-out-date"
+                    name="moveOutDate"
+                    value={moveOutDate}
+                    onChange={(e) => setMoveOutDate(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="question_sec">
+                  <p>Do you accept short-term sublease?</p>
+                  <div>
+                  <label>
+                    <input type="radio" name="accept" value="yes" required /> Yes
+                  </label>
+                  <label>
+                    <input type="radio" name="reject" value="no" required /> No
+                  </label>
+                  </div>
+                </div>
+                
               </>
             )}
           </div>
 
           {/* // Step 2 */}
-          <div className="step-2">
+          <div className="step-container">
             {currentStep === 2 && (
               <>
                 <h1>2. Add details</h1>
@@ -301,69 +310,77 @@ function ListingForm() {
                   Add some more color to your place, including photos of rooms
                   and common areas, and introduce any roommates you have.
                 </p>
-                {/* text entry for listing title */}
-                <label htmlFor="title">Create a title for your apartment</label>
-                <br />
-                <input type="text" id="title" name="title" required />
-                <br />
-                {/* text entry for listing description */}
-                <label htmlFor="description">
+                <div className="question_sec">
+                <p>Create a title for your apartment</p>
+                  <div>
+                  <input type="text" id="title" name="title" required />
+                  </div>
+                </div>
+                <div className="question_sec">
+                  <p>
                   Create a description for your apartment
-                </label>
-                <br />
-                <input
-                  type="text"
-                  id="description"
-                  name="description"
-                  required
-                />
-                <br />
-                {/* files uploads section */}
-                <label htmlFor="image-upload">
-                  Add some photos of your place:
-                </label>
-                <br />
-                <input
-                  type="file"
-                  id="image-upload"
-                  name="image-upload"
-                  accept="image/png, image/jpeg"
-                  onChange={handleFileUpload}
-                  multiple
-                />
-                {/* selection of furnishing */}
-                <p> Select applicable furnishings for this room</p>
-                {furnishingOptions.map((furnishing) => (
-                  <label key={furnishing.name}>
+                  </p>
+                  <div>
                     <input
-                      type="checkbox"
-                      name={furnishing.name}
-                      checked={selectedFurnishings[furnishing.name]}
-                      onChange={handleFurnishingChange}
+                      type="text"
+                      id="description"
+                      name="description"
+                      required
                     />
-                    {furnishing.label}
-                  </label>
-                ))}
-                <br />
-                <label htmlFor="roommates">
-                  What will be the roommates still living in the place?
-                </label>
-                <br />
-                <input
-                  type="number"
-                  id="roommatess"
-                  name="roommatess"
-                  min="0"
-                  max="10"
-                  onChange={(e) => setRoommates(e.target.value)}
-                  placeholder="0"
-                />
-                Roommates
-                <br />
-                <input type="text" id="roommates" name="roommates" required />
-                {/* selection of amenities */}
-                <p> What amenities does your apartment offer?</p>
-                {amenitiesOptions.map((amenities) => (
+                  </div>
+                </div>
+                <div className="question_sec">
+                  <p>
+                  Add some photos of your place:
+                  </p>
+                  <div>
+                    <input
+                      type="file"
+                      id="image-upload"
+                      name="image-upload"
+                      accept="image/png, image/jpeg"
+                      onChange={handleFileUpload}
+                      multiple
+                    />
+                  </div>
+                </div>
+                <div className="question_sec">
+                  <p> Select applicable furnishings for this room</p>
+                  <div>
+                    {furnishingOptions.map((furnishing) => (
+                    <label key={furnishing.name}>
+                      <input
+                        type="checkbox"
+                        name={furnishing.name}
+                        checked={selectedFurnishings[furnishing.name]}
+                        onChange={handleFurnishingChange}
+                      />
+                      {furnishing.label}
+                    </label>
+                     ))}
+                  </div>
+                </div>
+                <div className="question_sec">
+                  <p> What will be the roommates still living in the place?</p>
+                  <div>
+                    <input
+                      type="number"
+                      id="roommatess"
+                      name="roommatess"
+                      min="0"
+                      max="10"
+                      onChange={(e) => setRoommates(e.target.value)}
+                      placeholder="0"
+                    />
+                    &nbsp;Roommates&nbsp;&nbsp;
+                    <br />
+                    <input type="text" id="roommates" name="roommates" required />
+                  </div>
+                </div>
+                <div className="question_sec">
+                  <p> What amenities does your apartment offer?</p>
+                  <div>
+                  {amenitiesOptions.map((amenities) => (
                   <label key={amenities.name}>
                     <input
                       type="checkbox"
@@ -375,9 +392,12 @@ function ListingForm() {
                     {amenities.label}
                   </label>
                 ))}
-                <br />
-                <p>Are Pets Allowed?</p>
-                <label>
+                  </div>
+                </div>
+                <div className="question_sec">
+                  <p>Are Pets Allowed?</p>
+                  <div>
+                  <label>
                   <input type="radio" name="accept" value="yes" required /> Yes
                 </label>
                 <label>
@@ -385,12 +405,15 @@ function ListingForm() {
                 </label>
                 <br />
                 <input type="text" id="pets" name="pets" />
+
+                  </div>
+                </div>
               </>
             )}
           </div>
 
           {/* steps 3 */}
-          <div className="step-3">
+          <div className="step-container">
             {currentStep === 3 && (
               <>
                 <h1> 3. Verification</h1>
@@ -399,20 +422,28 @@ function ListingForm() {
                   identity to make your listing stand out with a "Verified"
                   badge
                 </p>
-                <label htmlFor="email">Enter Your UW Email</label>
-                <br />
-                <input
-                  type="text"
-                  id="email"
-                  name="email"
-                  placeholder="Insitutional Email ONLY No @gmail/@Outlook etc. "
-                  required
-                />
+                <div className="question_sec">
+                  <p>
+                  Enter Your UW Email
+                  </p>
+                  <div>
+                    <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    placeholder="Insitutional Email ONLY No @gmail/@Outlook etc. "
+                    required
+                  />
+                  </div>
+                </div>
+                
               </>
             )}
           </div>
 
           {/* steps 4 */}
+          <div className="step-container">
+
           {currentStep === 4 && (
             <>
               <h1>4. Confirmation</h1>
@@ -432,7 +463,8 @@ function ListingForm() {
               </label>
             </>
           )}
-
+                      
+           </div>
           {/* Navigation buttons go here */}
           <div className="form-navigation">
             {currentStep > 1 && (
