@@ -93,10 +93,10 @@ form {
 
 
 /* step */
-
 .steps-container {
   display: flex; 
   justify-content: space-between;  /* 均匀分布 */
+  padding: 20px;
 }
 
 .steps {
@@ -113,5 +113,5 @@ form {
 .steps p {
   font-size: 20px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Oxygen, Fira Sans, Droid Sans, sans-serif;
-  line-height: 183%;
+  line-height: 193%;
 }

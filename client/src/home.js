@@ -42,16 +42,18 @@ function Home() {
 
       <section className="how-it-works">
         <div className="section-header">
+          <span className="line"></span>
           <h2>HOW IT WORKS?</h2>
+          <span className="line"></span>
             <div className="divider"></div>
         </div>
         <div class="bottom-container">
           <div className="bottomimage">
               <img src="../pic/multipicture.jpg" alt="Descriptive Alt Text" />
           </div>
-          <div className="steps-container">
-            <div className="step">
-              <h3>Search For The Perfect Home</h3>
+          <div className="homepage-steps-container">
+            <div className="homepage-step">
+              <h3>1. Search For The Perfect Home</h3>
               <p>
                 For those looking, please explore listings filtered by your
                 selection.
@@ -61,23 +63,19 @@ function Home() {
                 details
               </p>
             </div>
-            <div className="step">
-              <h3>Express Interest</h3>
+            <div className="homepage-step">
+              <h3>2. Express Interest</h3>
               <p>
-                For those looking, please express interest and introduce yourself
-                to the leaseholders.
+                For those looking, please express interest and introduce yourself to the leaseholders.
               </p>
               <p>
-                For those listing, please wait patiently for booking request and
-                get know about each other.
+                For those listing, please wait patiently for booking request and get know about each other.
               </p>
             </div>
-            <div className="step">
-              <h3>Negotiate With Leaseholders</h3>
+            <div className="homepage-step">
+              <h3>3. Negotiate With Leaseholders</h3>
               <p>
-                For both, please discuss logistics friendly such as rent and
-                move-in/move-out dates. When you're ready, send an official offer
-                to the lister.
+                For both, please discuss logistics friendly such as rent and move-in/move-out dates. When you're ready, send an official offer to the lister.
               </p>
             </div>
           </div>

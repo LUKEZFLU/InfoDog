@@ -61,9 +61,15 @@ nav {
   padding: 2em;
 }
 
+.how-it-works h2 {
+  font-size: 30px;
+  white-space: 3;
+}
+
+
 .bottom-container {
   display: flex;
-  align-items: flex-start; 
+  align-items: stretch;
 }
 
 .bottomimage img {
@@ -71,6 +77,20 @@ nav {
   max-width: 600px; /* 限制图片的最大宽度 */
 }
 
-.steps-container {
-  margin-left: 20px; /* 添加一些左边距，以便在图片和文字内容之间留出一些空间 */
+.homepage-steps-container {
+  margin-left: 40px; /* 添加一些左边距，以便在图片和文字内容之间留出一些空间 */
+  flex: 2;
+  display: grid;
+  flex-direction: column;
+  justify-content: space-between; /* Distributes space between steps evenly */
+}
+
+.homepage-step h3 {
+  font-size: 32px;
+}
+
+.homepage-step p {
+  font-size: 22px;
+  word-spacing: 2.5px;
+  line-height: 153%;
 }
