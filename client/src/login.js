@@ -31,8 +31,8 @@ function Login() {
         }, 3000); // 3000ms
       })
       .catch(err => {
-        console.error('Login failed:', err);
-        setMessage('Login failed:', err);
+        // console.error('Login failed:', err);
+        setMessage('The email or password you entered is incorrect. Please try again.');
         setButtonPopup(true);
       });
   };

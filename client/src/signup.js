@@ -45,7 +45,7 @@ function Signup() {
       })
       .catch(err => {
         console.error('Registration failed:', err);
-        setMessage('Registration failed:', err);
+        setMessage('User Already Exists, Please Go to Login Page.');
         setButtonPopup(true);
       });
   };
