@@ -1,0 +1,16 @@
+/* map.css */
+
+.popup-image {
+    width: 100%;
+    height: auto;
+}
+  
+.popup-title {
+    font-weight: bold;
+}
+  
+.popup-content {
+    text-align: center;
+    cursor: pointer;
+}
+  

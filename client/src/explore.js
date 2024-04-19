@@ -185,7 +185,7 @@ function Explore() {
 
         {/* map */}
         <div className="map-container">
-          <Map />
+          <Map navigate={navigate} />
         </div>
       </div>
     </div>
