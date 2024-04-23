@@ -14,6 +14,26 @@ const userSchema = new mongoose.Schema({
     password: String
 })
 
+const mongoose = require('mongoose');
+
+const detailSchema = new mongoose.Schema({
+  mainImg: String,
+  images: [
+    {
+      src: String,
+      alt: String
+    }
+  ],
+  title: String,
+  reviews: String,
+  location: String,
+  description: [String],
+  amenities: [String],
+  price: String,
+  pentagram: String
+});
+
+models.Detail = mongoose.model('Detail', detailSchema);
 models.User = mongoose.model('User', userSchema)
 
 console.log("mongoose models created")

@@ -177,7 +177,7 @@ function ListingForm() {
                     <label>
                       <input type="radio" name="propertyType" value="apartment" required /> Apartment
                     </label>
-                    <label>
+                    <label> 
                       <input type="radio" name="propertyType" value="house" required /> House
                     </label>
                   </div>
