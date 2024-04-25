@@ -34,7 +34,10 @@ function Signup() {
       return;
     }
 
-    axios.post('http://localhost:3001/api/v1/users', { first_name, last_name, email, password })
+    const createdAt = new Date().toISOString();
+
+
+    axios.post('http://localhost:3001/api/v1/users', { first_name, last_name, email, password, createdAt })
       .then(result => {
         console.log('Registration successful:', result);
         setMessage("Registration successful! You will be directed to the login page after 3 seconds");
@@ -71,7 +74,7 @@ function Signup() {
                 <input type="text" id="first_name_input" onChange={(e) => setFirstName(e.target.value)} />
                 <div>Last Name</div>
                 <input type="text" id="last_name_input" onChange={(e) => setLastName(e.target.value)} />
-                <div>UW Email Address</div>
+                <div>Inisitutional Email</div>
                 <input type="email" id="email_input" onChange={(e) => setEmail(e.target.value)} />
                 <div>Password</div>
                 <input type="text" id="password_input" onChange={(e) => setPassword(e.target.value)} />

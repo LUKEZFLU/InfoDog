@@ -10,9 +10,9 @@ router.post("/", async (req, res) => {
         if (!user) {
             return res.status(404).json({ "status": "error", "error": "User not found" });
         }
-        // Check if the entered password matches the password in the database
+        // Check if the entered password not match the password in the database
         if (req.body.password !== user.password) {
-            return res.status(401).json({ "status": "error", "error": "Invalid credentials" });
+            return res.status(401).json({ "status": "error", "error": "Password incorrect" });
         }
         res.send("Login successful");
     } catch (error) {
