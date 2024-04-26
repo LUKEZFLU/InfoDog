@@ -82,6 +82,7 @@ function Signup() {
             </div>
             <div className="text-wrapper-13">
               <button type="submit">Sign-Up</button>
+              <button onClick={() => navigate("/login")}>I have an account</button>
             </div>
           </form>
           <p className="text-wrapper-16">

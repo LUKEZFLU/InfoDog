@@ -27,12 +27,12 @@ function Login() {
         if (result.data && result.data.userId) {
           localStorage.setItem('userId', result.data.userId);  // 将 userId 保存到 localStorage
         }
-        setMessage("Login successful! You will be directed to the home page after 3 seconds");
+        setMessage("Login successful! You will be directed to the home page");
         setButtonPopup(true);
         setTimeout(() => {
           navigate('/home');
           window.location.reload();
-        }, 3000); // 3000ms
+        }, 500); // 500ms
       })
       .catch(err => {
         // console.error('Login failed:', err);

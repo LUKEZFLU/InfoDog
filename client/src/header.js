@@ -42,7 +42,7 @@ function Header() {
         <button onClick={() => navigate("/about-us")}>About us</button>
         {userId ? (
           <>
-            <div>Welcome</div> 
+            <button onClick={() => navigate("/profile")}>Profile</button>
             <button onClick={handleLogout}>Logout</button> 
           </>
         ) : (
