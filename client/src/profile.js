@@ -39,6 +39,8 @@ function Profile() {
             <label htmlFor="email">Primary Contact Email:</label>
             <input type="text" id="email" name="email" placeholder="Enter Your Email" required />
           </div>
+          <button className="forms-save-button">Save</button>
+
         </form>
 
 
@@ -48,9 +50,16 @@ function Profile() {
           <button className="personal-info-button">Edit</button>
         </div>
 
+        <h2>Contact Requst</h2>
         <div className="your-favorite-container">
-          <h2>Your Favorite</h2>
           <img src={testImage} alt="amenities images" width="100" height="auto" />
+          <div className="contact-request-time-info">
+            <p >Alice Hu: Female | Verified Amazon Employee</p>
+            <p>Checkin: 5/1/2024</p>
+            <p>Checkout: 5/6/2024</p>
+          </div>
+          <button className="contact-requst-button-1">Accept</button>
+          <button className="contact-requst-button-2">Refuse</button>
         </div>
       </div>
     </div>

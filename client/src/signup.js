@@ -1,43 +1,39 @@
-import React from "react";
-import "../src/signup.css"
-import axios from 'axios'
-import { useState } from 'react';
+import React, { useState } from "react";
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Popup from './components/popup';
-import nonInsitutionalEmails from './data/domains.json';
+import nonInstitutionalEmails from './data/domains.json';
 
 function Signup() {
   const navigate = useNavigate();
-  const [first_name, setFirstName] = useState("");
-  const [last_name, setLastName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [gender, setGender] = useState(""); // 新添加的状态
+  const [birthday, setBirthday] = useState(""); // 新添加的状态
   const [message, setMessage] = useState("");
   const [buttonPopup, setButtonPopup] = useState(false);
 
   const handleSubmit = (e) => {
-    // Prevent the default form submission
     e.preventDefault();
-    if (!first_name || !last_name || !email || !password) {
+    if (!firstName || !lastName || !email || !password || !gender || !birthday) {
       setMessage("All fields must be filled out.");
       setButtonPopup(true);
       return;
     }
 
-
-    // Check if the email is from a non-institutional domain
     const emailDomain = email.substring(email.lastIndexOf('@') + 1);
   
-    if (nonInsitutionalEmails.includes(emailDomain)) {
-      setMessage("Please Sign Up With Your Inisitutional Email Address.");
+    if (nonInstitutionalEmails.includes(emailDomain)) {
+      setMessage("Please Sign Up With Your Institutional Email Address.");
       setButtonPopup(true);
       return;
     }
 
     const createdAt = new Date().toISOString();
 
-
-    axios.post('http://localhost:3001/api/v1/users', { first_name, last_name, email, password, createdAt })
+    axios.post('http://localhost:3001/api/v1/users', { firstName, lastName, email, password, gender, birthday, createdAt })
       .then(result => {
         console.log('Registration successful:', result);
         setMessage("Registration successful! You will be directed to the login page after 3 seconds");
@@ -69,15 +65,23 @@ function Signup() {
           <form onSubmit={handleSubmit}>
             <div className="emai-section-instance">
               <div className="input-container">
-                {/* id="locationInput"  has been removed due to rule violation*/}
                 <div>First Name</div>
                 <input type="text" id="first_name_input" onChange={(e) => setFirstName(e.target.value)} />
                 <div>Last Name</div>
                 <input type="text" id="last_name_input" onChange={(e) => setLastName(e.target.value)} />
-                <div>Inisitutional Email</div>
+                <div>Institutional Email</div>
                 <input type="email" id="email_input" onChange={(e) => setEmail(e.target.value)} />
                 <div>Password</div>
-                <input type="text" id="password_input" onChange={(e) => setPassword(e.target.value)} />
+                <input type="password" id="password_input" onChange={(e) => setPassword(e.target.value)} />
+                <div>Gender</div>
+                <select onChange={(e) => setGender(e.target.value)}>
+                  <option value="">Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+                <div>Birthday</div>
+                <input type="date" onChange={(e) => setBirthday(e.target.value)} />
               </div>
             </div>
             <div className="text-wrapper-13">
@@ -99,4 +103,3 @@ function Signup() {
 };
 
 export default Signup;
-

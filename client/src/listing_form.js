@@ -151,7 +151,10 @@ function ListingForm() {
           Step 2: Add more details
         </div>
         <div className={currentStep >= 3 ? "step active-step" : "step"}>
-          Step 3: Confirmation
+          Step 3: Verification
+        </div>
+        <div className={currentStep >= 4 ? "step active-step" : "step"}>
+          Step 4: Confirmation
         </div>
       </div>
 
@@ -186,7 +189,7 @@ function ListingForm() {
                     <label>
                       <input
                         type="radio"
-                        name="propertyType"
+                        name="propertyType2"
                         value="apartment"
                         required
                       />{" "}
@@ -195,7 +198,7 @@ function ListingForm() {
                     <label>
                       <input
                         type="radio"
-                        name="propertyType"
+                        name="propertyType2"
                         value="house"
                         required
                       />{" "}
@@ -204,7 +207,7 @@ function ListingForm() {
                     <label>
                       <input
                         type="radio"
-                        name="propertyType"
+                        name="propertyType2"
                         value="house"
                         required
                       />{" "}
@@ -219,7 +222,6 @@ function ListingForm() {
                   <div>
                   <input type="text" id="location" name="location" required />
                   <br />
-                  <img src={map} alt="mapping" width="500" height="auto" />
                   </div>
                 </div>
                 {/* drop down option */}
@@ -313,10 +315,10 @@ function ListingForm() {
                   <p>Do you need your tenant to pay the deposit before?</p>
                   <div>
                   <label>
-                    <input type="radio" name="accept" value="yes" required /> Yes
+                    <input type="radio" name="option" value="yes" required /> Yes
                   </label>
                   <label>
-                    <input type="radio" name="reject" value="no" required /> No
+                    <input type="radio" name="option" value="no" required /> No
                   </label>
                   </div>
                 </div>
@@ -324,10 +326,10 @@ function ListingForm() {
                   <p>Does the room being rented include furniture?</p>
                   <div>
                   <label>
-                    <input type="radio" name="accept" value="yes" required /> Yes
+                    <input type="radio" name="option_funiture" value="yes" required /> Yes
                   </label>
                   <label>
-                    <input type="radio" name="reject" value="no" required /> No
+                    <input type="radio" name="option_funiture" value="no" required /> No
                   </label>
                   </div>
                 </div>
@@ -417,10 +419,10 @@ function ListingForm() {
                   <p>Are Pets Allowed?</p>
                   <div>
                 <label>
-                  <input type="radio" name="accept" value="yes" required /> Yes
+                  <input type="radio" name="option_pet" value="yes" required /> Yes
                 </label>
                 <label>
-                  <input type="radio" name="reject" value="no" required /> No
+                  <input type="radio" name="option_pet" value="no" required /> No
                 </label>
                 </div>
                 </div>
@@ -430,10 +432,39 @@ function ListingForm() {
 
           {/* steps 3 */}
           <div className="step-container">
+            {currentStep === 3 && (
+              <>
+                <h1> 3. Verification</h1>
+                <p>
+                  Help your future subtenant get to know you, and verify your
+                  identity to make your listing stand out with a "Verified"
+                  badge
+                </p>
+                <div className="question_sec">
+                  <p>
+                  Enter Your UW Email
+                  </p>
+                  <div>
+                    <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    placeholder="Insitutional Email ONLY No @gmail/@Outlook etc. "
+                    required
+                  />
+                  </div>
+                </div>
+                
+              </>
+            )}
+          </div>
 
-          {currentStep === 3 && (
+          {/* steps 4 */}
+          <div className="step-container">
+
+          {currentStep === 4 && (
             <>
-              <h1>3. Confirmation</h1>
+              <h1>4. Confirmation</h1>
               <p>
                 <strong>Terms of Service</strong>
               </p>
@@ -459,12 +490,12 @@ function ListingForm() {
                 Previous Step
               </button>
             )}
-            {currentStep < 3 && (
+            {currentStep < 4 && (
               <button type="button" onClick={goNextStep}>
                 Next Step
               </button>
             )}
-            {currentStep === 3 && (
+            {currentStep === 4 && (
               <input type="submit" value="Submit Listing" />
             )}
           </div>

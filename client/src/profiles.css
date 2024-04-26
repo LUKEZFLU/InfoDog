@@ -53,6 +53,7 @@
     align-items: center;
 }
 
+
 label {
     margin-top: 10px;
     margin-bottom: 5px;
@@ -121,3 +122,70 @@ input[type="radio"] + label {
 .personal-info-button:hover {
     background-color: rgb(217, 210, 5);
 }
+
+
+.contact-requst-button-1 {
+    padding: 8px 50px;
+    font-size: 18px;
+    border: none;
+    background-color: white;
+    border: 1.5px solid black;
+    border-radius: 9px;
+    cursor: pointer;
+    position: absolute; 
+    top: 70%; 
+    left: 50%;
+}
+
+.contact-requst-button-2 {
+    padding: 8px 50px;
+    font-size: 18px;
+    border: none;
+    background-color: white;
+    border: 1.5px solid black;
+    border-radius: 9px;
+    cursor: pointer;
+    position: absolute; 
+    top: 70%; 
+    left: 80%;
+}
+
+.contact-requst-button-1:hover {
+    background-color: rgb(217, 210, 5);
+}
+
+.contact-requst-button-2:hover {
+    background-color: rgb(217, 210, 5);
+}
+
+/* 新加入部分的样式 */
+.your-favorite-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px; /* 调整与上方元素的间距 */
+}
+
+
+.contact-request-time-info {
+    margin-bottom: 10%; 
+    margin-left: 8%; 
+
+}
+
+.contact-requst-button-1,
+.contact-requst-button-2 {
+    padding: 8px 50px;
+    font-size: 18px;
+    border: 1.5px solid black;
+    border-radius: 9px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.contact-requst-button-1:hover,
+.contact-requst-button-2:hover {
+    background-color: rgb(217, 210, 5);
+}
+
+
+
