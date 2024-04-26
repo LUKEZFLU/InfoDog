@@ -24,10 +24,14 @@ function Login() {
     axios.post('http://localhost:3001/api/v1/login', { email, password }) // check login info with backend
       .then(result => {
         console.log('Login successful:', result);
+        if (result.data && result.data.userId) {
+          localStorage.setItem('userId', result.data.userId);  // 将 userId 保存到 localStorage
+        }
         setMessage("Login successful! You will be directed to the home page after 3 seconds");
         setButtonPopup(true);
         setTimeout(() => {
           navigate('/home');
+          window.location.reload();
         }, 3000); // 3000ms
       })
       .catch(err => {
