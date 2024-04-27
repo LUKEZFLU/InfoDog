@@ -5,6 +5,19 @@ import "./listplace.css";
 function ListPlace() {
   let navigate = useNavigate();
 
+  const handleStartListingClick = () => {
+    // 尝试从localStorage获取userId
+    const userId = localStorage.getItem("userId");
+
+    if (userId) {
+      // 如果userId存在，导航到列表表单页面
+      navigate("/listing-form");
+    } else {
+      // 如果userId不存在，弹出提示要求用户登录
+      alert("Please log in to continue.");
+    }
+  };
+
   return (
     <div className="background">
       <div class="ui-container">
@@ -18,9 +31,9 @@ function ListPlace() {
             <div class="uui-heroheader01_image-wrapper"><img src="pic/startlising-image.png" alt="Header image" class="uui-heroheader01_image" /></div>
             <div class="uui-button-row-2 is-reverse-mobile-landscape">
               <div class="uui-button-wrapper-2 max-width-full-mobile-landscape">
-              <button id="start-listing-button" onClick={() => navigate("/listing-form")}>
-                Start listing
-              </button>
+                <button id="start-listing-button" onClick={handleStartListingClick}>
+                  Start listing
+                </button>
               </div>
             </div>
           </div>
