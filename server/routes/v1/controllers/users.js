@@ -30,5 +30,26 @@ router.post("/", async (req, res) => {
     }
 })
 
+// GET 路由，通过 _id 查询用户信息
+router.get("/userInfo", async (req, res) => {
+    try {
+        const userId = req.query.UserId;  // 从查询参数中获取 UserId
+
+        if (!userId) {
+            return res.status(400).json({ "status": "error", "error": "No UserId provided" });
+        }
+
+        const user = await req.models.User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ "status": "error", "error": "User not found" });
+        }
+
+        res.json(user);
+    } catch (error) {
+        console.log("Error:", error);
+        res.status(500).json({ "status": "error", "error": error });
+    }
+});
+
 
 export default router;

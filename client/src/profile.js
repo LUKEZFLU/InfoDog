@@ -1,12 +1,43 @@
 import React from "react";
 import testImage from "./pic/Housing_1.jpg";
 import "./profiles.css"
+import { useState, useEffect } from "react";
 
 function Profile() {
+  // State variables to store user data
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+
+  // Fetch user data from the server
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const userId = localStorage.getItem('userId'); // 获取存储在localStorage中的UserId
+      if (!userId) {
+        console.error("No UserId found in localStorage");
+        return;
+      }
+
+      try {
+        const response = await fetch(`http://localhost:3001/api/v1/users/userInfo?UserId=${userId}`);
+        const userData = await response.json();
+        if (response.ok) {
+          setFirstName(userData.firstName); // Set first name from response
+          setLastName(userData.lastName); // Set last name from response
+        } else {
+          throw new Error(userData.error || "Failed to fetch user data");
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []); // Empty dependency array to run only once on component mount
+
   return (
     <div className="personal-info-back">
       <div className="profile-container">
-        <h1>Personal Infomation</h1>
+        <h1>Personal Infomation: {`${firstName}  ${lastName}`}</h1>
         <form className="formm">
           {/* Legal Name with First and Last Name in the same line */}
           <div className="forms-row">
@@ -15,31 +46,18 @@ function Profile() {
             <input type="text" id="Lname" name="Lname" placeholder="Last Name" required />
           </div>
 
-          {/* Date of Birth in a row */}
+          {/* Password in a row */}
           <div className="forms-row">
-            <label htmlFor="DOB">Date of Birth:</label>
-            <input type="date" id="DOB" name="DOB" required />
-          </div>
-
-          {/* Gender Selection in a row */}
-          <div className="forms-row">
-            <label>Gender:</label>
-            <div>
-                <input type="radio" name="genderType" value="male" id="male" required />
-                <label htmlFor="male">Male</label>
-                <input type="radio" name="genderType" value="female" id="female" required />
-                <label htmlFor="female">Female</label>
-                <input type="radio" name="genderType" value="nonbinary" id="nonbinary" required />
-                <label htmlFor="nonbinary">Non Binary</label>
-            </div>
+            <label >Password:</label>
+            <input type="text"  name="password" placeholder="New password" required />
           </div>
 
           {/* Email in a row */}
           <div className="forms-row">
-            <label htmlFor="email">Primary Contact Email:</label>
-            <input type="text" id="email" name="email" placeholder="Enter Your Email" required />
+            <label htmlFor="email">Institutional Email:</label>
+            <input type="text" id="email" name="email" placeholder="New email" required />
           </div>
-          <button className="forms-save-button">Save</button>
+          <button className="forms-save-button">Update</button>
 
         </form>
 
