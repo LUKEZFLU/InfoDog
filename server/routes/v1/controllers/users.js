@@ -13,10 +13,12 @@ router.post("/", async (req, res) => {
         }
 
         const newUser = new req.models.User({
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
             email: req.body.email,
             password: req.body.password,
+            gender: req.body.gender,  // Include gender in the new user creation
+            birthday: req.body.birthday,
             created_at: req.body.createdAt
         })
         await newUser.save()

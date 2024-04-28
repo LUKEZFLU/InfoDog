@@ -8,10 +8,12 @@ await mongoose.connect("mongodb+srv://Zefan:K4othGeFiI5ozgzW@ileasev1.whhya6o.mo
 console.log("successfully connected to mongodb")
 
 const userSchema = new mongoose.Schema({
-    first_name: String,
-    last_name: String,
+    firstName: String,
+    lastName: String,
     email: String,
     password: String,
+    gender: String,
+    birthday: Date,
     created_at: Date
 })
 
