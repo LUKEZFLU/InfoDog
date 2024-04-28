@@ -15,24 +15,51 @@ const userSchema = new mongoose.Schema({
     created_at: Date
 })
 
-const detailSchema = new mongoose.Schema({
-  mainImg: String,
-  images: [
-    {
-      src: String,
-      alt: String
-    }
-  ],
+const houseSchema = new mongoose.Schema({
   title: String,
-  reviews: String,
+  description: String,
+  propertyType: String,
+  roomType: String,
   location: String,
-  description: [String],
-  amenities: [String],
-  price: String,
-  pentagram: String
+  bedrooms: Number,
+  bathrooms: Number,
+  price: Number,
+  area: Number, // Assuming this is in square feet
+  moveInDate: Date,
+  moveOutDate: Date,
+  depositRequired: Boolean,
+  furnished: Boolean,
+  images: [String], // Array of image URLs
+  roommates: {
+      count: Number,
+      details: String
+  },
+  amenities: {
+      stove: Boolean,
+      refrigerator: Boolean,
+      oven: Boolean,
+      dishwasher: Boolean,
+      microwave: Boolean,
+      tv: Boolean,
+      couch: Boolean,
+      heating: Boolean,
+      airConditioner: Boolean,
+      washer: Boolean,
+      dryer: Boolean,
+      wifi: Boolean,
+      parking: Boolean,
+      security: Boolean,
+      swimmingPool: Boolean,
+      gym: Boolean,
+      elevator: Boolean,
+      accessibility: Boolean
+  },
+  petsAllowed: Boolean,
+  verificationEmail: String,
+  UserId: String
 });
 
-models.Detail = mongoose.model('Detail', detailSchema);
+models.House = mongoose.model('House', houseSchema);
 models.User = mongoose.model('User', userSchema)
 
 console.log("mongoose models created")
