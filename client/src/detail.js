@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
 import "./detail.css";
 import bath from "./pic/UPlace_bath.jpg";
 import kitchen from "./pic/UPlace_kitchen.jpg";
@@ -8,7 +9,7 @@ import balcony from "./pic/UPlace_balcony.jpg";
 import mainImg from "./pic/UPlace_main.jpg";
 import pentagram from "./pic/pentagram.jpg";
 import Popup from './components/popup';
-import { useState } from 'react';
+import housingData from './data/housingData.json';
 
 function Detail() {
   let navigate = useNavigate();
@@ -56,58 +57,66 @@ function Detail() {
       <div className="room-layout-container">
         {/* text */}
         <div className="text">
-          <h1 id="detail-headers">Dog-friendly 2B2B Apartment nearby UW</h1>
-          <span>7 reviews</span>
-          <span id="note">Seattle, WA</span>
+          <h1 id="detail-headers">{housingData.title}</h1>
+          <span id="note">{housingData.location}</span>
           <hr></hr>
 
           <div>
-            <h3>Apartment</h3>
-            <p id="note">You’ll live in Apartment</p>
-            <h3>Available from Mar 1, 2024 to Aug 31, 2024</h3>
+            <h4>
+              <span>{housingData.propertyType}</span>{""}
+              <span>{housingData.homeType}</span>
+            </h4>
+            <span>{housingData.bathrooms} bedroom(s)</span>
+            <span> {housingData.bathrooms} bath(s)</span>
+            <h4>Available from {housingData.moveInDate} to {housingData.moveOutDate}</h4>
           </div>
           <hr></hr>
-
+          <h2 id="detail-headers">
+            Description
+          </h2>
           <p>
-            I'm transferring my lease for this killer spot on the 15th floor at The M,
-            and I've got a sweet deal for you. Picture this: waking up to jaw-dropping
-            views of downtown, Mount Rainier, Bellevue, and the Olympics every day.
+            {housingData.description}
           </p>
-          <p>
-            I'm throwing in a special discount for whoever snags this deal for March!
-            - $200 off every month
-          </p>
-          <p>
-            ...
-          </p>
-          <b>Show more</b>
           <hr></hr>
 
+          <h2 id="detail-headers">
+            Area
+          </h2>
+          <p>
+            {housingData.area} sqft
+          </p>
+
+          <hr></hr>
           <h2 id="detail-headers">What this place offers</h2>
           <div>
-            <span>Stove</span>
-            <span>In-unit dryer</span>
-            <p></p>
-            <span>Dishwasher</span>
-            <span>Oven</span>
-            <p></p>
-            <span>Couch</span>
-            <span>In-unit washer</span>
-            <p></p>
-            <span>TV</span>
-            <span>Air conditioning</span>
+            {housingData.amenities.map((amenity, index) => (
+              <div key={index} className="amenities-each">{amenity}</div>
+            ))}
           </div>
+
+          <hr></hr>
+          <h2 id="detail-headers">Roommate(s)</h2>
+          <h3>Still living</h3>
+          <div>There will be {housingData.roommates} roomate(s) still living in the place </div>
+          <h3>Brife Description</h3>
+          <p>{housingData.roommateDescription}</p>
+
+          <hr></hr>
+          {/* New section T/F */}
+          <h2 id="detail-headers">Others</h2>
+          <h3>Furnished Situation</h3>
+          <p>{housingData.furnished ? "Yes" : "No"}</p>
+          <h3>Pet Allowed</h3>
+          <p>{housingData.petPolicy ? "Yes" : "No"}</p>
+          <h3>Deposit Required</h3>
+          <p>{housingData.deposit ? "Yes" : "No"}</p>
           <hr></hr>
         </div>
 
         {/* sidebox */}
         <div className="sidebox-container">
           <div class="booking-widget">
-            <div class="price-review">
-              <div class="price">$1750 / Month</div>
-              <div class="reviews">7 reviews</div>
-            </div>
-
+            <div class="price">${housingData.price} / Month</div>
             <div class="date-selection">
               <div class="check-in">
                 <label for="checkin">Check-in</label>

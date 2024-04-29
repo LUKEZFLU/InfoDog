@@ -12,11 +12,11 @@ hr {
   margin: 20px 0; /* Add some vertical space above and below the line */
 }
 
-span {
+/* span {
   display: inline; 
   margin-left: 10px;
   margin-right: 50px;
-}
+} */
 
 body {
   font-family: Arial, sans-serif;
@@ -84,16 +84,13 @@ body {
   margin: auto;
 } */
 
-.price-review {
+.price {
+  font-size: 24px;
+  font-weight: bold;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-}
-
-.price {
-  font-size: 24px;
-  font-weight: bold;
 }
 
 .reviews {
@@ -156,6 +153,16 @@ body {
   font-size: 14px;
   text-align: center;
 }
+
+.text h4 span {
+  display: inline-block; /* or use display: flex; */
+  margin-right: 10px; /* Adjust as needed */
+}
+
+.amenities-each {
+  margin-bottom: 10px;
+}
+
 
 #detail-headers {
   text-align: left;

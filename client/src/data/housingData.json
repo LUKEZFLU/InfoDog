@@ -1,0 +1,30 @@
+{
+    "housingID": 22533,
+    "moveInDate": "2024-05-01",
+    "moveOutDate": "2024-05-15",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "roommates": 1,
+    "price": 1750,
+    "area": 670,
+    "location": "4801 24th Ave NE, Seattle WA 98105",
+    "title": "Dog-friendly 2B2B Apartment nearby UW",
+    "description": "I'm transferring my lease for this killer spot on the 15th floor at The M, and I've got a sweet deal for you. Picture this: waking up to jaw-dropping views of downtown, Mount Rainier, Bellevue, and the Olympics every day. I'm throwing in a special discount for whoever snags this deal for March! - $200 off every month",
+    "roommateDescription": "Sophomore student also in UW. Female. Friendly, likes to be quiet. Has no bad habits.",
+    "propertyType": "Apartment",
+    "homeType": "Private rooms",
+    "petPolicy": true,
+    "furnished": true,
+    "deposit": false,
+    "amenities": [
+        "Stove",
+        "In-unit dryer",
+        "Dishwasher",
+        "Oven",
+        "Couch",
+        "In-unit washer",
+        "TV",
+        "Air conditioning",
+        "Parking"
+    ]
+}
