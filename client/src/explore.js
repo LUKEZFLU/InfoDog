@@ -7,12 +7,26 @@ import Housing_3 from "./pic/Housing_5.jpg";
 import Housing_4 from "./pic/Housing_8.jpg";
 import Housing_5 from "./pic/Housing_1.jpg";
 import Housing_6 from "./pic/Housing_6.jpg";
+
+import housingData from "./data/housingData.json"
 // import map from "./pic/map.png";
 import Map from './components/map.js';
 import filter_icon from "./pic/filter_icon.jpg";
 
 function Explore() {
   let navigate = useNavigate();
+
+  const HouseCard = ({ imageSrc, altText, navigate, name, caption }) => (
+  <div className="house-container">
+    <img
+      src={imageSrc}
+      alt={altText}
+      onClick={navigate}
+    />
+    <h3>{name}</h3>
+    <p>{caption}</p>
+  </div>
+);
 
   // State to manage filter visibility
   const [showFilters, setShowFilters] = useState(false);
@@ -124,63 +138,17 @@ function Explore() {
       )}
 
       <div className="layout-container">
-        {/* houses */}
         <div className="grid-container">
-          <div className="house-container">
-            <img
-              src={Housing_1}
-              alt="amenities images"
-              onClick={() => navigate("/detail")}
+          {housingData.map((house, index) => (
+            <HouseCard
+              key={index}
+              imageSrc={house.imageScr} 
+              altText={house.title} 
+              navigate={() => navigate(`/details/${house.housingID}`)} 
+              name={house.name}
+              caption={house.caption}
             />
-            <h3>U place</h3>
-            <p>U Village | $1750/month | 2b2b</p>
-          </div>
-          <div className="house-container">
-            <img
-              src={Housing_2}
-              alt="amenities images"
-              onClick={() => navigate("/detail")}
-            />
-            <h3>Cielo</h3>
-            <p>Lake City | $1800/month | studio</p>
-          </div>
-          <div className="house-container">
-            <img
-              src={Housing_3}
-              alt="amenities images"
-              onClick={() => navigate("/detail")}
-            />
-            <h3>Trailside</h3>
-            <p>U Village | $2100/month | 1b1b</p>
-          </div>
-          <div className="house-container">
-            <img
-              src={Housing_4}
-              alt="amenities images"
-              onClick={() => navigate("/detail")}
-            />
-            <h3>Avaron</h3>
-            <p>Queen Anne | $2270/month | studio</p>
-          </div>
-          <div className="house-container">
-            <img
-              src={Housing_5}
-              alt="amenities images"
-              onClick={() => navigate("/detail")}
-            />
-            <h3>Edgepoint</h3>
-            <p>Greenwood | $1570/month | 2b1b</p>
-          </div>
-          <div className="house-container">
-            <img
-              src={Housing_6}
-              alt="amenities images"
-              onClick={() => navigate("/detail")}
-            />
-            <h3>Cedar</h3>
-            <p>Roosvelt | $1420/month | 4b4b</p>
-          </div>
-
+          ))}
         </div>
 
         {/* map */}

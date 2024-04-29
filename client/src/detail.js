@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
 import { useState } from 'react';
 import "./detail.css";
 import bath from "./pic/UPlace_bath.jpg";
@@ -13,6 +13,11 @@ import housingData from './data/housingData.json';
 
 function Detail() {
   let navigate = useNavigate();
+  let {housingID} = useParams();
+
+  const housingDetail = housingData.find(house => house.housingID.toString() === housingID);
+
+
   const [buttonPopup, setButtonPopup] = useState(false);
 
   return (
@@ -57,25 +62,25 @@ function Detail() {
       <div className="room-layout-container">
         {/* text */}
         <div className="text">
-          <h1 id="detail-headers">{housingData.title}</h1>
-          <span id="note">{housingData.location}</span>
+          <h1 id="detail-headers">{housingDetail.title}</h1>
+          <span id="note">{housingDetail.location}</span>
           <hr></hr>
 
           <div>
             <h4>
-              <span>{housingData.propertyType}</span>{""}
-              <span>{housingData.homeType}</span>
+              <span>{housingDetail.propertyType}</span>{""}
+              <span>{housingDetail.homeType}</span>
             </h4>
-            <span>{housingData.bathrooms} bedroom(s)</span>
-            <span> {housingData.bathrooms} bath(s)</span>
-            <h4>Available from {housingData.moveInDate} to {housingData.moveOutDate}</h4>
+            <span>{housingDetail.bathrooms} bedroom(s)</span>
+            <span> {housingDetail.bathrooms} bath(s)</span>
+            <h4>Available from {housingDetail.moveInDate} to {housingDetail.moveOutDate}</h4>
           </div>
           <hr></hr>
           <h2 id="detail-headers">
             Description
           </h2>
           <p>
-            {housingData.description}
+            {housingDetail.description}
           </p>
           <hr></hr>
 
@@ -83,13 +88,13 @@ function Detail() {
             Area
           </h2>
           <p>
-            {housingData.area} sqft
+            {housingDetail.area} sqft
           </p>
 
           <hr></hr>
           <h2 id="detail-headers">What this place offers</h2>
           <div>
-            {housingData.amenities.map((amenity, index) => (
+            {housingDetail.amenities.map((amenity, index) => (
               <div key={index} className="amenities-each">{amenity}</div>
             ))}
           </div>
@@ -97,26 +102,26 @@ function Detail() {
           <hr></hr>
           <h2 id="detail-headers">Roommate(s)</h2>
           <h3>Still living</h3>
-          <div>There will be {housingData.roommates} roomate(s) still living in the place </div>
+          <div>There will be {housingDetail.roommates} roomate(s) still living in the place </div>
           <h3>Brife Description</h3>
-          <p>{housingData.roommateDescription}</p>
+          <p>{housingDetail.roommateDescription}</p>
 
           <hr></hr>
           {/* New section T/F */}
           <h2 id="detail-headers">Others</h2>
           <h3>Furnished Situation</h3>
-          <p>{housingData.furnished ? "Yes" : "No"}</p>
+          <p>{housingDetail.furnished ? "Yes" : "No"}</p>
           <h3>Pet Allowed</h3>
-          <p>{housingData.petPolicy ? "Yes" : "No"}</p>
+          <p>{housingDetail.petPolicy ? "Yes" : "No"}</p>
           <h3>Deposit Required</h3>
-          <p>{housingData.deposit ? "Yes" : "No"}</p>
+          <p>{housingDetail.deposit ? "Yes" : "No"}</p>
           <hr></hr>
         </div>
 
         {/* sidebox */}
         <div className="sidebox-container">
           <div class="booking-widget">
-            <div class="price">${housingData.price} / Month</div>
+            <div class="price">${housingDetail.price} / Month</div>
             <div class="date-selection">
               <div class="check-in">
                 <label for="checkin">Check-in</label>
