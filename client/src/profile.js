@@ -8,7 +8,6 @@ function Profile() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [nfirstName, nsetFirstName] = useState("");
   const [nlastName, nsetLastName] = useState("");
   const [nemail, nsetEmail] = useState("");

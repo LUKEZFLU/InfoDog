@@ -18,47 +18,25 @@ const userSchema = new mongoose.Schema({
 })
 
 const houseSchema = new mongoose.Schema({
-  title: String,
-  description: String,
-  propertyType: String,
-  roomType: String,
-  location: String,
-  bedrooms: Number,
-  bathrooms: Number,
-  price: Number,
-  area: Number, // Assuming this is in square feet
-  moveInDate: Date,
-  moveOutDate: Date,
-  depositRequired: Boolean,
-  furnished: Boolean,
-  images: [String], // Array of image URLs
-  roommates: {
-      count: Number,
-      details: String
-  },
-  amenities: {
-      stove: Boolean,
-      refrigerator: Boolean,
-      oven: Boolean,
-      dishwasher: Boolean,
-      microwave: Boolean,
-      tv: Boolean,
-      couch: Boolean,
-      heating: Boolean,
-      airConditioner: Boolean,
-      washer: Boolean,
-      dryer: Boolean,
-      wifi: Boolean,
-      parking: Boolean,
-      security: Boolean,
-      swimmingPool: Boolean,
-      gym: Boolean,
-      elevator: Boolean,
-      accessibility: Boolean
-  },
-  petsAllowed: Boolean,
-  verificationEmail: String,
-  UserId: String
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    propertyType: { type: String, required: true },
+    roomType: { type: String, required: true },  // Maps to propertyType2
+    location: { type: String, required: true },
+    bedrooms: { type: Number, required: true },
+    bathrooms: { type: Number, required: true },
+    price: { type: Number, required: true },
+    area: { type: Number, required: true },  // Assuming this is in square feet
+    moveInDate: { type: Date, required: true },
+    moveOutDate: { type: Date, required: true },
+    depositRequired: { type: String, required: true },
+    furnitureIncluded: { type: String, required: true },  // Maps to furnitureIncluded
+    roommatesCount: { type: Number, required: true },
+    roommatesReason: { type: String, required: true },
+    selectedAmenities: Object,
+    petsAllowed: { type: String, required: true },
+    uwemail: { type: String, required: true },  // Maps to uwemail
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true } 
 });
 
 models.House = mongoose.model('House', houseSchema);

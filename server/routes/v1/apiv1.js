@@ -3,7 +3,7 @@ var router = express.Router()
 
 import usersRouter from './controllers/users.js'
 import loginRouter from './controllers/login.js'
-import houseRouter from './controllers/house-details.js'
+import houseRouter from './controllers/house.js'
 
 router.use("/users", usersRouter)
 router.use("/login", loginRouter)
