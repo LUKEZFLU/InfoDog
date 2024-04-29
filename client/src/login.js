@@ -24,9 +24,9 @@ function Login() {
     axios.post('http://localhost:3001/api/v1/login', { email, password }) // check login info with backend
       .then(result => {
         console.log('Login successful:', result);
-        if (result.data && result.data.userId) {
-          localStorage.setItem('userId', result.data.userId);  // 将 userId 保存到 localStorage
-        }
+        localStorage.setItem('userId', result.data.userId); 
+        localStorage.setItem('houseId', result.data.houseId); 
+        console.log("set");
         setMessage("Login successful! You will be directed to the home page");
         setButtonPopup(true);
         setTimeout(() => {

@@ -170,7 +170,7 @@ function ListingForm() {
         throw new Error(result.error || "Failed to add new house");
       }
       alert("House added successfully!");
-      navigate("/profile")
+      navigate("/profile");
     } catch (error) {
       console.error("Error updating user data:", error);
     }
@@ -368,6 +368,8 @@ function ListingForm() {
                   By checking this box, you confirm that you have read,
                   understand, and agree to iLease's <u>Terms of Service.</u>
                 </label>
+                <br/>
+                <p>You may need to logout and login again to see your account update</p>
               </>
             )}
 

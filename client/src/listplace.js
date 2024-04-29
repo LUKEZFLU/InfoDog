@@ -6,17 +6,22 @@ function ListPlace() {
   let navigate = useNavigate();
 
   const handleStartListingClick = () => {
-    // 尝试从localStorage获取userId
+    // 尝试从localStorage获取userId和houseId
     const userId = localStorage.getItem("userId");
+    const houseId = localStorage.getItem("houseId");
 
-    if (userId) {
-      // 如果userId存在，导航到列表表单页面
-      navigate("/listing-form");
-    } else {
+    if (!userId) {
       // 如果userId不存在，弹出提示要求用户登录
       alert("Please log in to continue.");
+    } else if (houseId !== "no") {
+      // 如果houseId存在，说明用户已经注册过房屋，阻止进一步操作
+      alert("You already have a registered house. You cannot register another one.");
+    } else {
+      // 如果userId存在且houseId不存在，导航到列表表单页面
+      navigate("/listing-form");
     }
   };
+
 
   return (
     <div className="background">

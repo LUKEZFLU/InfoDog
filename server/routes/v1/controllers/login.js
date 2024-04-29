@@ -14,7 +14,11 @@ router.post("/", async (req, res) => {
         if (req.body.password !== user.password) {
             return res.status(401).json({ "status": "error", "error": "Password incorrect" });
         }
-        res.json({ status: 'success', userId: user._id.toString() });
+        // Find the house associated with the user
+        const house = await req.models.House.findOne({ userId: user._id });
+        const houseId = house ? house._id.toString() : "no";
+
+        res.json({ status: 'success', userId: user._id.toString(), houseId: houseId });
     } catch (error) {
         console.log("Error:", error)
         res.status(500).json({ "status": "error", "error": error })

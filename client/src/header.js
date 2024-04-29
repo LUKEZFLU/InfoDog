@@ -24,8 +24,9 @@ function Header() {
 
   // 定义注销函数
   const handleLogout = () => {
-    localStorage.removeItem('userId');  // 从 localStorage 删除 userId
-    setUserId(null);  // 更新状态以反映用户已注销
+    localStorage.removeItem('userId');
+    localStorage.removeItem('houseId');
+    setUserId(null);
     navigate('/');  // 可以重定向用户到首页或登录页
   };
 
