@@ -16,14 +16,14 @@ import filter_icon from "./pic/filter_icon.jpg";
 function Explore() {
   let navigate = useNavigate();
 
-  const HouseCard = ({ imageSrc, altText, navigate, name, caption }) => (
+  const HouseCard = ({ imageSrc, altText, navigate, title, caption }) => (
   <div className="house-container">
     <img
       src={imageSrc}
       alt={altText}
       onClick={navigate}
     />
-    <h3>{name}</h3>
+    <h3>{title}</h3>
     <p>{caption}</p>
   </div>
 );
@@ -41,20 +41,20 @@ function Explore() {
 
       <div className="search-container">
         <div className="input-container">
-          <div class="check-in">
-            <label for="location">Location</label>
+          <div className="check-in">
+            <label htmlFor="location">Location</label>
             <input type="text" id="locationInput" placeholder="U District" />
           </div>
         </div>
         <div className="input-container">
-          <div class="check-in">
-              <label for="movein">Move-in</label>
+          <div className="check-in">
+              <label htmlFor="movein">Move-in</label>
               <input type="date" id="movein" name="movein"></input>
           </div>
         </div>
         <div className="input-container">
-          <div class="check-out">
-              <label for="moveout">Move-out</label>
+          <div className="check-out">
+              <label htmlFor="moveout">Move-out</label>
               <input type="date" id="moveout" name="moveout"></input>
           </div>
         </div>
@@ -80,8 +80,8 @@ function Explore() {
       {showFilters && (
         <div className="filter-container">
 
-          <div class="filter-option">
-            <label for="house-type">House Type</label>
+          <div className="filter-option">
+            <label htmlFor="house-type">House Type</label>
             <select id="house-type" name="house-type">
               <option value="any">Any type</option>
               <option value="studio">Studio</option>
@@ -89,31 +89,31 @@ function Explore() {
               <option value="house">House</option>
             </select>
           </div>
-          <div class="filter-option">
-            <label for="furnish">Furnished</label>
+          <div className="filter-option">
+            <label htmlFor="furnish">Furnished</label>
             <select id="furnish" name="furnish">
               <option value="any">Any type</option>
               <option value="furnished">Furnished</option>
               <option value="unfurnished">Unfurnished</option>
             </select>
           </div>
-          <div class="filter-option">
-            <label for="pet-friendly">Pet Friendly</label>
+          <div className="filter-option">
+            <label htmlFor="pet-friendly">Pet Friendly</label>
             <select id="pet-friendly" name="pet-friendly">
               <option value="yes">Yes</option>
               <option value="no">No</option>
             </select>
           </div>
-          <div class="filter-option">
-            <label for="verfication">Verfication</label>
+          <div className="filter-option">
+            <label htmlFor="verfication">Verfication</label>
             <select id="verfication" name="verfication">
               <option value="any">Any type</option>
               <option value="uw">UW email</option>
               <option value="official">Official email</option>
             </select>
           </div>
-          <div class="filter-option">
-            <label for="bedroom">Bedroom</label>
+          <div className="filter-option">
+            <label htmlFor="bedroom">Bedroom</label>
             <select id="bedroom" name="bedroom">
               <option value="studio">Studio</option>
               <option value="1">1</option>
@@ -121,14 +121,14 @@ function Explore() {
               <option value="≥3">≥3</option>
             </select>
           </div>
-          <div class="filter-option">
-            <label for="price">Price</label>
+          <div className="filter-option">
+            <label htmlFor="price">Price</label>
             <input type="text" id="priceMin" placeholder="1200" />
             <span id="char_space">---</span>
             <input type="text" id="priceMax" placeholder="2000" />
           </div>
-          <div class="filter-option">
-            <label for="radius">Search Radius (miles)</label>
+          <div className="filter-option">
+            <label htmlFor="radius">Search Radius (miles)</label>
             <span>Maximum radius 30 </span>
             <input type="text" id="radiusInput" placeholder="10" />
           </div>
@@ -142,10 +142,10 @@ function Explore() {
           {housingData.map((house, index) => (
             <HouseCard
               key={index}
-              imageSrc={house.imageScr} 
+              imageSrc={house.imageSrc}
               altText={house.title} 
               navigate={() => navigate(`/details/${house.housingID}`)} 
-              name={house.name}
+              title={house.title}
               caption={house.caption}
             />
           ))}

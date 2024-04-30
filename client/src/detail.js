@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate, useParams} from "react-router-dom";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import "./detail.css";
 import bath from "./pic/UPlace_bath.jpg";
 import kitchen from "./pic/UPlace_kitchen.jpg";
@@ -9,16 +9,72 @@ import balcony from "./pic/UPlace_balcony.jpg";
 import mainImg from "./pic/UPlace_main.jpg";
 import pentagram from "./pic/pentagram.jpg";
 import Popup from './components/popup';
-import housingData from './data/housingData.json';
+import housingList from './data/housingData.json';
 
+// function Detail({ id }) {
+//   let navigate = useNavigate();
+//   const [housingData, sethousingData] = useState(null);
+
+//   useEffect(() => {
+//     // Fetch housing data based on the id passed from explore.js
+//     const fetchData = async () => {
+//       try {
+//         // Simulate fetching data from an API or database
+//         const response = await fetch('/api/housing/' + id); // Adjust the API endpoint
+//         const data = await response.json();
+//         sethousingData(data);
+//       } catch (error) {
+//         console.error('Error fetching housing data:', error);
+//       }
+//     };
+
+//     fetchData();
+//   }, [id]);
+
+//   const [buttonPopup, setButtonPopup] = useState(false);
+
+//   if (!housingData) {
+//     return <div>Loading...</div>;
+//   }
+
+
+// function Detail() {
+//   let navigate = useNavigate();
+//   let {housingID} = useParams();
+
+//   const housingData = housingData.find(house => house.housingID.toString() === housingID);
+
+
+//   const [buttonPopup, setButtonPopup] = useState(false);
 function Detail() {
   let navigate = useNavigate();
-  let {housingID} = useParams();
-
-  const housingDetail = housingData.find(house => house.housingID.toString() === housingID);
-
-
   const [buttonPopup, setButtonPopup] = useState(false);
+  const [housingData, setHousingData] = useState(null);
+  let { housingID } = useParams();
+
+  // useEffect(() => {
+  //   console.log(`Housing data ${housingID}`);
+  //   console.error(`Housing data for ID ${housingID}`);
+  //   // Find the data object with the matching housingID
+  //   const foundData = housingData.find(item => item.housingID === parseInt(housingID));
+  //   if (foundData) {
+  //     setHousingData(foundData);
+  //   } else {
+  //     console.error(`Housing data not found for ID ${housingID}`);
+  //   }
+  // },[housingID]);
+  useEffect(() => {
+    const foundData = housingList.find(item => item.housingID.toString() === housingID);
+    if (foundData) {
+      setHousingData(foundData);
+    } else {
+      console.error(`Housing data not found for ID ${housingID}`);
+    }
+  }, [housingID]);
+
+  if (!housingData) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
@@ -62,25 +118,25 @@ function Detail() {
       <div className="room-layout-container">
         {/* text */}
         <div className="text">
-          <h1 id="detail-headers">{housingDetail.title}</h1>
-          <span id="note">{housingDetail.location}</span>
+          <h1 id="detail-headers">{housingData.title}</h1>
+          <span id="note">{housingData.location}</span>
           <hr></hr>
 
           <div>
             <h4>
-              <span>{housingDetail.propertyType}</span>{""}
-              <span>{housingDetail.homeType}</span>
+              <span>{housingData.propertyType}</span>{""}
+              <span>{housingData.homeType}</span>
             </h4>
-            <span>{housingDetail.bathrooms} bedroom(s)</span>
-            <span> {housingDetail.bathrooms} bath(s)</span>
-            <h4>Available from {housingDetail.moveInDate} to {housingDetail.moveOutDate}</h4>
+            <span>{housingData.bathrooms} bedroom(s)</span>
+            <span> {housingData.bathrooms} bath(s)</span>
+            <h4>Available from {housingData.moveInDate} to {housingData.moveOutDate}</h4>
           </div>
           <hr></hr>
           <h2 id="detail-headers">
             Description
           </h2>
           <p>
-            {housingDetail.description}
+            {housingData.description}
           </p>
           <hr></hr>
 
@@ -88,13 +144,13 @@ function Detail() {
             Area
           </h2>
           <p>
-            {housingDetail.area} sqft
+            {housingData.area} sqft
           </p>
 
           <hr></hr>
           <h2 id="detail-headers">What this place offers</h2>
           <div>
-            {housingDetail.amenities.map((amenity, index) => (
+            {housingData.amenities.map((amenity, index) => (
               <div key={index} className="amenities-each">{amenity}</div>
             ))}
           </div>
@@ -102,40 +158,40 @@ function Detail() {
           <hr></hr>
           <h2 id="detail-headers">Roommate(s)</h2>
           <h3>Still living</h3>
-          <div>There will be {housingDetail.roommates} roomate(s) still living in the place </div>
+          <div>There will be {housingData.roommates} roomate(s) still living in the place </div>
           <h3>Brife Description</h3>
-          <p>{housingDetail.roommateDescription}</p>
+          <p>{housingData.roommateDescription}</p>
 
           <hr></hr>
           {/* New section T/F */}
           <h2 id="detail-headers">Others</h2>
           <h3>Furnished Situation</h3>
-          <p>{housingDetail.furnished ? "Yes" : "No"}</p>
+          <p>{housingData.furnished ? "Yes" : "No"}</p>
           <h3>Pet Allowed</h3>
-          <p>{housingDetail.petPolicy ? "Yes" : "No"}</p>
+          <p>{housingData.petPolicy ? "Yes" : "No"}</p>
           <h3>Deposit Required</h3>
-          <p>{housingDetail.deposit ? "Yes" : "No"}</p>
+          <p>{housingData.deposit ? "Yes" : "No"}</p>
           <hr></hr>
         </div>
 
         {/* sidebox */}
         <div className="sidebox-container">
           <div class="booking-widget">
-            <div class="price">${housingDetail.price} / Month</div>
+            <div class="price">${housingData.price} / Month</div>
             <div class="date-selection">
               <div class="check-in">
-                <label for="checkin">Check-in</label>
+                <label id="checkin">Check-in</label>
                 <input type="date" id="checkin" name="check-in"></input>
               </div>
 
               <div class="check-out">
-                <label for="checkout">Check-out</label>
+                <label id="checkout">Check-out</label>
                 <input type="date" id="checkout" name="check-out"></input>
               </div>
             </div>
 
             {/* <div class="guests">
-                    <label for="guests">GUESTS</label>
+                    <label id="guests">GUESTS</label>
                     <select id="guests" name="guests">
                         <option value="1">1 guest</option>
                         <option value="2" selected>2 guests</option>
@@ -144,7 +200,7 @@ function Detail() {
                     </select>
                 </div> */}
             <div class="guests">
-              <label for="guests">Guests</label>
+              <label id="guests">Guests</label>
               <input id="guests" name="guests" placeholder="number"></input>
             </div>
 
