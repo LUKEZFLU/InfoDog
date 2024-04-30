@@ -40,7 +40,8 @@ nav {
 }
 
 .hero-buttons button:hover {
-  background-color:#555454;
+  background-color:black;
+  color: white;
 }
 
 .feature-row {

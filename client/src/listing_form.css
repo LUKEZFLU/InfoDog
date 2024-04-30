@@ -28,26 +28,6 @@
   .active-step:before {
     background-color: #007bff;
   }
-  
-  .circle {
-    width: 500px; /* Circle size */
-    height: 500px; /* Circle size */
-    position: absolute;
-    border-radius: 50%; /* Makes the div circular */
-    z-index: -1;
-  }
-  
-  .top-right {
-    right: -10%; /* Align to the right */
-    top: -20%; /* Align to the top */
-    background: linear-gradient(180deg, #F8EDD1 0%, rgba(255, 240, 223, 0.1) 100%);
-  }
-  
-  .bottom-left {
-    left: -10%; 
-    bottom: -30%; 
-    background: linear-gradient(180deg, rgba(251, 248, 255, 0) 0%, #F2F5D6 100%);
-  }
 
   .question_sec p {
     font-size: 20px;
@@ -72,7 +52,6 @@
   }
   
   .step-container h1 p {
-    position: relative;
     font-family: 'Raleway', sans-serif; 
     line-height: 113px; 
     color: #000000;
@@ -80,4 +59,32 @@
 
   .step-container h1 {
     font-size: 45px;
+  }
+
+  .step-container {
+    position: absolute;
+    top: 20%;
+  }
+
+  .button-style {
+    background-color: black; /* Green background */
+    color: white;              /* White text */
+    padding: 12px 20px;        /* Padding around the text */
+    border: none;              /* No border */
+    border-radius: 4px;        /* Rounded corners */
+    cursor: pointer;           /* Pointer cursor on hover */
+    outline: none;             /* Remove outline */
+    transition: background 0.3s ease; /* Smooth transition for hover effect */
+  }
+  .listing-form-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .step-container {
+    flex: 1;  /* Ensures that the step container can grow and take available space */
+  }
+  
+  .form-navigation {
+    margin-top: auto;  /* Pushes the navigation to the bottom of the container */
   }

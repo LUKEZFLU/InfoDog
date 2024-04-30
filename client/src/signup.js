@@ -58,40 +58,49 @@ function Signup() {
           <div className="already-have-an" alt="Already have an" >
             <h1>Create Account</h1>
           </div>
-          <div className="fill-the-information" alt="Fill the information" >
-            Fill the Information Below
-          </div>
-          <div className="text"></div>
           <form onSubmit={handleSubmit}>
             <div className="emai-section-instance">
               <div className="input-container">
                 <div>First Name</div>
-                <input type="text" id="first_name_input" onChange={(e) => setFirstName(e.target.value)} />
+                <input type="text" id="first_name_input" onChange={(e) => setFirstName(e.target.value)} className="input-style" />
                 <div>Last Name</div>
-                <input type="text" id="last_name_input" onChange={(e) => setLastName(e.target.value)} />
+                <input type="text" id="last_name_input" onChange={(e) => setLastName(e.target.value)} className="input-style" />
                 <div>Institutional Email</div>
-                <input type="email" id="email_input" onChange={(e) => setEmail(e.target.value)} />
+                <input type="email" id="email_input" onChange={(e) => setEmail(e.target.value)} className="input-style" />
                 <div>Password</div>
-                <input type="password" id="password_input" onChange={(e) => setPassword(e.target.value)} />
+                <input type="password" id="password_input" onChange={(e) => setPassword(e.target.value)} className="input-style" />
                 <div>Gender</div>
-                <select onChange={(e) => setGender(e.target.value)}>
+                <select onChange={(e) => setGender(e.target.value)} className="input-style">
                   <option value="">Select Gender</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
                   <option value="other">Other</option>
                 </select>
                 <div>Birthday</div>
-                <input type="date" onChange={(e) => setBirthday(e.target.value)} />
+                <input type="date" onChange={(e) => setBirthday(e.target.value)} className="input-style" />
+                <label htmlFor="term" style={{
+                    color: '#717171',
+                    fontFamily: '"Raleway", Helvetica, sans-serif',
+                    fontSize: '13px',
+                    fontWeight: '400'
+                }}>
+                  <input
+                    type="checkbox"
+                    id="term"
+                    name="term"
+                    value="agree"
+                    required
+                  />{" "}
+                  By clicking Sign Up, I state that I have read and understood the terms and conditions.
+                </label>
+                <button type="submit" className="button-style">Sign-Up</button>
+                <br></br>
+                <button onClick={() => navigate("/login")} className="button-style">I have an account</button>      
               </div>
-            </div>
-            <div className="text-wrapper-13">
-              <button type="submit">Sign-Up</button>
-              <button onClick={() => navigate("/login")}>I have an account</button>
+              
             </div>
           </form>
-          <p className="text-wrapper-16">
-            By clicking Sign Up, I state that I have read and understood the terms and conditions.
-          </p>
+          
         </div>
       </div>
       <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
