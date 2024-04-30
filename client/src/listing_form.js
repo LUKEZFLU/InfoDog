@@ -178,8 +178,6 @@ function ListingForm() {
 
   return (
     <div>
-      <div class="circle top-right"></div>
-      <div class="circle bottom-left"></div>
       <div className="steps-indicator">
         <div className={currentStep >= 1 ? "step active-step" : "step"}>
           Step 1: Intro your place
@@ -285,12 +283,11 @@ function ListingForm() {
                     <input type="radio" name="option_funiture" value="no" required onChange={(e) => setFurnitureIncluded(e.target.value)} checked={furnitureIncluded === 'no'} /> No
                   </label>
                 </div>
+                <br></br>
               </>
             )}
-          </div>
 
           {/* // Step 2 */}
-          <div className="step-container">
             {currentStep === 2 && (
               <>
                 <h1>2. Add details</h1>
@@ -329,13 +326,12 @@ function ListingForm() {
                     <input type="radio" name="option_pet" value="no" required onChange={handlePetsAllowedChange} checked={petsAllowed === 'no'} /> No
                   </label>
                 </div>
+                <br></br>
               </>
             )}
-          </div>
 
           {/* steps 3 */}
           {/* Step 3 */}
-          <div className="step-container">
             {currentStep === 3 && (
               <>
                 <h1>3. Verification</h1>
@@ -344,12 +340,11 @@ function ListingForm() {
                   <p>Enter Your UW Email</p>
                   <input type="text" id="email" name="email" placeholder="Institutional Email ONLY No @gmail/@Outlook etc." required onChange={handleEmailChange} value={uwemail} />
                 </div>
+                <br></br>
               </>
             )}
-          </div>
 
           {/* steps 4 */}
-          <div className="step-container">
 
             {currentStep === 4 && (
               <>
@@ -370,26 +365,29 @@ function ListingForm() {
                 </label>
                 <br/>
                 <p>You may need to logout and login again to see your account update</p>
+                <br></br>
               </>
             )}
 
-          </div>
-          {/* Navigation buttons go here */}
           <div className="form-navigation">
             {currentStep > 1 && (
-              <button type="button" onClick={goPreviousStep}>
+              <button type="button" className="button-style" onClick={goPreviousStep}>
                 Previous Step
               </button>
             )}
             {currentStep < 4 && (
-              <button type="button" onClick={goNextStep}>
+              <button type="button" className="button-style" onClick={goNextStep}>
                 Next Step
               </button>
             )}
             {currentStep === 4 && (
-              <input type="submit" value="Submit Listing" />
+              <input type="submit" value="Submit Listing" className="button-style"/>
             )}
           </div>
+
+          </div>
+          {/* Navigation buttons go here */}
+          
         </form>
       </div>
     </div>

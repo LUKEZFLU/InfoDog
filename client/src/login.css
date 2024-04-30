@@ -236,7 +236,7 @@
     font-weight: bold;      /* Make the label text a bit bolder */
   }
   .button-style {
-    background-color: #4CAF50; /* Green background */
+    background-color: black; /* Green background */
     color: white;              /* White text */
     padding: 12px 20px;        /* Padding around the text */
     border: none;              /* No border */
@@ -247,7 +247,7 @@
   }
   
   .button-style:hover {
-    background-color: #45a049; /* Darker shade of green on hover */
+    background-color: black; /* Darker shade of green on hover */
   }
   
   /* Adding some margin to separate the buttons */
