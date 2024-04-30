@@ -54,10 +54,6 @@ function Login() {
           <div className="already-have-an" alt="Already have an" >
             <h1>Already have account?</h1>
           </div>
-          <div className="fill-the-information" alt="Fill the information" >
-            Fill the Information Below
-          </div>
-          <div className="text">{""}</div>
           <form onSubmit={handleSubmit}>
             <div className="emai-section-instance">
               <div className="input-container">
@@ -68,13 +64,13 @@ function Login() {
               </div>
             </div>
             <div className="text-wrapper-13">
-              <button>Log-in</button>
+              <button className="button-style">Log-in</button>
             </div>
           </form>
           <p className="ready-to-be-a-user">
             <span className="text-wrapper-14">Ready to be a user? </span>
             <span className="text-wrapper-15">
-              <button onClick={() => navigate("/signup")}>Sign-Up</button>
+              <button className="button-style" onClick={() => navigate("/signup")}>Sign-Up</button>
             </span>
           </p>
           <p className="text-wrapper-16">

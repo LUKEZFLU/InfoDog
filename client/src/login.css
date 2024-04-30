@@ -51,15 +51,15 @@
     height: 14px;
     left: 688px;
     position: absolute;
-    top: 500px;
+    top: 400px;
     width: 209px;
   }
   
   .login .already-have-an {
-    height: 35px;
+    height: 30px;
     left: 757px;
     position: absolute;
-    top: 424px;
+    top: 21%;
     width: 424px;
   }
   
@@ -102,7 +102,6 @@
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
-    top: 695px;
     white-space: nowrap;
   }
   
@@ -115,7 +114,7 @@
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
-    top: 830px;
+    top: 43%;
     white-space: nowrap;
   }
   
@@ -128,7 +127,7 @@
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
-    top: 936px;
+    top: 48%;
     white-space: nowrap;
   }
   
@@ -142,9 +141,9 @@
   }
   
   .login .emai-section-instance {
-    left: 688px !important;
+    left: 35% !important;
     position: absolute !important;
-    top: 550px !important;
+    top: 28% !important;
   }
   
   .login .design-component-instance-node {
@@ -156,11 +155,11 @@
     font-family: "Raleway", Helvetica;
     font-size: 10px;
     font-weight: 400;
-    left: 865px;
+    left: 800px;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
-    top: 890px;
+    top: 830px;
     white-space: nowrap;
     width: 202px;
   }
@@ -221,3 +220,38 @@
     top: 2px;
   }
   
+  .input-container .input-style {
+    width: 40%;            /* Full width */
+    padding: 10px;          /* Some padding */
+    margin: 8px 0;          /* Margin for some space around the inputs */
+    display: inline-block;  /* Making sure it's properly aligned */
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px;     /* Slightly rounded borders */
+    box-sizing: border-box; /* Handle box sizing while padding */
+    font-size: 16px;        /* Increase font size */
+  }
+  
+  .input-container div {
+    margin-bottom: 5px;     /* Margin below labels */
+    font-weight: bold;      /* Make the label text a bit bolder */
+  }
+  .button-style {
+    background-color: #4CAF50; /* Green background */
+    color: white;              /* White text */
+    padding: 12px 20px;        /* Padding around the text */
+    border: none;              /* No border */
+    border-radius: 4px;        /* Rounded corners */
+    cursor: pointer;           /* Pointer cursor on hover */
+    outline: none;             /* Remove outline */
+    transition: background 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  .button-style:hover {
+    background-color: #45a049; /* Darker shade of green on hover */
+  }
+  
+  /* Adding some margin to separate the buttons */
+  .input-container button {
+    margin-top: 10px;
+    width: 30%;               /* Make the button expand to the full width of the container */
+  }
