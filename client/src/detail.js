@@ -21,6 +21,7 @@ function Detail() {
 
 useEffect(() => {
     if (id) { // Ensure id is not undefined
+    console.log(`House ID: ${id}`);
         axios.get(`http://localhost:3001/api/v1/house/${id}`)
             .then(response => {
                 setHouse(response.data);
@@ -34,7 +35,8 @@ useEffect(() => {
     if (!house) {
         return <div>Loading details...</div>;
     }
-  const amenitiesList = house.selectedAmenities ? Object.entries(house.selectedAmenities).filter(([key, value]) => value === true).map(([key]) => key) : [];
+
+const amenitiesValues = house.selectedAmenities ? Object.entries(house.selectedAmenities).filter(([key, value]) => value === true).map(([key]) => key) : [];
 
 
   return (
@@ -111,11 +113,9 @@ useEffect(() => {
           <hr></hr>
           <h2 id="detail-headers">What this place offers</h2>
           <div>
-             {amenitiesList.map(([key, value], index) => (
-            <div key={index} className="amenities-each">
-              {key}: {value.toString()}
-            </div>
-          ))}
+             {amenitiesValues.map((key, index) => (
+  <div key={index} className="amenities-each">{key}</div>
+))}
           </div>
 
           <hr></hr>

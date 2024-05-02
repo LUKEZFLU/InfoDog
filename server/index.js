@@ -21,6 +21,7 @@ const __dirname = dirname(__filename);
 // set the app
 var app = express();
 
+
 // app.use
 app.use(cors({
     origin: 'http://localhost:3000' // listen from client side on port 3000

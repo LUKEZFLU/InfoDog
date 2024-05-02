@@ -42,19 +42,8 @@ router.post("/", async (req, res) => {
 });
 
 
-// GET route to retrieve all houses
-router.get("/", async (req, res) => {
-    try {
-        const houses = await req.models.House.find({});
-        res.send(houses);
-    } catch (error) {
-        console.log("Error:", error);
-        res.status(500).json({ "status": "error", "error": error.message });
-    }
-});
-
-
-router.get("/house/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
+    console.log(`Received ID: ${req.params.id}`);
     try {
         const house = await req.models.House.findById(req.params.id);
         if (!house) {
@@ -67,6 +56,19 @@ router.get("/house/:id", async (req, res) => {
         res.status(500).json({ "status": "error", "error": error.message });
     }
 });
+
+
+// GET route to retrieve all houses
+router.get("/", async (req, res) => {
+    try {
+        const houses = await req.models.House.find({});
+        res.send(houses);
+    } catch (error) {
+        console.log("Error:", error);
+        res.status(500).json({ "status": "error", "error": error.message });
+    }
+});
+
 
 
 
