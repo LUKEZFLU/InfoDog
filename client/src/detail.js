@@ -1,6 +1,5 @@
-import React from "react";
 import { useNavigate, useParams} from "react-router-dom";
-import { useState, useEffect } from 'react';
+import { React, useState, useEffect } from 'react';
 import "./detail.css";
 import bath from "./pic/UPlace_bath.jpg";
 import kitchen from "./pic/UPlace_kitchen.jpg";
@@ -10,71 +9,33 @@ import mainImg from "./pic/UPlace_main.jpg";
 import pentagram from "./pic/pentagram.jpg";
 import Popup from './components/popup';
 import housingList from './data/housingData.json';
-
-// function Detail({ id }) {
-//   let navigate = useNavigate();
-//   const [housingData, sethousingData] = useState(null);
-
-//   useEffect(() => {
-//     // Fetch housing data based on the id passed from explore.js
-//     const fetchData = async () => {
-//       try {
-//         // Simulate fetching data from an API or database
-//         const response = await fetch('/api/housing/' + id); // Adjust the API endpoint
-//         const data = await response.json();
-//         sethousingData(data);
-//       } catch (error) {
-//         console.error('Error fetching housing data:', error);
-//       }
-//     };
-
-//     fetchData();
-//   }, [id]);
-
-//   const [buttonPopup, setButtonPopup] = useState(false);
-
-//   if (!housingData) {
-//     return <div>Loading...</div>;
-//   }
+import axios from 'axios';
 
 
-// function Detail() {
-//   let navigate = useNavigate();
-//   let {housingID} = useParams();
-
-//   const housingData = housingData.find(house => house.housingID.toString() === housingID);
-
-
-//   const [buttonPopup, setButtonPopup] = useState(false);
 function Detail() {
   let navigate = useNavigate();
   const [buttonPopup, setButtonPopup] = useState(false);
-  const [housingData, setHousingData] = useState(null);
-  let { housingID } = useParams();
+  
+  const [house, setHouse] = useState(null);
+  const { id } = useParams(); 
 
-  // useEffect(() => {
-  //   console.log(`Housing data ${housingID}`);
-  //   console.error(`Housing data for ID ${housingID}`);
-  //   // Find the data object with the matching housingID
-  //   const foundData = housingData.find(item => item.housingID === parseInt(housingID));
-  //   if (foundData) {
-  //     setHousingData(foundData);
-  //   } else {
-  //     console.error(`Housing data not found for ID ${housingID}`);
-  //   }
-  // },[housingID]);
-  useEffect(() => {
-    const foundData = housingList.find(item => item.housingID.toString() === housingID);
-    if (foundData) {
-      setHousingData(foundData);
-    } else {
-      console.error(`Housing data not found for ID ${housingID}`);
+useEffect(() => {
+    if (id) { // Ensure id is not undefined
+        axios.get(`http://localhost:3001/api/v1/house/${id}`)
+            .then(response => {
+                setHouse(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching house details:', error);
+            });
     }
-  }, [housingID]);
+}, [id]);
+    
+    if (!house) {
+        return <div>Loading details...</div>;
+    }
+  const amenitiesList = house.selectedAmenities ? Object.entries(house.selectedAmenities).filter(([key, value]) => value === true).map(([key]) => key) : [];
 
-  if (!housingData) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div>
@@ -118,25 +79,25 @@ function Detail() {
       <div className="room-layout-container">
         {/* text */}
         <div className="text">
-          <h1 id="detail-headers">{housingData.title}</h1>
-          <span id="note">{housingData.location}</span>
+          <h1 id="detail-headers">{house.title}</h1>
+          <span id="note">{house.location}</span>
           <hr></hr>
 
           <div>
             <h4>
-              <span>{housingData.propertyType}</span>{""}
-              <span>{housingData.homeType}</span>
+              <span>{house.propertyType}</span>{""}
+              <span>{house.homeType}</span>
             </h4>
-            <span>{housingData.bathrooms} bedroom(s)</span>
-            <span> {housingData.bathrooms} bath(s)</span>
-            <h4>Available from {housingData.moveInDate} to {housingData.moveOutDate}</h4>
+            <span>{house.bathrooms} bedroom(s)</span>
+            <span> {house.bathrooms} bath(s)</span>
+            <h4>Available from {house.moveInDate} to {house.moveOutDate}</h4>
           </div>
           <hr></hr>
           <h2 id="detail-headers">
             Description
           </h2>
           <p>
-            {housingData.description}
+            {house.description}
           </p>
           <hr></hr>
 
@@ -144,40 +105,42 @@ function Detail() {
             Area
           </h2>
           <p>
-            {housingData.area} sqft
+            {house.area} sqft
           </p>
 
           <hr></hr>
           <h2 id="detail-headers">What this place offers</h2>
           <div>
-            {housingData.amenities.map((amenity, index) => (
-              <div key={index} className="amenities-each">{amenity}</div>
-            ))}
+             {amenitiesList.map(([key, value], index) => (
+            <div key={index} className="amenities-each">
+              {key}: {value.toString()}
+            </div>
+          ))}
           </div>
 
           <hr></hr>
           <h2 id="detail-headers">Roommate(s)</h2>
           <h3>Still living</h3>
-          <div>There will be {housingData.roommates} roomate(s) still living in the place </div>
+          <div>There will be {house.roommates} roomate(s) still living in the place </div>
           <h3>Brife Description</h3>
-          <p>{housingData.roommateDescription}</p>
+          <p>{house.roommateDescription}</p>
 
           <hr></hr>
           {/* New section T/F */}
           <h2 id="detail-headers">Others</h2>
           <h3>Furnished Situation</h3>
-          <p>{housingData.furnished ? "Yes" : "No"}</p>
+          <p>{house.furnished ? "Yes" : "No"}</p>
           <h3>Pet Allowed</h3>
-          <p>{housingData.petPolicy ? "Yes" : "No"}</p>
+          <p>{house.petPolicy ? "Yes" : "No"}</p>
           <h3>Deposit Required</h3>
-          <p>{housingData.deposit ? "Yes" : "No"}</p>
+          <p>{house.deposit ? "Yes" : "No"}</p>
           <hr></hr>
         </div>
 
         {/* sidebox */}
         <div className="sidebox-container">
           <div class="booking-widget">
-            <div class="price">${housingData.price} / Month</div>
+            <div class="price">${house.price} / Month</div>
             <div class="date-selection">
               <div class="check-in">
                 <label id="checkin">Check-in</label>

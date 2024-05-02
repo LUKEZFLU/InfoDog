@@ -41,4 +41,33 @@ router.post("/", async (req, res) => {
     }
 });
 
+
+// GET route to retrieve all houses
+router.get("/", async (req, res) => {
+    try {
+        const houses = await req.models.House.find({});
+        res.send(houses);
+    } catch (error) {
+        console.log("Error:", error);
+        res.status(500).json({ "status": "error", "error": error.message });
+    }
+});
+
+
+router.get("/house/:id", async (req, res) => {
+    try {
+        const house = await req.models.House.findById(req.params.id);
+        if (!house) {
+            console.log("House not found for ID:", req.params.id);
+            return res.status(404).send({ message: "House not found" });
+        }
+        res.send(house);
+    } catch (error) {
+        console.log("Error:", error);
+        res.status(500).json({ "status": "error", "error": error.message });
+    }
+});
+
+
+
 export default router;

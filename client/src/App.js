@@ -28,7 +28,7 @@ function App() {
           <Route path="/list-your-place" element={<ListPlace />} />
           <Route path="/listing-form" element={<ListingForm />} />
           <Route path="/explore" element={<Explore />} />
-          <Route path="/details/:housingID" element={<Detail />} />
+          <Route path="/details/:id" element={<Detail />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />

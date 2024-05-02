@@ -1,4 +1,5 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./explore.css";
 import Housing_1 from "./pic/UPlace_main.jpg";
@@ -16,10 +17,10 @@ import filter_icon from "./pic/filter_icon.jpg";
 function Explore() {
   let navigate = useNavigate();
 
-  const HouseCard = ({ imageSrc, altText, navigate, title, caption }) => (
+  const HouseCard = ({ altText, navigate, title, caption }) => (
   <div className="house-container">
     <img
-      src={imageSrc}
+      src={Housing_2}
       alt={altText}
       onClick={navigate}
     />
@@ -35,6 +36,19 @@ function Explore() {
   const toggleFilters = () => {
     setShowFilters(!showFilters);
   };
+
+  const [housingData, setHousingData] = useState([]);
+
+
+    useEffect(() => {
+        axios.get(`http://localhost:3001/api/v1/house`) 
+            .then(response => {
+                setHousingData(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
   
   return (
     <div>
@@ -142,9 +156,9 @@ function Explore() {
           {housingData.map((house, index) => (
             <HouseCard
               key={index}
-              imageSrc={house.imageSrc}
+              imageSrc={Housing_2}
               altText={house.title} 
-              navigate={() => navigate(`/details/${house.housingID}`)} 
+              navigate={() => navigate(`/details/${house._id}`)} 
               title={house.title}
               caption={house.caption}
             />
