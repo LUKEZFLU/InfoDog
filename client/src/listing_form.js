@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./listing_form.css";
-import axios from 'axios';
-import { isNumber } from "lodash";
 
 function ListingForm() {
   //Steps indicator
@@ -130,51 +128,64 @@ function ListingForm() {
   };
   const userId = localStorage.getItem('userId');
 
-  //Form submission
-  const navigate = useNavigate();
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const formData = {
-      propertyType,
-      roomType,
-      location,
-      bedrooms: Number(bedrooms),
-      bathrooms: Number(bathrooms),
-      price: Number(price),
-      area: Number(area),
-      moveInDate,
-      moveOutDate,
-      depositRequired,
-      furnitureIncluded,
-      title,
-      description,
-      roommatesCount: Number(roommatesCount),
-      roommatesReason,
-      petsAllowed,
-      selectedAmenities,
-      uwemail,
-      userId
-    };
-    console.log('Submitting form data:', formData);
-    // Make an HTTP POST request to the server
-    try {
-      const response = await fetch(`http://localhost:3001/api/v1/house/`, {
-        method: 'POST', // 确定使用 PUT 方法更新数据
-        headers: {
-          'Content-Type': 'application/json' // 设置内容类型为 JSON
-        },
-        body: JSON.stringify(formData)
-      });
-      const result = await response.json();
-      if (!response.ok) {
-        throw new Error(result.error || "Failed to add new house");
-      }
-      alert("House added successfully!");
-      navigate("/profile");
-    } catch (error) {
-      console.error("Error updating user data:", error);
-    }
+  // Form submission
+const navigate = useNavigate();
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  // Check for empty fields
+  const fields = [propertyType, roomType, location, bedrooms, bathrooms, price, area, moveInDate, moveOutDate, depositRequired, furnitureIncluded, title, description, roommatesCount, roommatesReason, petsAllowed, selectedAmenities, uwemail];
+  if (fields.some(field => field === null || field === undefined || field === '')) {
+    alert('Please fill in all the fields.');
+    return; // Exit the function to prevent form submission
+  }
+  if (!uwemail.endsWith('@uw.edu') && !uwemail.endsWith('@washington.edu')) {
+    alert('Please enter a valid UW email address that ends with @uw.edu or @washington.edu.');
+    return; // Exit the function to prevent form submission
+  }
+  const formData = {
+    propertyType,
+    roomType,
+    location,
+    bedrooms: Number(bedrooms),
+    bathrooms: Number(bathrooms),
+    price: Number(price),
+    area: Number(area),
+    moveInDate,
+    moveOutDate,
+    depositRequired,
+    furnitureIncluded,
+    title,
+    description,
+    roommatesCount: Number(roommatesCount),
+    roommatesReason,
+    petsAllowed,
+    selectedAmenities,
+    uwemail,
+    userId
   };
+  console.log('Submitting form data:', formData);
+  // Make an HTTP POST request to the server
+  try {
+    const response = await fetch(`http://localhost:3001/api/v1/house/`, {
+      method: 'POST', // Use POST method to submit new house data
+      headers: {
+        'Content-Type': 'application/json' // Set content type to JSON
+      },
+      body: JSON.stringify(formData)
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.error || "Failed to add new house");
+    }
+    // Update localStorage with the new houseId
+    localStorage.setItem('houseId', result.houseId);
+    alert("House added successfully!");
+    navigate("/profile");
+  } catch (error) {
+    console.error("Error updating user data:", error);
+  }
+};
+
 
   return (
     <div>
@@ -287,7 +298,7 @@ function ListingForm() {
               </>
             )}
 
-          {/* // Step 2 */}
+            {/* // Step 2 */}
             {currentStep === 2 && (
               <>
                 <h1>2. Add details</h1>
@@ -304,7 +315,7 @@ function ListingForm() {
                   <p>How many roommates will still be living in the place?</p>
                   <input type="number" id="roommatess" name="roommatess" min="0" max="10" placeholder="0" onChange={handleInputChange} value={roommatesCount} /> Roommates
                   <br />
-                  <input type="text" id="roommates" name="roommates" placeholder="Reason they are still here" required onChange={handleInputChange} value={roommatesReason} />
+                  <input type="text" id="roommates" name="roommates" placeholder="Enter 'NA' if no roommates" required onChange={handleInputChange} value={roommatesReason} />
                 </div>
                 <div className="question_sec">
                   <p>What amenities does your apartment offer?</p>
@@ -330,21 +341,21 @@ function ListingForm() {
               </>
             )}
 
-          {/* steps 3 */}
-          {/* Step 3 */}
+            {/* steps 3 */}
+            {/* Step 3 */}
             {currentStep === 3 && (
               <>
                 <h1>3. Verification</h1>
                 <p>Help your future subtenant get to know you, and verify your identity to make your listing stand out with a "Verified" badge.</p>
                 <div className="question_sec">
                   <p>Enter Your UW Email</p>
-                  <input type="text" id="email" name="email" placeholder="Institutional Email ONLY No @gmail/@Outlook etc." required onChange={handleEmailChange} value={uwemail} />
+                  <input type="text" id="email" name="email" placeholder="i.e. xxx@uw.edu" required onChange={handleEmailChange} value={uwemail} />
                 </div>
                 <br></br>
               </>
             )}
 
-          {/* steps 4 */}
+            {/* steps 4 */}
 
             {currentStep === 4 && (
               <>
@@ -363,31 +374,31 @@ function ListingForm() {
                   By checking this box, you confirm that you have read,
                   understand, and agree to iLease's <u>Terms of Service.</u>
                 </label>
-                <br/>
+                <br />
                 <p>You may need to logout and login again to see your account update</p>
                 <br></br>
               </>
             )}
 
-          <div className="form-navigation">
-            {currentStep > 1 && (
-              <button type="button" className="button-style" onClick={goPreviousStep}>
-                Previous Step
-              </button>
-            )}
-            {currentStep < 4 && (
-              <button type="button" className="button-style" onClick={goNextStep}>
-                Next Step
-              </button>
-            )}
-            {currentStep === 4 && (
-              <input type="submit" value="Submit Listing" className="button-style"/>
-            )}
-          </div>
+            <div className="form-navigation">
+              {currentStep > 1 && (
+                <button type="button" className="button-style" onClick={goPreviousStep}>
+                  Previous Step
+                </button>
+              )}
+              {currentStep < 4 && (
+                <button type="button" className="button-style" onClick={goNextStep}>
+                  Next Step
+                </button>
+              )}
+              {currentStep === 4 && (
+                <input type="submit" value="Submit Listing" className="button-style" />
+              )}
+            </div>
 
           </div>
           {/* Navigation buttons go here */}
-          
+
         </form>
       </div>
     </div>

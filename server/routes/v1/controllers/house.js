@@ -30,10 +30,13 @@ router.post("/", async (req, res) => {
         });
 
         // Save the new house to the database
-        await newHouse.save();
+        const savedHouse = await newHouse.save();
 
         // Respond to the client upon successful registration
-        res.send({status: 'success'});
+        res.json({
+            status: 'success',
+            houseId: savedHouse._id.toString()  // Return the MongoDB document ID as a string
+        });
     } catch (error) {
         // Log any errors and respond with error message
         console.log("Error:", error);
