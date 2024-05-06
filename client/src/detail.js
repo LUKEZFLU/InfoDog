@@ -8,7 +8,6 @@ import balcony from "./pic/UPlace_balcony.jpg";
 import mainImg from "./pic/UPlace_main.jpg";
 import pentagram from "./pic/pentagram.jpg";
 import Popup from './components/popup';
-import housingList from './data/housingData.json';
 import axios from 'axios';
 
 
@@ -152,16 +151,6 @@ const amenitiesValues = house.selectedAmenities ? Object.entries(house.selectedA
                 <input type="date" id="checkout" name="check-out"></input>
               </div>
             </div>
-
-            {/* <div class="guests">
-                    <label id="guests">GUESTS</label>
-                    <select id="guests" name="guests">
-                        <option value="1">1 guest</option>
-                        <option value="2" selected>2 guests</option>
-                        <option value="3">3 guests</option>
-                        <option value="4">4 guests</option>
-                    </select>
-                </div> */}
             <div class="guests">
               <label id="guests">Guests</label>
               <input id="guests" name="guests" placeholder="number"></input>
@@ -171,7 +160,7 @@ const amenitiesValues = house.selectedAmenities ? Object.entries(house.selectedA
 
             <div class="charge-info">You won't be charged yet</div>
             <hr></hr>
-            <img src={pentagram} id="pentagram" alt="pentagram analysis images" />
+            {/* <img src={pentagram} id="pentagram" alt="pentagram analysis images" /> */}
           </div>
         </div>
 

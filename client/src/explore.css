@@ -67,13 +67,8 @@ h2 {
   color: #ffffff;
 }
 
-.filter-options {
-  /* Initial state should be invisible, so you might want to include this */
-  display: none;
-}
-
 /* You can toggle the display of the filter options with a class or a conditional style */
-.filter-container.visible .filter-options {
+.filter-container.visible {
   display: block;
 }
 
@@ -81,7 +76,7 @@ h2 {
   /* border: 2px solid #ffffff; */
   border-radius: 20px;
   display: grid;
-  grid-template-columns: repeat(4, 450px);
+  grid-template-columns: repeat(3, 450px);
   grid-gap: 5px;
   column-gap: 5px;
   row-gap: 30px;
@@ -96,16 +91,6 @@ h2 {
   height: 25%;
   margin-top: 10%;
   /* cursor: pointer; */
-}
-
-.filter-options {
-  display: none; /* Hide filters by default */
-  position: absolute;
-  background-color: #fff;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  padding: 20px;
-  width: 100%;
-  z-index: 100;
 }
 
 .filter-option {

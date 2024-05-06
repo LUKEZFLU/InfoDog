@@ -9,8 +9,6 @@ import Housing_4 from "./pic/Housing_8.jpg";
 import Housing_5 from "./pic/Housing_1.jpg";
 import Housing_6 from "./pic/Housing_6.jpg";
 
-import housingData from "./data/housingData.json"
-// import map from "./pic/map.png";
 import Map from './components/map.js';
 import filter_icon from "./pic/filter_icon.jpg";
 
@@ -119,21 +117,30 @@ function Explore() {
             </select>
           </div>
           <div className="filter-option">
-            <label htmlFor="verfication">Verfication</label>
-            <select id="verfication" name="verfication">
-              <option value="any">Any type</option>
-              <option value="uw">UW email</option>
-              <option value="official">Official email</option>
+            <label htmlFor="deposit">Deposit</label>
+            <select id="deposit" name="deposit">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
             </select>
           </div>
           <div className="filter-option">
-            <label htmlFor="bedroom">Bedroom</label>
+            {/* <label htmlFor="bedroom">Bedroom</label>
             <select id="bedroom" name="bedroom">
               <option value="studio">Studio</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="≥3">≥3</option>
-            </select>
+            </select> */}
+            <label htmlFor="bedroom">Bedroom</label>
+            <input type="text" id="bedroom" placeholder="number" />
+          </div>
+          <div className="filter-option">
+            <label htmlFor="bathroom">Bathroom</label>
+            <input type="text" id="bathroom" placeholder="number" />
+          </div>
+          <div className="filter-option">
+            <label htmlFor="roommate">Roommate Number</label>
+            <input type="text" id="roommate" placeholder="number" />
           </div>
           <div className="filter-option">
             <label htmlFor="price">Price</label>
@@ -142,11 +149,11 @@ function Explore() {
             <input type="text" id="priceMax" placeholder="2000" />
           </div>
           <div className="filter-option">
-            <label htmlFor="radius">Search Radius (miles)</label>
-            <span>Maximum radius 30 </span>
-            <input type="text" id="radiusInput" placeholder="10" />
+            <label htmlFor="price">Area Range (sqft)</label>
+            <input type="text" id="priceMin" placeholder="400" />
+            <span id="char_space">---</span>
+            <input type="text" id="priceMax" placeholder="800" />
           </div>
-
         </div>
         
       )}
