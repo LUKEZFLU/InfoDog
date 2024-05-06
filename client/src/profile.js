@@ -78,6 +78,30 @@ function Profile() {
     }
   };
 
+  // delete the house
+  const handleDelete = async () => {
+    const houseId = localStorage.getItem('houseId');
+    if (!houseId) {
+      alert("No house ID found to delete.");
+      return;
+    }
+    try {
+      const response = await fetch(`http://localhost:3001/api/v1/house/deletehouse?houseId=${houseId}`, {
+        method: 'DELETE'
+      });
+      if (!response.ok) {
+        throw new Error("Failed to delete house!");
+      }
+      localStorage.removeItem('houseId');
+      setHasHouseId(false);
+      alert("House deleted successfully!");
+      window.location.reload();
+    } catch (error) {
+      console.error("Error deleting house:", error);
+      alert(error.message);
+    }
+  };
+
 
 
   return (
@@ -112,7 +136,7 @@ function Profile() {
           <div className="your-place-container">
             <h2>Your Place</h2>
             <img src={testImage} alt="amenities images" width="100" height="auto" />
-            <button className="personal-info-button">Delete</button>
+            <button className="personal-info-button" onClick={handleDelete}>Delete</button>
           </div>
         )}
 

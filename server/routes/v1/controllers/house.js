@@ -73,6 +73,27 @@ router.get("/", async (req, res) => {
 });
 
 
+// Delete the house
+router.delete("/deletehouse", async (req, res) => {
+    const { houseId } = req.query; // Extracting HouseId from query parameters
+    if (!houseId) {
+        return res.status(400).json({ "status": "error", "error": "houseId is required" });
+    }
+
+    try {
+        const result = await req.models.House.findByIdAndDelete(houseId);
+        // TODO delete all the related message
+        if (!result) {
+            return res.status(404).json({ "status": "error", "error": "House not found" });
+        }
+        res.status(200).json({ "status": "success", "message": "House deleted successfully" });
+    } catch (error) {
+        console.log("Error:", error);
+        res.status(500).json({ "status": "error", "error": error.message });
+    }
+});
+
+
 
 
 export default router;
