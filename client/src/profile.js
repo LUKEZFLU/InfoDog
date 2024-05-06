@@ -12,12 +12,16 @@ function Profile() {
   const [nlastName, nsetLastName] = useState("");
   const [nemail, nsetEmail] = useState("");
   const [npassword, nsetPassword] = useState("");
+  const [hasHouseId, setHasHouseId] = useState(false); // State for checking house ID presence
+
 
 
   // Fetch user data from the server
   useEffect(() => {
     const fetchUserData = async () => {
-      const userId = localStorage.getItem('userId'); // 获取存储在localStorage中的UserId
+      const userId = localStorage.getItem('userId');
+      const houseId = localStorage.getItem('houseId'); // Check for house ID in localStorage
+      setHasHouseId(!!houseId);
       if (!userId) {
         console.error("No UserId found in localStorage");
         return;
@@ -104,13 +108,17 @@ function Profile() {
         </form>
 
 
-        <div className="your-place-container">
-          <h2>Your Place</h2>
-          <img src={testImage} alt="amenities images" width="100" height="auto" />
-          <button className="personal-info-button">Edit</button>
-        </div>
+        {hasHouseId && (
+          <div className="your-place-container">
+            <h2>Your Place</h2>
+            <img src={testImage} alt="amenities images" width="100" height="auto" />
+            <button className="personal-info-button">Delete</button>
+          </div>
+        )}
 
-        <h2>Contact Requst</h2>
+
+        <h2>Contact Request</h2>
+        {hasHouseId && (
         <div className="your-favorite-container">
           <img src={testImage} alt="amenities images" width="100" height="auto" />
           <div className="contact-request-time-info">
@@ -121,6 +129,7 @@ function Profile() {
           <button className="contact-requst-button-1">Accept</button>
           <button className="contact-requst-button-2">Refuse</button>
         </div>
+        )}
       </div>
     </div>
 
