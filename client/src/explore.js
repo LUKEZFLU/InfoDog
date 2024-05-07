@@ -119,7 +119,6 @@ function Explore() {
     }
 
     setFilteredHousingData(filteredData);
-    console.log(filteredData);
   };
 
   // Initial data load
@@ -127,25 +126,20 @@ function Explore() {
     fetchAllHouses();
   }, []);
 
-  // Apply filters whenever they change
-  useEffect(() => {
-    applyFilters();
-  }, [filters, housingData]);
-
   // Function to toggle the filter visibility
   const toggleFilters = () => setShowFilters(!showFilters);
 
   const HouseCard = ({ altText, navigate, title, caption }) => (
-        <div className="house-container">
-          <img
-            src={Housing_2}
-            alt={altText}
-            onClick={navigate}
-          />
-          <h3>{title}</h3>
-          <p>{caption}</p>
-        </div>
-      );
+    <div className="house-container">
+      <img
+        src={Housing_2}
+        alt={altText}
+        onClick={navigate}
+      />
+      <h3>{title}</h3>
+      <p>{caption}</p>
+    </div>
+  );
 
   return (
     <div>
@@ -189,20 +183,20 @@ function Explore() {
       {showFilters && (
         <div className="filter-container">
           <div className="filter-option">
-            <label htmlFor="propertyType">Property Type Type</label>
+            <label htmlFor="propertyType">Property Type</label>
             <select id="propertyType" value={filters.propertyType} onChange={handleInputChange}>
+              <option value="any">Any</option>
+              <option value="apartment">Apartment</option>
+              <option value="house">House</option>
+            </select>
+          </div>
+          <div className="filter-option">
+            <label htmlFor="roomType">Room Type</label>
+            <select id="roomType" value={filters.roomType} onChange={handleInputChange}>
               <option value="any">Any</option>
               <option value="Entire Home">Entire Home</option>
               <option value="Private Room(s)">Private Room(s)</option>
               <option value="Shared Room(s)">Shared Room(s)</option>
-            </select>
-          </div>
-          <div className="filter-option">
-            <label htmlFor="roomType">Property Type Type</label>
-            <select id="roomType" value={filters.roomType} onChange={handleInputChange}>
-              <option value="any">Any</option>
-              <option value="apartment">Apartment</option>
-              <option value="house">House</option>
             </select>
           </div>
           <div className="filter-option">
@@ -277,5 +271,5 @@ function Explore() {
     </div>
   );
 }
-    
+
 export default Explore;
