@@ -141,8 +141,7 @@ function Profile() {
         )}
 
 
-        <h2>Contact Request</h2>
-        {hasHouseId && (
+        <h2>Message Center</h2>
         <div className="your-favorite-container">
           <img src={testImage} alt="amenities images" width="100" height="auto" />
           <div className="contact-request-time-info">
@@ -153,7 +152,6 @@ function Profile() {
           <button className="contact-requst-button-1">Accept</button>
           <button className="contact-requst-button-2">Refuse</button>
         </div>
-        )}
       </div>
     </div>
 
