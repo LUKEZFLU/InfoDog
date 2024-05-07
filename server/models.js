@@ -39,6 +39,8 @@ const houseSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true } 
 });
 
+houseSchema.index({ location: 1 });
+
 models.House = mongoose.model('House', houseSchema);
 models.User = mongoose.model('User', userSchema)
 

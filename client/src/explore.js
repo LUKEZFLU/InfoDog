@@ -1,166 +1,264 @@
-import { React, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./explore.css";
-import Housing_1 from "./pic/UPlace_main.jpg";
 import Housing_2 from "./pic/Housing_2.jpg";
-import Housing_3 from "./pic/Housing_5.jpg";
-import Housing_4 from "./pic/Housing_8.jpg";
-import Housing_5 from "./pic/Housing_1.jpg";
-import Housing_6 from "./pic/Housing_6.jpg";
-
-import Map from './components/map.js';
 import filter_icon from "./pic/filter_icon.jpg";
+import Map from './components/map.js';
 
 function Explore() {
-  let navigate = useNavigate();
-
-  const HouseCard = ({ altText, navigate, title, caption }) => (
-  <div className="house-container">
-    <img
-      src={Housing_2}
-      alt={altText}
-      onClick={navigate}
-    />
-    <h3>{title}</h3>
-    <p>{caption}</p>
-  </div>
-);
-
-  // State to manage filter visibility
+  const navigate = useNavigate();
   const [showFilters, setShowFilters] = useState(false);
+  const [housingData, setHousingData] = useState([]);
+  const [filteredHousingData, setFilteredHousingData] = useState([]);
 
-  // Function to toggle the filter visibility
-  const toggleFilters = () => {
-    setShowFilters(!showFilters);
+  const [filters, setFilters] = useState({
+    location: '',
+    propertyType: 'any',
+    roomType: 'any',
+    furnished: 'any',
+    petFriendly: 'any',
+    deposit: 'any',
+    bedrooms: '',
+    bathrooms: '',
+    roommates: '',
+    priceMin: '',
+    priceMax: '',
+    areaMin: '',
+    areaMax: '',
+    moveInDate: '',
+    moveOutDate: ''
+  });
+
+  // Update state as inputs change
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setFilters((prevFilters) => ({ ...prevFilters, [id]: value }));
   };
 
-  const [housingData, setHousingData] = useState([]);
+  // Fetch all houses once
+  const fetchAllHouses = async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/api/v1/house');
+      setHousingData(response.data);
+      setFilteredHousingData(response.data); // Initially set to all data
+    } catch (error) {
+      console.error('Error fetching all houses:', error);
+    }
+  };
 
+  // Filter locally based on the filters set in the state
+  const applyFilters = () => {
+    let filteredData = housingData;
+    const {
+      location,
+      propertyType,
+      roomType,
+      furnished,
+      petFriendly,
+      deposit,
+      bedrooms,
+      bathrooms,
+      roommates,
+      priceMin,
+      priceMax,
+      areaMin,
+      areaMax,
+      moveInDate,
+      moveOutDate
+    } = filters;
 
-    useEffect(() => {
-        axios.get(`http://localhost:3001/api/v1/house`) 
-            .then(response => {
-                setHousingData(response.data);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
-    }, []);
-  
+    if (location) {
+      filteredData = filteredData.filter((house) => house.location.toLowerCase().includes(location.toLowerCase()));
+    }
+    if (propertyType !== 'any') {
+      filteredData = filteredData.filter((house) => house.propertyType === propertyType);
+    }
+    if (roomType !== 'any') {
+      filteredData = filteredData.filter((house) => house.roomType === roomType);
+    }
+    if (furnished !== 'any') {
+      filteredData = filteredData.filter((house) => house.furnitureIncluded === (furnished === 'furnished' ? 'Yes' : 'No'));
+    }
+    if (petFriendly !== 'any') {
+      filteredData = filteredData.filter((house) => house.petsAllowed === (petFriendly === 'yes' ? 'Yes' : 'No'));
+    }
+    if (deposit !== 'any') {
+      filteredData = filteredData.filter((house) => house.depositRequired === (deposit === 'yes' ? 'Yes' : 'No'));
+    }
+    if (!isNaN(parseInt(bedrooms))) {
+      filteredData = filteredData.filter((house) => house.bedrooms === parseInt(bedrooms));
+    }
+    if (!isNaN(parseInt(bathrooms))) {
+      filteredData = filteredData.filter((house) => house.bathrooms === parseInt(bathrooms));
+    }
+    if (!isNaN(parseInt(roommates))) {
+      filteredData = filteredData.filter((house) => house.roommatesCount === parseInt(roommates));
+    }
+    if (priceMin || priceMax) {
+      filteredData = filteredData.filter((house) => {
+        const price = parseInt(house.price);
+        const min = parseInt(priceMin || 0);
+        const max = parseInt(priceMax || Number.MAX_SAFE_INTEGER);
+        return price >= min && price <= max;
+      });
+    }
+    if (areaMin || areaMax) {
+      filteredData = filteredData.filter((house) => {
+        const area = parseInt(house.area);
+        const min = parseInt(areaMin || 0);
+        const max = parseInt(areaMax || Number.MAX_SAFE_INTEGER);
+        return area >= min && area <= max;
+      });
+    }
+    if (moveInDate) {
+      filteredData = filteredData.filter((house) => new Date(house.moveInDate) <= new Date(moveInDate));
+    }
+    if (moveOutDate) {
+      filteredData = filteredData.filter((house) => new Date(house.moveOutDate) >= new Date(moveOutDate));
+    }
+
+    setFilteredHousingData(filteredData);
+    console.log(filteredData);
+  };
+
+  // Initial data load
+  useEffect(() => {
+    fetchAllHouses();
+  }, []);
+
+  // Apply filters whenever they change
+  useEffect(() => {
+    applyFilters();
+  }, [filters, housingData]);
+
+  // Function to toggle the filter visibility
+  const toggleFilters = () => setShowFilters(!showFilters);
+
+  const HouseCard = ({ altText, navigate, title, caption }) => (
+        <div className="house-container">
+          <img
+            src={Housing_2}
+            alt={altText}
+            onClick={navigate}
+          />
+          <h3>{title}</h3>
+          <p>{caption}</p>
+        </div>
+      );
+
   return (
     <div>
-
       <div className="search-container">
         <div className="input-container">
           <div className="check-in">
             <label htmlFor="location">Location</label>
-            <input type="text" id="locationInput" placeholder="U District" />
+            <input
+              type="text"
+              id="location"
+              value={filters.location}
+              onChange={handleInputChange}
+              placeholder="U District"
+            />
           </div>
         </div>
         <div className="input-container">
           <div className="check-in">
-              <label htmlFor="movein">Move-in</label>
-              <input type="date" id="movein" name="movein"></input>
+            <label htmlFor="moveInDate">Move-in</label>
+            <input type="date" id="moveInDate" value={filters.moveInDate} onChange={handleInputChange} />
           </div>
         </div>
         <div className="input-container">
           <div className="check-out">
-              <label htmlFor="moveout">Move-out</label>
-              <input type="date" id="moveout" name="moveout"></input>
+            <label htmlFor="moveOutDate">Move-out</label>
+            <input type="date" id="moveOutDate" value={filters.moveOutDate} onChange={handleInputChange} />
           </div>
         </div>
         <div className="input-container">
           <p></p>
-          <button id="search-button">Search</button>
+          <button id="search-button" onClick={applyFilters}>Search</button>
         </div>
-        {/* Use onClick with camelCase in JSX */}
-        {/* <div className="input-container">
-          <p></p>
-          <button id="filter-toggle" onClick={toggleFilters}>Filter</button>
-        </div> */}
         <img
           src={filter_icon}
-          alt="amenities images"
+          alt="Filter icon"
           onClick={toggleFilters}
           id="filter-toggle"
         />
-
       </div>
 
-      {/* drop-down fitler */}
       {showFilters && (
         <div className="filter-container">
-
           <div className="filter-option">
-            <label htmlFor="house-type">House Type</label>
-            <select id="house-type" name="house-type">
-              <option value="any">Any type</option>
-              <option value="studio">Studio</option>
+            <label htmlFor="propertyType">Property Type Type</label>
+            <select id="propertyType" value={filters.propertyType} onChange={handleInputChange}>
+              <option value="any">Any</option>
+              <option value="Entire Home">Entire Home</option>
+              <option value="Private Room(s)">Private Room(s)</option>
+              <option value="Shared Room(s)">Shared Room(s)</option>
+            </select>
+          </div>
+          <div className="filter-option">
+            <label htmlFor="roomType">Property Type Type</label>
+            <select id="roomType" value={filters.roomType} onChange={handleInputChange}>
+              <option value="any">Any</option>
               <option value="apartment">Apartment</option>
               <option value="house">House</option>
             </select>
           </div>
           <div className="filter-option">
-            <label htmlFor="furnish">Furnished</label>
-            <select id="furnish" name="furnish">
-              <option value="any">Any type</option>
+            <label htmlFor="furnished">Furnished</label>
+            <select id="furnished" value={filters.furnished} onChange={handleInputChange}>
+              <option value="any">Any</option>
               <option value="furnished">Furnished</option>
               <option value="unfurnished">Unfurnished</option>
             </select>
           </div>
           <div className="filter-option">
-            <label htmlFor="pet-friendly">Pet Friendly</label>
-            <select id="pet-friendly" name="pet-friendly">
+            <label htmlFor="petFriendly">Pet Friendly</label>
+            <select id="petFriendly" value={filters.petFriendly} onChange={handleInputChange}>
+              <option value="any">Any</option>
               <option value="yes">Yes</option>
               <option value="no">No</option>
             </select>
           </div>
           <div className="filter-option">
             <label htmlFor="deposit">Deposit</label>
-            <select id="deposit" name="deposit">
+            <select id="deposit" value={filters.deposit} onChange={handleInputChange}>
+              <option value="any">Any</option>
               <option value="yes">Yes</option>
               <option value="no">No</option>
             </select>
           </div>
           <div className="filter-option">
-            {/* <label htmlFor="bedroom">Bedroom</label>
-            <select id="bedroom" name="bedroom">
-              <option value="studio">Studio</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="≥3">≥3</option>
-            </select> */}
-            <label htmlFor="bedroom">Bedroom</label>
-            <input type="text" id="bedroom" placeholder="number" />
+            <label htmlFor="bedrooms">Bedroom</label>
+            <input type="text" id="bedrooms" value={filters.bedrooms} onChange={handleInputChange} placeholder="number" />
           </div>
           <div className="filter-option">
-            <label htmlFor="bathroom">Bathroom</label>
-            <input type="text" id="bathroom" placeholder="number" />
+            <label htmlFor="bathrooms">Bathroom</label>
+            <input type="text" id="bathrooms" value={filters.bathrooms} onChange={handleInputChange} placeholder="number" />
           </div>
           <div className="filter-option">
-            <label htmlFor="roommate">Roommate Number</label>
-            <input type="text" id="roommate" placeholder="number" />
+            <label htmlFor="roommates">Roommate Number</label>
+            <input type="text" id="roommates" value={filters.roommates} onChange={handleInputChange} placeholder="number" />
           </div>
           <div className="filter-option">
-            <label htmlFor="price">Price</label>
-            <input type="text" id="priceMin" placeholder="1200" />
+            <label htmlFor="priceMin">Price</label>
+            <input type="text" id="priceMin" value={filters.priceMin} onChange={handleInputChange} placeholder="1200" />
             <span id="char_space">---</span>
-            <input type="text" id="priceMax" placeholder="2000" />
+            <input type="text" id="priceMax" value={filters.priceMax} onChange={handleInputChange} placeholder="2000" />
           </div>
           <div className="filter-option">
-            <label htmlFor="price">Area Range (sqft)</label>
-            <input type="text" id="priceMin" placeholder="400" />
+            <label htmlFor="areaMin">Area Range (sqft)</label>
+            <input type="text" id="areaMin" value={filters.areaMin} onChange={handleInputChange} placeholder="400" />
             <span id="char_space">---</span>
-            <input type="text" id="priceMax" placeholder="800" />
+            <input type="text" id="areaMax" value={filters.areaMax} onChange={handleInputChange} placeholder="800" />
           </div>
         </div>
-        
       )}
 
       <div className="layout-container">
         <div className="grid-container">
-          {housingData.map((house, index) => (
+          {filteredHousingData.map((house, index) => (
             <HouseCard
               key={index}
               imageSrc={Housing_2}
@@ -172,7 +270,6 @@ function Explore() {
           ))}
         </div>
 
-        {/* map */}
         <div className="map-container">
           <Map navigate={navigate} />
         </div>
@@ -180,5 +277,5 @@ function Explore() {
     </div>
   );
 }
-
+    
 export default Explore;

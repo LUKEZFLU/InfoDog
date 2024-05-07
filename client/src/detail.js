@@ -87,9 +87,9 @@ const amenitiesValues = house.selectedAmenities ? Object.entries(house.selectedA
           <div>
             <h4>
               <span>{house.propertyType}</span>{""}
-              <span>{house.homeType}</span>
+              <span>{house.roomType}</span>
             </h4>
-            <span>{house.bathrooms} bedroom(s)</span>
+            <span>{house.bedrooms} bedroom(s)</span>
             <span> {house.bathrooms} bath(s)</span>
             <h4>Available from {house.moveInDate} to {house.moveOutDate}</h4>
           </div>
