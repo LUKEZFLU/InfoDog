@@ -20,10 +20,11 @@ function Detail() {
 
 useEffect(() => {
     if (id) { // Ensure id is not undefined
-    console.log(`House ID: ${id}`);
+    // console.log(`House ID: ${id}`);
         axios.get(`http://localhost:3001/api/v1/house/${id}`)
             .then(response => {
                 setHouse(response.data);
+                localStorage.setItem('currentHouseId', id);
             })
             .catch(error => {
                 console.error('Error fetching house details:', error);
