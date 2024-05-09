@@ -250,8 +250,8 @@ function Explore() {
         </div>
       )}
 
-      <div className="layout-container">
-        <div className="grid-container">
+      <div className="layout-container-bottom">
+        <div className="grid-container-bottom">
           {filteredHousingData.map((house, index) => (
             <HouseCard
               key={index}
@@ -262,10 +262,6 @@ function Explore() {
               caption={house.caption}
             />
           ))}
-        </div>
-
-        <div className="map-container">
-          <Map navigate={navigate} />
         </div>
       </div>
     </div>

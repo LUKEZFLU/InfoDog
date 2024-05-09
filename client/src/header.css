@@ -2,3 +2,14 @@
   width: 100px;
   height: auto;
 }
+
+.header-nav button {
+  background: none; 
+  border: none; 
+  color: #333; 
+  font-size: 18px; 
+  padding: 10px 15px; 
+  cursor: pointer; 
+  transition: color 0.3s; 
+  font-weight: bold; 
+}

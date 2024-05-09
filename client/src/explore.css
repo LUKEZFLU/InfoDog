@@ -1,113 +1,102 @@
-/* explore.css */
 
-.search-container{
-  border: 2px solid #603434;
-  border-radius: 20px;
+body {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--light-bg);
+  margin: 0;
+  padding: 0;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center; 
+  padding: 15px; 
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin: 10px 20px; 
+}
+
+.search-input-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px; 
+}
+
+.search-input-container input {
+  width: 100%;
+  padding: 8px 15px 8px 15px;
+  border: 1px solid #ccc;
+  border-radius: 25px; 
+  font-size: 14px; 
+}
+
+.search-input-container button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2px 5px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-input-container button img {
+  width: 16px; 
+  height: 16px;
+}
+
+.search-container, .filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.input-container, .filter-option {
+  flex: 1 1 200px; 
+  margin: 10px;
+  padding: 10px;
+}
+
+.input-container label, .filter-option label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--primary-color);
+}
+
+.input-container input, .filter-option select, .filter-option input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.grid-container-bottom {
   display: grid;
-  grid-template-columns: repeat(5, 300px);
-  grid-gap: 5px;
-  column-gap: 0.8px;
-  margin: 40px;
-}
-
-.input-container{
-  margin: 30px;
-}
-
-.grid-container{
-  display: grid;
-  width: 105%;
-  height: 70%;
-  grid-template-columns: repeat(2, 300px); /* creates two columns of equal width */
-  grid-gap: 5px;
-  column-gap: 0.8px;
-  overflow: scroll;
-  margin: 30px;
-}
-
-.map-container {
-  width: 120%;
-  height: 75%;
-  text-align: right;
-  padding: 5px;
-  overflow: hidden;
-  margin: 2px;
-}
-
-.layout-container{
-  display: grid;
-  grid-template-columns: repeat(2, 600px);
-  grid-gap: 5px;
-  column-gap: 70px;
-  margin: 50px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
 .house-container {
-  text-align: left;
-  padding: 5px;
-  margin: 2px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .house-container img {
-  max-width: 90%;
+  width: 100%;
   height: auto;
-  border-radius: 10px;
 }
 
-h1,
-h2 {
-  text-align: center;
-  color: #333;
-}
-
-#search-button {
-  display: block;
-  width: 100px;
-  background-color: #333;
-  color: #ffffff;
-}
-
-/* You can toggle the display of the filter options with a class or a conditional style */
-.filter-container.visible {
-  display: block;
-}
-
-.filter-container {
-  /* border: 2px solid #ffffff; */
-  border-radius: 20px;
-  display: grid;
-  grid-template-columns: repeat(3, 450px);
-  grid-gap: 5px;
-  column-gap: 5px;
-  row-gap: 30px;
-  margin-left: 70px;
-  position: relative;
-}
-
-#filter-toggle {
-  /* border: 1px solid #ddd; */
+.house-container h3, .house-container p {
   padding: 10px;
-  width: 10%;
-  height: 25%;
-  margin-top: 10%;
-  /* cursor: pointer; */
 }
-
-.filter-option {
-  margin-bottom: 10px;
-}
-
-label {
-  margin-right: 10px;
-  font-weight: bold;
-}
-
-select {
-  padding: 5px;
-  margin-right: 20px;
-}
-
-#char_space {
-  margin: 10px;
-}
-
