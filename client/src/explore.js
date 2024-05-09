@@ -169,15 +169,16 @@ function Explore() {
           </div>
         </div>
         <div className="input-container">
-          <p></p>
-          <button id="search-button" onClick={applyFilters}>Search</button>
+          <br></br>
+          <button id="search-button" className='button-style' onClick={applyFilters}>Search</button>
         </div>
         <img
           src={filter_icon}
           alt="Filter icon"
           onClick={toggleFilters}
           id="filter-toggle"
-        />
+          className="filter-icon"
+          />
       </div>
 
       {showFilters && (

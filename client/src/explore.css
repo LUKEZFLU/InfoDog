@@ -100,3 +100,21 @@ body {
 .house-container h3, .house-container p {
   padding: 10px;
 }
+
+.filter-icon{
+  width: 35px;
+  height: 35px;
+  margin-top: 50px;
+}
+
+.button-style {
+  background-color: black; /* Green background */
+  color: white;              /* White text */
+  border: none;              /* No border */
+  border-radius: 4px;        /* Rounded corners */
+  cursor: pointer;           /* Pointer cursor on hover */
+  outline: none;             /* Remove outline */
+  transition: background 0.3s ease; /* Smooth transition for hover effect */
+  left: 10%;
+  
+}
