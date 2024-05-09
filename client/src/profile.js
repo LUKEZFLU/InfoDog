@@ -21,7 +21,7 @@ function Profile() {
     const fetchUserData = async () => {
       const userId = localStorage.getItem('userId');
       const houseId = localStorage.getItem('houseId'); // Check for house ID in localStorage
-      setHasHouseId(!!houseId);
+      setHasHouseId(houseId && houseId !== 'no');
       if (!userId) {
         console.error("No UserId found in localStorage");
         return;
@@ -92,7 +92,7 @@ function Profile() {
       if (!response.ok) {
         throw new Error("Failed to delete house!");
       }
-      localStorage.removeItem('houseId');
+      localStorage.setItem('houseId', 'no');
       setHasHouseId(false);
       alert("House deleted successfully!");
       window.location.reload();
