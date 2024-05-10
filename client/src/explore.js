@@ -6,6 +6,18 @@ import Housing_2 from "./pic/Housing_2.jpg";
 import filter_icon from "./pic/filter_icon.jpg";
 import Map from './components/map.js';
 
+  const getRandomImage = () => {
+    return images[Math.floor(Math.random() * images.length)];
+  };
+
+    const importAll = (r) => {
+    return r.keys().map(r);
+  }
+
+  const images = importAll(require.context('./pic/explore-img', false, /\.(png|jpe?g|svg)$/));
+
+
+
 function Explore() {
   const navigate = useNavigate();
   const [showFilters, setShowFilters] = useState(false);
@@ -36,16 +48,21 @@ function Explore() {
     setFilters((prevFilters) => ({ ...prevFilters, [id]: value }));
   };
 
+
   // Fetch all houses once
-  const fetchAllHouses = async () => {
-    try {
-      const response = await axios.get('http://localhost:3001/api/v1/house');
-      setHousingData(response.data);
-      setFilteredHousingData(response.data); // Initially set to all data
-    } catch (error) {
-      console.error('Error fetching all houses:', error);
-    }
-  };
+const fetchAllHouses = async () => {
+  try {
+    const response = await axios.get('http://localhost:3001/api/v1/house');
+    const housesWithImages = response.data.map(house => ({
+      ...house,
+      imageSrc: getRandomImage()  
+    }));
+    setHousingData(housesWithImages);
+    setFilteredHousingData(housesWithImages); 
+  } catch (error) {
+    console.error('Error fetching all houses:', error);
+  }
+};
 
   // Filter locally based on the filters set in the state
   const applyFilters = () => {
@@ -129,17 +146,14 @@ function Explore() {
   // Function to toggle the filter visibility
   const toggleFilters = () => setShowFilters(!showFilters);
 
-  const HouseCard = ({ altText, navigate, title, caption }) => (
-    <div className="house-container">
-      <img
-        src={Housing_2}
-        alt={altText}
-        onClick={navigate}
-      />
-      <h3>{title}</h3>
-      <p>{caption}</p>
-    </div>
-  );
+const HouseCard = ({ imageSrc, altText, navigate, title, caption }) => (
+  <div className="house-container" onClick={() => navigate()}>
+    <img src={imageSrc} alt={altText} />
+    <h3>{title}</h3>
+    <p>{caption}</p>
+  </div>
+);
+
 
   return (
     <div>
@@ -256,7 +270,7 @@ function Explore() {
           {filteredHousingData.map((house, index) => (
             <HouseCard
               key={index}
-              imageSrc={Housing_2}
+              imageSrc={house.imageSrc}
               altText={house.title} 
               navigate={() => navigate(`/details/${house._id}`)} 
               title={house.title}
