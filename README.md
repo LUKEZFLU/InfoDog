@@ -1,5 +1,9 @@
 # iLease (INFO 490/491 Capstone)
 
+⚠️ This repo will shift private after June 20 2024
+
+Contact zefanl@uw.edu if you need any help!
+
 Welcome to iLease!
 
 
