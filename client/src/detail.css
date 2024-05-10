@@ -1,179 +1,127 @@
 /* detail.css */
 
-h1,
-h2 {
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+.text h1, .text h2, .text h3 {
+  text-align: left;
+  margin-left: 0; /* Ensure no additional margin is affecting alignment */
+}
+
+h1, h2 {
   text-align: center;
   color: #333;
 }
 
 hr {
-  border: none; /* Remove default border */
-  border-top: 1px solid #ccc; /* Add a custom solid line */
-  margin: 20px 0; /* Add some vertical space above and below the line */
-}
-
-/* span {
-  display: inline; 
-  margin-left: 10px;
-  margin-right: 50px;
-} */
-
-body {
-  font-family: Arial, sans-serif;
+  border: none;
+  border-top: 2px solid #e0e0e0;
+  margin: 20px 0;
 }
 
 .room-grid-container {
   display: grid;
-  grid-template-columns: repeat(2, 300px); /* creates two columns of equal width */
-  grid-gap: 5px;
-  column-gap: 0.8px;
-  margin: 30px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  padding: 20px;
 }
 
 .large-image-container {
-  width: 100%;
-  height: 80%;
-  padding: 5px;
-  /* overflow: scroll; */
-  margin: 2px;
+  width: auto; 
+  padding: 3px; 
+  margin-bottom: 20px; 
 }
 
 .large-image-container img {
-  max-width: 100%;
-  height: 120%;
-  border-radius: 10px;
+  width: 100%; 
+  max-height: 400px;
+  object-fit: cover; 
+  border-radius: 8px; /* Optional: rounded corners for aesthetics */
 }
+
 
 .room-layout-container {
   display: grid;
-  grid-template-columns: repeat(2, 600px);
-  grid-gap: 5px;
-  column-gap: 30px;
-  margin: 50px;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 30px;
+  padding: 20px;
 }
 
 .box-container {
-  text-align: left;
-  padding: 5px;
-  margin: 2px;
+  padding: 10px;
 }
 
 .box-container img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
+  width: 100%;
+  border-radius: 8px;
 }
 
 .sidebox-container {
-  width: auto;
-  /* text-align: right; */
-  padding: 5px;
-  /* overflow: scroll; */
-  border: 1px solid grey;
-  border-radius: 2%;
-  margin: 2px;
-  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
-}
-
-/* .booking-widget {
-  background: #FFF;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 300px;
-  margin: auto;
-} */
+  background: white;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
 
 .price {
   font-size: 24px;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  color: #4CAF50;
+}
+
+.date-selection, .guests, .contact-host {
   margin-bottom: 20px;
 }
 
-.reviews {
-  background: #EEE;
-  padding: 5px 10px;
-  border-radius: 10px;
-  font-size: 14px;
-}
-
-.date-selection {
-  display: flex;
-  /* justify-content: space-between; */
-  column-gap: 20%;
-  margin-bottom: 20px;
-}
-
-.check-in, .check-out {
-  display: flex;
-  flex-direction: column;
-  font-weight: bold;
-}
-
-.check-in input, .check-out input {
-  padding: 10px;
-  border: 1px solid #DDD;
-  border-radius: 4px;
-}
-
-.guests {
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-.guests select {
+.check-in input, .check-out input, .guests input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #DDD;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: #FFF;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
 }
 
 .contact-host {
-  background-color: #000;
-  color: #FFF;
-  padding: 15px;
+  background-color: black;
+  color: white;
+  padding: 10px;
   border: none;
   border-radius: 4px;
-  width: 100%;
-  font-weight: bold;
-  margin-top: 20px;
-  margin-bottom: 20px;
-
-  cursor: pointer;
-}
-
-.charge-info {
-  font-size: 14px;
   text-align: center;
 }
 
-.text h4 span {
-  display: inline-block; /* or use display: flex; */
-  margin-right: 10px; /* Adjust as needed */
+.contact-host:hover {
+  background-color: gray;
+}
+
+
+.charge-info {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .amenities-each {
-  margin-bottom: 10px;
+  background-color: #eee;
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
 
-
-#detail-headers {
-  text-align: left;
-}
 
 #note {
-  color: grey;
+  color: #888;
+  font-size: 14px;
+  display: block;
 }
 
 #pentagram {
-  max-width: 80%;
-  height: auto;
-  margin: 10%;
+  width: 100%;
+  border-radius: 8px;
 }
