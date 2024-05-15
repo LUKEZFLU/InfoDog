@@ -6,17 +6,15 @@ import Housing_2 from "./pic/Housing_2.jpg";
 import filter_icon from "./pic/filter_icon.jpg";
 import Map from './components/map.js';
 
-  const getRandomImage = () => {
-    return images[Math.floor(Math.random() * images.length)];
-  };
+const getRandomImage = () => {
+  return images[Math.floor(Math.random() * images.length)];
+};
 
-    const importAll = (r) => {
-    return r.keys().map(r);
-  }
+const importAll = (r) => {
+  return r.keys().map(r);
+}
 
-  const images = importAll(require.context('./pic/explore-img', false, /\.(png|jpe?g|svg)$/));
-
-
+const images = importAll(require.context('./pic/explore-img', false, /\.(png|jpe?g|svg)$/));
 
 function Explore() {
   const navigate = useNavigate();
@@ -24,7 +22,7 @@ function Explore() {
   const [housingData, setHousingData] = useState([]);
   const [filteredHousingData, setFilteredHousingData] = useState([]);
 
-  const [filters, setFilters] = useState({
+  const initialFilters = {
     location: '',
     propertyType: 'any',
     roomType: 'any',
@@ -40,31 +38,29 @@ function Explore() {
     areaMax: '',
     moveInDate: '',
     moveOutDate: ''
-  });
+  };
 
-  // Update state as inputs change
+  const [filters, setFilters] = useState(initialFilters);
+
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     setFilters((prevFilters) => ({ ...prevFilters, [id]: value }));
   };
 
+  const fetchAllHouses = async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/api/v1/house');
+      const housesWithImages = response.data.map(house => ({
+        ...house,
+        imageSrc: getRandomImage()  
+      }));
+      setHousingData(housesWithImages);
+      setFilteredHousingData(housesWithImages); 
+    } catch (error) {
+      console.error('Error fetching all houses:', error);
+    }
+  };
 
-  // Fetch all houses once
-const fetchAllHouses = async () => {
-  try {
-    const response = await axios.get('http://localhost:3001/api/v1/house');
-    const housesWithImages = response.data.map(house => ({
-      ...house,
-      imageSrc: getRandomImage()  
-    }));
-    setHousingData(housesWithImages);
-    setFilteredHousingData(housesWithImages); 
-  } catch (error) {
-    console.error('Error fetching all houses:', error);
-  }
-};
-
-  // Filter locally based on the filters set in the state
   const applyFilters = () => {
     let filteredData = housingData;
     const {
@@ -138,22 +134,24 @@ const fetchAllHouses = async () => {
     setFilteredHousingData(filteredData);
   };
 
-  // Initial data load
   useEffect(() => {
     fetchAllHouses();
   }, []);
 
-  // Function to toggle the filter visibility
   const toggleFilters = () => setShowFilters(!showFilters);
 
-const HouseCard = ({ imageSrc, altText, navigate, title, caption }) => (
-  <div className="house-container" onClick={() => navigate()}>
-    <img src={imageSrc} alt={altText} />
-    <h3>{title}</h3>
-    <p>{caption}</p>
-  </div>
-);
+  const clearFilters = () => {
+    setFilters(initialFilters);
+    setFilteredHousingData(housingData);
+  };
 
+  const HouseCard = ({ imageSrc, altText, navigate, title, caption }) => (
+    <div className="house-container" onClick={() => navigate()}>
+      <img src={imageSrc} alt={altText} />
+      <h3>{title}</h3>
+      <p>{caption}</p>
+    </div>
+  );
 
   return (
     <div>
@@ -196,72 +194,76 @@ const HouseCard = ({ imageSrc, altText, navigate, title, caption }) => (
       </div>
 
       {showFilters && (
-        <div className="filter-container">
-          <div className="filter-option">
-            <label htmlFor="propertyType">Property Type</label>
-            <select id="propertyType" value={filters.propertyType} onChange={handleInputChange}>
-              <option value="any">Any</option>
-              <option value="apartment">Apartment</option>
-              <option value="house">House</option>
-            </select>
+        <div>
+          <div className="filter-container">
+            <div className="filter-option">
+              <label htmlFor="propertyType">Property Type</label>
+              <select id="propertyType" value={filters.propertyType} onChange={handleInputChange}>
+                <option value="any">Any</option>
+                <option value="apartment">Apartment</option>
+                <option value="house">House</option>
+              </select>
+            </div>
+            <div className="filter-option">
+              <label htmlFor="roomType">Room Type</label>
+              <select id="roomType" value={filters.roomType} onChange={handleInputChange}>
+                <option value="any">Any</option>
+                <option value="Entire Home">Entire Home</option>
+                <option value="Private Room(s)">Private Room(s)</option>
+                <option value="Shared Room(s)">Shared Room(s)</option>
+              </select>
+            </div>
+            <div className="filter-option">
+              <label htmlFor="furnished">Furnished</label>
+              <select id="furnished" value={filters.furnished} onChange={handleInputChange}>
+                <option value="any">Any</option>
+                <option value="furnished">Furnished</option>
+                <option value="unfurnished">Unfurnished</option>
+              </select>
+            </div>
+            <div className="filter-option">
+              <label htmlFor="petFriendly">Pet Friendly</label>
+              <select id="petFriendly" value={filters.petFriendly} onChange={handleInputChange}>
+                <option value="any">Any</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div className="filter-option">
+              <label htmlFor="deposit">Deposit</label>
+              <select id="deposit" value={filters.deposit} onChange={handleInputChange}>
+                <option value="any">Any</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div className="filter-option">
+              <label htmlFor="bedrooms">Bedroom</label>
+              <input type="text" id="bedrooms" value={filters.bedrooms} onChange={handleInputChange} placeholder="number" />
+            </div>
+            <div className="filter-option">
+              <label htmlFor="bathrooms">Bathroom</label>
+              <input type="text" id="bathrooms" value={filters.bathrooms} onChange={handleInputChange} placeholder="number" />
+            </div>
+            <div className="filter-option">
+              <label htmlFor="roommates">Roommate Number</label>
+              <input type="text" id="roommates" value={filters.roommates} onChange={handleInputChange} placeholder="number" />
+            </div>
+            <div className="filter-option">
+              <label htmlFor="priceMin">Price</label>
+              <input type="text" id="priceMin" value={filters.priceMin} onChange={handleInputChange} placeholder="1200" />
+              <span id="char_space">---</span>
+              <input type="text" id="priceMax" value={filters.priceMax} onChange={handleInputChange} placeholder="2000" />
+            </div>
+            <div className="filter-option">
+              <label htmlFor="areaMin">Area Range (sqft)</label>
+              <input type="text" id="areaMin" value={filters.areaMin} onChange={handleInputChange} placeholder="400" />
+              <span id="char_space">---</span>
+              <input type="text" id="areaMax" value={filters.areaMax} onChange={handleInputChange} placeholder="800" />
+            </div>
           </div>
-          <div className="filter-option">
-            <label htmlFor="roomType">Room Type</label>
-            <select id="roomType" value={filters.roomType} onChange={handleInputChange}>
-              <option value="any">Any</option>
-              <option value="Entire Home">Entire Home</option>
-              <option value="Private Room(s)">Private Room(s)</option>
-              <option value="Shared Room(s)">Shared Room(s)</option>
-            </select>
-          </div>
-          <div className="filter-option">
-            <label htmlFor="furnished">Furnished</label>
-            <select id="furnished" value={filters.furnished} onChange={handleInputChange}>
-              <option value="any">Any</option>
-              <option value="furnished">Furnished</option>
-              <option value="unfurnished">Unfurnished</option>
-            </select>
-          </div>
-          <div className="filter-option">
-            <label htmlFor="petFriendly">Pet Friendly</label>
-            <select id="petFriendly" value={filters.petFriendly} onChange={handleInputChange}>
-              <option value="any">Any</option>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </div>
-          <div className="filter-option">
-            <label htmlFor="deposit">Deposit</label>
-            <select id="deposit" value={filters.deposit} onChange={handleInputChange}>
-              <option value="any">Any</option>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </div>
-          <div className="filter-option">
-            <label htmlFor="bedrooms">Bedroom</label>
-            <input type="text" id="bedrooms" value={filters.bedrooms} onChange={handleInputChange} placeholder="number" />
-          </div>
-          <div className="filter-option">
-            <label htmlFor="bathrooms">Bathroom</label>
-            <input type="text" id="bathrooms" value={filters.bathrooms} onChange={handleInputChange} placeholder="number" />
-          </div>
-          <div className="filter-option">
-            <label htmlFor="roommates">Roommate Number</label>
-            <input type="text" id="roommates" value={filters.roommates} onChange={handleInputChange} placeholder="number" />
-          </div>
-          <div className="filter-option">
-            <label htmlFor="priceMin">Price</label>
-            <input type="text" id="priceMin" value={filters.priceMin} onChange={handleInputChange} placeholder="1200" />
-            <span id="char_space">---</span>
-            <input type="text" id="priceMax" value={filters.priceMax} onChange={handleInputChange} placeholder="2000" />
-          </div>
-          <div className="filter-option">
-            <label htmlFor="areaMin">Area Range (sqft)</label>
-            <input type="text" id="areaMin" value={filters.areaMin} onChange={handleInputChange} placeholder="400" />
-            <span id="char_space">---</span>
-            <input type="text" id="areaMax" value={filters.areaMax} onChange={handleInputChange} placeholder="800" />
-          </div>
+          {/* clear button */}
+          <button id="clear-button" className='button-style clear-button' onClick={clearFilters}>Clear</button>
         </div>
       )}
 
