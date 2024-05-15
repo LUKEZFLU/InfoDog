@@ -263,7 +263,9 @@ function Explore() {
             </div>
           </div>
           {/* clear button */}
-          <button id="clear-button" className='button-style clear-button' onClick={clearFilters}>Clear</button>
+          <div className="clear-button-container">
+            <button id="clear-button" className='button-style clear-button' onClick={clearFilters}>Clear</button>
+          </div>
         </div>
       )}
 
