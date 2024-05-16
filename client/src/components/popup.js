@@ -1,11 +1,13 @@
 import React from 'react'
 import './popup.css'
+import closeImg from '../pic/Close.png'; 
+
 
 function Popup(props) {
     return (props.trigger) ? ( // show the following if the trigger is true
         <div className="popup">
             <div className='popup-inner'>
-                <button className='close-btn' onClick={() => props.setTrigger(false)}><img src="pic/Close.png" alt="close image"/></button>
+                <button className='close-btn' onClick={() => props.setTrigger(false)}><img src={closeImg} alt="Close"/></button>
                 {props.children}
             </div>
         </div>

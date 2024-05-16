@@ -85,6 +85,7 @@ function Detail() {
     }
   };
   
+  
 
   return (
     <div>
@@ -190,7 +191,7 @@ function Detail() {
           </div>
         </div>
       </div>
-
+      
       <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
         <h3>System Information</h3>
         <p>The request has been sent to the host</p>
