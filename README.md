@@ -8,7 +8,7 @@ Subletting is a common solution for University of Washington students struggling
 ## Features (Scope)
 
 - **Explore Listings**: Users can browse through a list of available rental properties, with options to view detailed pages for each listing.
-- **Detailed Property View**: Each property has its own detailed page where users can see specifics such as images, amenities, price, and location.
+- **Detailed Property View**: Each property has its own detailed page where users can see specifics such as amenities, price, and location.
 - **Dynamic Filtering**: Users can filter properties based on criteria like location, price, room type, and more, with filters dynamically adjusting the viewable listings.
 - **Contact Request**: Tenant able to request to get in contact with the leaseholder for more information if they're interested in that place. And leaseholder can reject or accept the request.
 - **Profile**: User can update their personal information for better reach.
@@ -22,30 +22,34 @@ This is a local version, please follow the instructions below to install and tes
 
 Clone the repository and install the dependencies to set up the project locally:
 
+Open your terminal, make sure you are on the directory you want.
+
 ```
+# Clone this repo
 git clone https://github.com/LUKEZFLU/iLease.git
-cd iLease
-npm install
 ```
 
 ### Usage
 After installation, you can run the server locally:
 
 ```
-# server side(port 3001):
+# get into the iLease directory
+cd iLease
+```
+Start the server - port 3001
+```
 cd server
 npm install
 node index.js
 ```
-
-Then you need to run the server by:
-
+Start the client site - port 3000(cd back to the iLease directory)
 ```
-# client side(port 300):
 cd client
 npm install
 npm start
 ```
+
+Visit "http://localhost:3000/" to see the site.
 
 ## Technology Stack
 
