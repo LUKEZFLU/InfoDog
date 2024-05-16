@@ -5,15 +5,20 @@
 
 Subletting is a common solution for University of Washington students struggling to cover high rents during breaks. However, finding suitable tenants often proves difficult. This financial pressure led our team to develop a reliable platform that connects UW leaseholders with potential tenants. Using detailed search filters, users can find properties that fit their needs and communicate directly with leaseholders. Simple listing instructions enable leaseholders to easily add their properties and manage tenant requests. Our platform offers an essential solution to the subleasing challenges faced by UW students and also helps those seeking short-term accommodation in the UW area.
 
-## Features
+## Features (Scope)
 
 - **Explore Listings**: Users can browse through a list of available rental properties, with options to view detailed pages for each listing.
 - **Detailed Property View**: Each property has its own detailed page where users can see specifics such as images, amenities, price, and location.
 - **Dynamic Filtering**: Users can filter properties based on criteria like location, price, room type, and more, with filters dynamically adjusting the viewable listings.
-- **Interactive Property Images**: Each listing displays random images from a specified directory, giving a fresh look each time the properties are loaded.
-- **Responsive Design**: Ensures that the application is accessible and functional across various devices and screen sizes.
+- **Contact Request**: Tenant able to request to get in contact with the leaseholder for more information if they're interested in that place. And leaseholder can reject or accept the request.
+- **Profile**: User can update their personal information for better reach.
 
-## Installation
+## Functionality: 
+
+This is a local version, please follow the instructions below to install and test this site:
+
+
+### Installation
 
 Clone the repository and install the dependencies to set up the project locally:
 
@@ -23,16 +28,16 @@ cd iLease
 npm install
 ```
 
-## Usage
+### Usage
 After installation, you can run the server locally:
 
 ```
-# To run the client side:
+# To run the client side(port 300):
 cd client
 npm install
 npm start
 
-# To run the server side:
+# To run the server side(port 3001):
 cd server
 npm install
 node index.js
@@ -46,23 +51,11 @@ node index.js
 - **Others:** Axios for API requests
 
 
+## Contributors:
+- Zefan Lu (zefanl@uw.edu)
+- Fan Dai (daif2@uw.edu)
+- Kaidi Chen (kaidic@uw.edu)
+- Zonglin Zuo (zonglz2@uw.edu)
+- Ziliang Huang (zlhuang@uw.edu)
 
-Contact zefanl@uw.edu if you need any help!
-
-Welcome to iLease!
-
-Collaborators:
-- Zefan Lu
-- Fan Dai
-- Kaidi Chen
-- Zonglin Zuo
-- Ziliang Huang
-
-This Project is copyrighted by the above collaborators.
-
-
-First start the server (port 3001): 
-cd to the server directory, then: nodemon index.js
-
-Then start the client (port 3000): 
-cd to the client directory, then: npm start
+**This Project is copyrighted by the above collaborators.**
