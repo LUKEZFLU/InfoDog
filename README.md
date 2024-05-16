@@ -30,7 +30,7 @@ git clone https://github.com/LUKEZFLU/iLease.git
 ```
 
 ### Usage
-After installation, you can run the server locally:
+After installation, you can run this site locally:
 
 ```
 # get into the iLease directory
