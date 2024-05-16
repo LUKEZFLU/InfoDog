@@ -36,13 +36,23 @@ const houseSchema = new mongoose.Schema({
     selectedAmenities: Object,
     petsAllowed: { type: String, required: true },
     uwemail: { type: String, required: true },  // Maps to uwemail
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true } 
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
 });
+
+const messageSchema = new mongoose.Schema({
+    from: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    houseId: { type: mongoose.Schema.Types.ObjectId, ref: 'House', required: true },
+    checkin: Date,
+    checkout: Date,
+    guest: Number
+})
 
 houseSchema.index({ location: 1 });
 
 models.House = mongoose.model('House', houseSchema);
-models.User = mongoose.model('User', userSchema)
+models.User = mongoose.model('User', userSchema);
+models.Message = mongoose.model('Message', messageSchema);
+
 
 console.log("mongoose models created")
 

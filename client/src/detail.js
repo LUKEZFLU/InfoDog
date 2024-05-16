@@ -37,24 +37,54 @@ function Detail() {
 
   const amenitiesValues = house.selectedAmenities ? Object.entries(house.selectedAmenities).filter(([key, value]) => value === true).map(([key]) => key) : [];
 
-  const handleContactHost = () => {
+
+  const handleContactHost = async () => {
     const checkin = checkinRef.current.value;
     const checkout = checkoutRef.current.value;
     const guests = guestsRef.current.value;
   
-    console.log('Check-in:', checkin, 'Check-out:', checkout, 'Guests:', guests); // For debugging
   
     if (!checkin || !checkout || !guests) {
       alert('Please fill out all fields.');
     } else {
       const userId = localStorage.getItem('userId');
+      const houseId = localStorage.getItem('currentHouseId'); // 从localStorage获取houseId
+  
       if (userId) {
-        setButtonPopup(true);
+        try {
+          const response = await fetch('http://localhost:3001/api/v1/message/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              from: userId,
+              houseId: houseId,
+              checkin: checkin,
+              checkout: checkout,
+              guest: guests
+            }),
+          });
+  
+          if (response.ok) {
+            const data = await response.json();
+            console.log('Success:', data);
+            setButtonPopup(true);
+          } else {
+            const errorData = await response.json();
+            console.error('Error:', errorData);
+            alert(errorData.message || 'Failed to contact the host. Please try again.');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert('An error occurred. Please try again.');
+        }
       } else {
         alert('Please log in to contact the host.');
       }
     }
   };
+  
 
   return (
     <div>
