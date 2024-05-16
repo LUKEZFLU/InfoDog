@@ -82,10 +82,11 @@ router.delete("/deletehouse", async (req, res) => {
 
     try {
         const result = await req.models.House.findByIdAndDelete(houseId);
-        // TODO delete all the related message
         if (!result) {
             return res.status(404).json({ "status": "error", "error": "House not found" });
         }
+        // 删除所有和这个house有关的message
+        await req.models.Message.deleteMany({ houseId });
         res.status(200).json({ "status": "success", "message": "House deleted successfully" });
     } catch (error) {
         console.log("Error:", error);

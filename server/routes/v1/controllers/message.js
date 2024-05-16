@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
             checkout,
             guest
         });
-        
+
         await newMessage.save();
 
         res.status(201).json({ "status": "success", "data": newMessage });
@@ -33,7 +33,7 @@ router.get("/messages", async (req, res) => {
     try {
         const { houseId } = req.query;
         const messages = await req.models.Message.find({ houseId }).lean();
-        
+
         const messagesWithUserDetails = await Promise.all(messages.map(async (message) => {
             const user = await req.models.User.findById(message.from).lean();
             return {
@@ -41,7 +41,8 @@ router.get("/messages", async (req, res) => {
                 user: {
                     firstName: user.firstName,
                     lastName: user.lastName,
-                    gender: user.gender
+                    gender: user.gender,
+                    email: user.email
                 }
             };
         }));
@@ -54,7 +55,7 @@ router.get("/messages", async (req, res) => {
 });
 
 
-// 删除信息
+// refuse
 router.delete("/refuse", async (req, res) => {
     try {
         const { messageId } = req.query;
@@ -65,6 +66,10 @@ router.delete("/refuse", async (req, res) => {
         res.status(500).json({ "status": "error", "error": error });
     }
 });
+
+
+
+
 
 
 export default router;

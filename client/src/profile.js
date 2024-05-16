@@ -2,6 +2,8 @@ import React from "react";
 import testImage from "./pic/Housing_1.jpg";
 import "./profiles.css"
 import { useState, useEffect } from "react";
+import Popup from './components/popup';
+
 
 function Profile() {
   // State variables to store user data
@@ -141,6 +143,34 @@ function Profile() {
     }
   };
 
+  // handle accept message
+  const handleAccept = async (userEmail) => {
+    const houseId = localStorage.getItem('houseId');
+    try {
+      // Delete the house
+      const deleteHouseResponse = await fetch(`http://localhost:3001/api/v1/house/deletehouse?houseId=${houseId}`, {
+        method: 'DELETE'
+      });
+      if (!deleteHouseResponse.ok) {
+        throw new Error("Failed to delete house");
+      }
+
+      // Update localStorage and state
+      localStorage.setItem('houseId', 'no');
+      setHasHouseId(false);
+
+      // Show email alert
+      alert(`Tenant's email: ${userEmail}, this message is shown only once.`);
+
+      // Refresh page
+      window.location.reload();
+    } catch (error) {
+      console.error("Error accepting message:", error);
+      alert(error.message);
+    }
+  };
+
+
 
 
 
@@ -192,7 +222,7 @@ function Profile() {
                 <p>Checkin: {new Date(message.checkin).toLocaleDateString()}</p>
                 <p>Checkout: {new Date(message.checkout).toLocaleDateString()}</p>
               </div>
-              <button className="contact-requst-button-1">Accept</button>
+              <button className="contact-requst-button-1"onClick={() => handleAccept(message.user.email)}>Accept</button>
               <button className="contact-requst-button-2" onClick={() => handleRefuse(message._id)}>Refuse</button>
             </div>
           ))
