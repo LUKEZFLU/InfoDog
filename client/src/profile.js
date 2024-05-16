@@ -124,6 +124,24 @@ function Profile() {
     }
   };
 
+  // handle refuse message
+  const handleRefuse = async (messageId) => {
+    try {
+      const response = await fetch(`http://localhost:3001/api/v1/message/refuse?messageId=${messageId}`, {
+        method: 'DELETE'
+      });
+      if (!response.ok) {
+        throw new Error("Failed to delete message");
+      }
+      alert("Message refused successfully!");
+      window.location.reload();
+    } catch (error) {
+      console.error("Error refusing message:", error);
+      alert(error.message);
+    }
+  };
+
+
 
 
   return (
@@ -175,7 +193,7 @@ function Profile() {
                 <p>Checkout: {new Date(message.checkout).toLocaleDateString()}</p>
               </div>
               <button className="contact-requst-button-1">Accept</button>
-              <button className="contact-requst-button-2">Refuse</button>
+              <button className="contact-requst-button-2" onClick={() => handleRefuse(message._id)}>Refuse</button>
             </div>
           ))
         ) : (

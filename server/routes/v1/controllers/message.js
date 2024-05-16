@@ -54,4 +54,17 @@ router.get("/messages", async (req, res) => {
 });
 
 
+// 删除信息
+router.delete("/refuse", async (req, res) => {
+    try {
+        const { messageId } = req.query;
+        await req.models.Message.findByIdAndDelete(messageId);
+        res.status(200).json({ "status": "success", "message": "Message deleted successfully" });
+    } catch (error) {
+        console.log("Error:", error);
+        res.status(500).json({ "status": "error", "error": error });
+    }
+});
+
+
 export default router;
