@@ -13,10 +13,11 @@ function Profile() {
   const [nemail, nsetEmail] = useState("");
   const [npassword, nsetPassword] = useState("");
   const [hasHouseId, setHasHouseId] = useState(false); // State for checking house ID presence
+  const [messages, setMessages] = useState([]);
 
 
 
-  // Fetch user data from the server
+  // 在 useEffect 中添加 fetchMessages 函数
   useEffect(() => {
     const fetchUserData = async () => {
       const userId = localStorage.getItem('userId');
@@ -42,7 +43,28 @@ function Profile() {
       }
     };
 
+    const fetchMessages = async () => {
+      const houseId = localStorage.getItem('houseId');
+      if (!houseId) {
+        console.error("No houseId found in localStorage");
+        return;
+      }
+
+      try {
+        const response = await fetch(`http://localhost:3001/api/v1/message/messages?houseId=${houseId}`);
+        const messagesData = await response.json();
+        if (response.ok) {
+          setMessages(messagesData);
+        } else {
+          throw new Error(messagesData.error || "Failed to fetch messages");
+        }
+      } catch (error) {
+        console.error("Error fetching messages:", error);
+      }
+    };
+
     fetchUserData();
+    fetchMessages();
   }, []);
 
   // Handle form submission to update user data
@@ -142,16 +164,23 @@ function Profile() {
 
 
         <h2>Message Center</h2>
-        <div className="your-favorite-container">
-          <img src={testImage} alt="amenities images" width="100" height="auto" />
-          <div className="contact-request-time-info">
-            <p >Alice Hu: Female | Verified Amazon Employee</p>
-            <p>Checkin: 5/1/2024</p>
-            <p>Checkout: 5/6/2024</p>
-          </div>
-          <button className="contact-requst-button-1">Accept</button>
-          <button className="contact-requst-button-2">Refuse</button>
-        </div>
+
+        {messages.length > 0 ? (
+          messages.map((message) => (
+            <div className="your-favorite-container">
+              <img src={testImage} alt="amenities images" width="100" height="auto" />
+              <div className="contact-request-time-info">
+                <p >{message.user.firstName} {message.user.lastName} | {message.user.gender} | Guest: {message.guest}</p>
+                <p>Checkin: {new Date(message.checkin).toLocaleDateString()}</p>
+                <p>Checkout: {new Date(message.checkout).toLocaleDateString()}</p>
+              </div>
+              <button className="contact-requst-button-1">Accept</button>
+              <button className="contact-requst-button-2">Refuse</button>
+            </div>
+          ))
+        ) : (
+          <p>No messages found.</p>
+        )}
       </div>
     </div>
 

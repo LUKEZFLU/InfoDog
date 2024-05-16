@@ -2,6 +2,7 @@ import { promises as fs } from 'fs'
 import express from 'express';
 var router = express.Router();
 
+// 发送信息
 router.post("/", async (req, res) => {
     try {
         const { from, to, houseId, checkin, checkout, guest } = req.body;
@@ -24,6 +25,31 @@ router.post("/", async (req, res) => {
     } catch (error) {
         console.log("Error:", error)
         res.status(500).json({ "status": "error", "error": error })
+    }
+});
+
+// get信息
+router.get("/messages", async (req, res) => {
+    try {
+        const { houseId } = req.query;
+        const messages = await req.models.Message.find({ houseId }).lean();
+        
+        const messagesWithUserDetails = await Promise.all(messages.map(async (message) => {
+            const user = await req.models.User.findById(message.from).lean();
+            return {
+                ...message,
+                user: {
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    gender: user.gender
+                }
+            };
+        }));
+
+        res.status(200).json(messagesWithUserDetails);
+    } catch (error) {
+        console.log("Error:", error);
+        res.status(500).json({ "status": "error", "error": error });
     }
 });
 
