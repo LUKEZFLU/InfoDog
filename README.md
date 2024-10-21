@@ -1,5 +1,4 @@
 # iLease (INFO 490/491 Capstone)
-⚠️ This repo will shift private after June 30 2024
 
 ## Project Description
 
